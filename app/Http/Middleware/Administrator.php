@@ -36,7 +36,7 @@ class Administrator
         );
         
 
-        $routeFrom = app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName();
+        // $routeFrom = app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName();
 dd("sadsa");
         if (Auth::user()) {
 dd('yes');
