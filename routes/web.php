@@ -14,7 +14,7 @@ Route::get('/', [App\Http\Controllers\Front\FrontController::class, 'index'])->n
 // Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
 //     // Your protected routes
 // });
-Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
+// Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
 
     Auth::routes();
     // Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
@@ -33,4 +33,4 @@ Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
     // Route::resource('admin/education', \App\Http\Controllers\Admin\EducationController::class)->parameters(['education' => 'id']);
     // Route::resource('admin/contact', \App\Http\Controllers\Admin\ContactController::class)->parameters(['contact' => 'id']);
     // Route::resource('admin/port-category', \App\Http\Controllers\Admin\PortCaregoryController::class)->parameters(['port-category' => 'id']);
-});
+// });
