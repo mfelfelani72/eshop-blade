@@ -6,7 +6,7 @@
                     <div class="swiper-slide">
                         <div class="item">
                             <div class="image object-cover">
-                                <img src="assets/slider/slider0.jpg" alt="">
+                                <img src="{{ asset('front/img/slider/slider0.jpg') }}" alt="">
                             </div>
                             <div class="text-content flexcol">
                                 <h4>Shoes Fashion</h4>
@@ -20,7 +20,7 @@
                     <div class="swiper-slide">
                         <div class="item">
                             <div class="image object-cover">
-                                <img src="assets/slider/slider1.jpg" alt="">
+                                <img src="{{ asset('front/img/slider/slider1.jpg') }}" alt="">
                             </div>
                             <div class="text-content flexcol">
                                 <h4>Quick Fashion</h4>
@@ -34,7 +34,7 @@
                     <div class="swiper-slide">
                         <div class="item">
                             <div class="image object-cover">
-                                <img src="assets/slider/slider2.jpg" alt="">
+                                <img src="{{ asset('front/img/slider/slider2.jpg') }}" alt="">
                             </div>
                             <div class="text-content flexcol">
                                 <h4>Quick Offer</h4>
@@ -48,7 +48,7 @@
                     <div class="swiper-slide">
                         <div class="item">
                             <div class="image object-cover">
-                                <img src="assets/slider/slider3.jpg" alt="">
+                                <img src="{{ asset('front/img/slider/slider3.jpg') }}" alt="">
                             </div>
                             <div class="text-content flexcol">
                                 <h4>Best Deals</h4>

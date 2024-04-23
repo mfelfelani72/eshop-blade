@@ -129,7 +129,7 @@
                                                     <div class="media">
                                                         <div class="thumbnail object-cover">
                                                             <a href="#">
-                                                                <img src="assets/products/apparel4.jpg"
+                                                                <img src="{{ asset('front/img/products/apparel4.jpg') }}"
                                                                     alt="">
                                                             </a>
                                                         </div>

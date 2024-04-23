@@ -3,32 +3,32 @@
          <div class="wrapper flexitem">
              <div class="item">
                  <a href="#">
-                     <img src="assets/brands/zara.png" alt="">
+                     <img src="{{ asset('front/img/brands/zara.png') }}" alt="">
                  </a>
              </div>
              <div class="item">
                  <a href="#">
-                     <img src="assets/brands/samsung.png" alt="">
+                     <img src="{{ asset('front/img/brands/samsung.png') }}" alt="">
                  </a>
              </div>
              <div class="item">
                  <a href="#">
-                     <img src="assets/brands/oppo.png" alt="">
+                     <img src="{{ asset('front/img/brands/oppo.png') }}" alt="">
                  </a>
              </div>
              <div class="item">
                  <a href="#">
-                     <img src="assets/brands/asus.png" alt="">
+                     <img src="{{ asset('front/img/brands/asus.png') }}" alt="">
                  </a>
              </div>
              <div class="item">
                  <a href="#">
-                     <img src="assets/brands/hurley.png" alt="">
+                     <img src="{{ asset('front/img/brands/hurley.png') }}" alt="">
                  </a>
              </div>
              <div class="item">
                  <a href="#">
-                     <img src="assets/brands/dng.png" alt="">
+                     <img src="{{ asset('front/img/brands/dng.png') }}" alt="">
                  </a>
              </div>
          </div>
