@@ -1,26 +1,26 @@
-@extends('layouts.admin.index')
+@extends('layouts.administrator.index')
 
 @section('tag-head')
-    @include('layouts/admin/tag-head')
+    @include('layouts/administrator/tag-head')
 @endsection
 @section('preloader')
-    @include('layouts/admin/preloader')
+    @include('layouts/administrator/preloader')
 @endsection
 
 @section('sidebar')
-    @include('layouts/admin/sidebar')
+    @include('layouts/administrator/sidebar')
 @endsection
 
 @section('navheader')
-    @include('layouts/admin/navheader')
+    @include('layouts/administrator/navheader')
 @endsection
 
 @section('chat')
-    @include('layouts/admin/chat')
+    @include('layouts/administrator/chat')
 @endsection
 
 @section('header')
-    @include('layouts/admin/header')
+    @include('layouts/administrator/header')
 @endsection
 
 @section('content')
@@ -28,11 +28,11 @@
 @endsection
 
 @section('footer')
-    @include('layouts/admin/footer')
+    @include('layouts/administrator/footer')
 @endsection
 
 @section('tag-script')
-    @include('layouts/admin/tag-script')
+    @include('layouts/administrator/tag-script')
 @endsection
 
 @section('js')

@@ -14,11 +14,6 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         //
-
-        //admin
-        // $middleware->append(Administrator::class);
-        //admin
-
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

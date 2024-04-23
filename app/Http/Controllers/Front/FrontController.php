@@ -12,7 +12,8 @@ class FrontController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $address = 'front/front/index';
+        return view('front.front.base-index', compact('address'));
     }
 
     /**

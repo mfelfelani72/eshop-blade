@@ -12,8 +12,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $address = 'admin/dashboard/index';
-        return view('admin.dashboard.base-index', compact('address'));
+        $address = 'administrator/dashboard/index';
+        return view('administrator.dashboard.base-index', compact('address'));
     }
 
     /**
