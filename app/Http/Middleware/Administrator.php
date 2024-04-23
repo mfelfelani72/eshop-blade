@@ -26,7 +26,7 @@ class Administrator
         $LangsList = array_merge(Config::get('config-app.rtl-langs'), Config::get('config-app.ltr-langs'));
 
         $pathInfo = $request->getPathInfo();
-
+        dd("asdasd");
         $routeToAdmin = preg_match_all(
             $patern,
             $pathInfo,
@@ -34,6 +34,7 @@ class Administrator
             PREG_SET_ORDER,
             0
         );
+        dd("asdasd");
 
         $routeFrom = app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName();
 dd("sadsa");
