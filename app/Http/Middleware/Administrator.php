@@ -27,8 +27,6 @@ class Administrator
 
         $pathInfo = $request->getPathInfo();
 
-
-dd($pathInfo);
         $routeToAdmin = preg_match_all(
             $patern,
             $pathInfo,
@@ -51,11 +49,14 @@ dd($pathInfo);
             } elseif (in_array($pathInfo, $authRoutes)) {
                 return $next($request);
             } else {
+                dd("1");
                 abort('404', "NOT FOUND");
             }
         } else {
-            if ($routeToAdmin)
+            if ($routeToAdmin){
+                dd('2');
                 abort('404', "NOT FOUND");
+            }
            
             return $next($request);
         }
