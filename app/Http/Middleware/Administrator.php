@@ -28,7 +28,7 @@ class Administrator
         $pathInfo = $request->getPathInfo();
 
 
-
+dd($pathInfo);
         $routeToAdmin = preg_match_all(
             $patern,
             $pathInfo,
