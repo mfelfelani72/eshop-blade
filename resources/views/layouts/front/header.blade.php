@@ -12,7 +12,7 @@
                 </div>
                 <div class="right">
                     <ul class="flexitem main-links">
-                        <li><a href="#">Sign Up</a></li>
+                        <li><a href="{{ route('login') }}">Sign Up</a></li>
                         <li><a href="#">My Account</a></li>
                         <li><a href="#">Order Tracking</a></li>
                         <li>
