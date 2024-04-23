@@ -37,9 +37,9 @@ class Administrator
         
 
         // $routeFrom = app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName();
-dd("sadsa");
+
         if (Auth::user()) {
-dd('yes');
+
             if (Auth::user()->role == "admin" && $routeToAdmin) {
 
                 return $next($request);
@@ -50,13 +50,13 @@ dd('yes');
             } elseif (in_array($pathInfo, $authRoutes)) {
                 return $next($request);
             } else {
-                dd("1");
+            
                 abort('404', "NOT FOUND");
             }
         } else {
-            dd('no');
+
             if ($routeToAdmin){
-                dd('2');
+                
                 abort('404', "NOT FOUND");
             }
            
