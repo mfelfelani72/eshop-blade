@@ -22,11 +22,23 @@
     @include('layouts/front/brands')
 @endsection
 
+@section('trending')
+    @include('layouts/front/trending')
+@endsection
+
+@section('features')
+    @include('layouts/front/features')
+@endsection
+
+@section('banners')
+    @include('layouts/front/banners')
+@endsection
+
 
 
 @section('tag-script')
     @include('layouts/front/tag-script')
-@endsection 
+@endsection
 
 {{-- @section('js')
     <script>
