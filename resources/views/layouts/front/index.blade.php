@@ -26,8 +26,15 @@
 
         </main>
 
-    </div>
+         @yield('footer')
 
+         @yield('mobile-menu-bottom')
+
+         @yield('mobile-search-bottom')
+
+         <div class="overlay"></div>
+
+    </div>
 
     @yield('tag-script')
 </body>

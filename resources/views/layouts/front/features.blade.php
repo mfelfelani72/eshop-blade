@@ -13,7 +13,7 @@
                         <div class="media">
                             <div class="thumbnail object-cover">
                                 <a href="#">
-                                    <img src="assets/products/apparel1.jpg" alt="">
+                                    <img src="{{ asset('front/img/products/apparel1.jpg') }}" alt="">
                                 </a>
                             </div>
                             <div class="hoverable">
@@ -49,7 +49,7 @@
                         <div class="media">
                             <div class="thumbnail object-cover">
                                 <a href="#">
-                                    <img src="assets/products/apparel2.jpg" alt="">
+                                    <img src="{{ asset('front/img/products/apparel2.jpg') }}" alt="">
                                 </a>
                             </div>
                             <div class="hoverable">
@@ -84,7 +84,7 @@
                         <div class="media">
                             <div class="thumbnail object-cover">
                                 <a href="#">
-                                    <img src="assets/products/apparel3.jpg" alt="">
+                                    <img src="{{ asset('front/img/products/apparel3.jpg') }}" alt="">
                                 </a>
                             </div>
                             <div class="hoverable">
@@ -120,7 +120,7 @@
                         <div class="media">
                             <div class="thumbnail object-cover">
                                 <a href="#">
-                                    <img src="assets/products/apparel4.jpg" alt="">
+                                    <img src="{{ asset('front/img/products/apparel4.jpg') }}" alt="">
                                 </a>
                             </div>
                             <div class="hoverable">
@@ -156,7 +156,7 @@
                         <div class="media">
                             <div class="thumbnail object-cover">
                                 <a href="#">
-                                    <img src="assets/products/shoe1.jpg" alt="">
+                                    <img src="{{ asset('front/img/products/shoe1.jpg') }}" alt="">
                                 </a>
                             </div>
                             <div class="hoverable">
@@ -192,7 +192,7 @@
                         <div class="media">
                             <div class="thumbnail object-cover">
                                 <a href="#">
-                                    <img src="assets/products/shoe2.jpg" alt="">
+                                    <img src="{{ asset('front/img/products/shoe2.jpg') }}" alt="">
                                 </a>
                             </div>
                             <div class="hoverable">
@@ -228,7 +228,7 @@
                         <div class="media">
                             <div class="thumbnail object-cover">
                                 <a href="#">
-                                    <img src="assets/products/shoe3.jpg" alt="">
+                                    <img src="{{ asset('front/img/products/shoe3.jpg') }}" alt="">
                                 </a>
                             </div>
                             <div class="hoverable">
@@ -264,7 +264,7 @@
                         <div class="media">
                             <div class="thumbnail object-cover">
                                 <a href="#">
-                                    <img src="assets/products/shoe4.jpg" alt="">
+                                    <img src="{{ asset('front/img/products/shoe4.jpg') }}" alt="">
                                 </a>
                             </div>
                             <div class="hoverable">

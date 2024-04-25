@@ -6,7 +6,7 @@
                     <div class="row">
                         <div class="item">
                             <div class="image">
-                                <img src="assets/banner/banner1.jpg" alt="">
+                                <img src="{{ asset('front/img/banner/banner1.jpg') }}" alt="">
                             </div>
                             <div class="text-content flexcol">
                                 <h4>Brutal Sale!</h4>
@@ -19,7 +19,7 @@
                     <div class="row">
                         <div class="item get-gray">
                             <div class="image">
-                                <img src="assets/banner/banner2.jpg" alt="">
+                                <img src="{{ asset('front/img/banner/banner2.jpg') }}" alt="">
                             </div>
                             <div class="text-content flexcol">
                                 <h4>Brutal Sale!</h4>
@@ -34,7 +34,7 @@
                         <div class="row">
                             <div class="item">
                                 <div class="image">
-                                    <img src="assets/banner/procat1.jpg" alt="">
+                                    <img src="{{ asset('front/img/banner/procat1.jpg') }}" alt="">
                                 </div>
                                 <div class="content mini-links">
                                     <h4>Beauty</h4>
@@ -56,7 +56,7 @@
                         <div class="row">
                             <div class="item">
                                 <div class="image">
-                                    <img src="assets/banner/procat2.jpg" alt="">
+                                    <img src="{{ asset('front/img/banner/procat2.jpg') }}" alt="">
                                 </div>
                                 <div class="content mini-links">
                                     <h4>Gatdets</h4>
@@ -77,7 +77,7 @@
                         <div class="row">
                             <div class="item">
                                 <div class="image">
-                                    <img src="assets/banner/procat3.jpg" alt="">
+                                    <img src="{{ asset('front/img/banner/procat3.jpg') }}" alt="">
                                 </div>
                                 <div class="content mini-links">
                                     <h4>Home Decor</h4>

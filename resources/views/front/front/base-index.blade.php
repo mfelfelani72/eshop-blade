@@ -35,6 +35,19 @@
 @endsection
 
 
+@section('footer')
+    @include('layouts/front/footer')
+@endsection
+
+@section('mobile-menu-bottom')
+    @include('layouts/front/mobile-menu-bottom')
+@endsection
+
+@section('mobile-search-bottom')
+    @include('layouts/front/mobile-search-bottom')
+@endsection
+
+
 
 @section('tag-script')
     @include('layouts/front/tag-script')
