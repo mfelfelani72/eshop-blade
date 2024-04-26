@@ -26,13 +26,20 @@
 
         </main>
 
-         @yield('footer')
+        @yield('footer')
 
-         @yield('mobile-menu-bottom')
+        @yield('mobile-menu-bottom')
 
-         @yield('mobile-search-bottom')
+        @yield('mobile-search-bottom')
 
-         <div class="overlay"></div>
+        <div class="backtotop">
+            <a href="#" class="flexcol">
+                <i class="ri-arrow-up-line"></i>
+                <span>Top</span>
+            </a>
+        </div>
+
+        <div class="overlay"></div>
 
     </div>
 

@@ -12,7 +12,7 @@
                 </div>
                 <div class="right">
                     <ul class="flexitem main-links">
-                        <li><a href="{{ route('login') }}">Sign Up</a></li>
+                        <li><a href="#">Sign Up</a></li>
                         <li><a href="#">My Account</a></li>
                         <li><a href="#">Order Tracking</a></li>
                         <li>
@@ -158,16 +158,100 @@
                                 <div class="icon-large"><i class="ri-heart-line"></i></div>
                                 <div class="fly-item"><span class="item-number">0</span></div>
                             </a></li>
-                        <li><a href="#" class="iscart">
+                        <li class="iscart"><a href="#">
                                 <div class="icon-large">
                                     <i class="ri-shopping-cart-line"></i>
-                                    <div class="fly-item"><span class="item-number">0</span></div>
+                                    <div class="fly-item"><span class="item-number">5</span></div>
                                 </div>
                                 <div class="icon-text">
                                     <div class="mini-text">Total</div>
-                                    <div class="cart-total">$0.00</div>
+                                    <div class="cart-total">$1.622</div>
                                 </div>
-                            </a></li>
+                            </a>
+
+                            <div class="mini-cart">
+                                <div class="content">
+                                    <div class="cart-head">
+                                        5 items in cart
+                                    </div>
+                                    <div class="cart-body">
+                                        <ul class="pl-0 m-0 products mini">
+                                            <li class="item">
+                                                <div class="thumbnail object-cover">
+                                                    <a href="#"><img src="{{ asset('front/img/products/home2.jpg') }}"
+                                                            alt=""></a>
+                                                </div>
+                                                <div class="item-content">
+                                                    <p><a href="#">Dimmable Ceiling Light Modern</a></p>
+                                                    <span class="price">
+                                                        <span>$279.99</span>
+                                                        <span class="fly-item"><span>2x</span></span>
+                                                    </span>
+                                                </div>
+                                                <a href="" class="item-remove"><i
+                                                        class="ri-close-line"></i></a>
+                                            </li>
+                                            <li class="item">
+                                                <div class="thumbnail object-cover">
+                                                    <a href="#"><img src="{{ asset('front/img/products/home3.jpg') }}"
+                                                            alt=""></a>
+                                                </div>
+                                                <div class="item-content">
+                                                    <p><a href="#">Modern Storage Cabinet with door & 3
+                                                            Drawers</a></p>
+                                                    <span class="price">
+                                                        <span>$129.99</span>
+                                                        <span class="fly-item"><span>1x</span></span>
+                                                    </span>
+                                                </div>
+                                                <a href="" class="item-remove"><i
+                                                        class="ri-close-line"></i></a>
+                                            </li>
+                                            <li class="item">
+                                                <div class="thumbnail object-cover">
+                                                    <a href="#"><img src="{{ asset('front/img/products/home4.jpg') }}"
+                                                            alt=""></a>
+                                                </div>
+                                                <div class="item-content">
+                                                    <p><a href="#">Vonanda Valvet Sofa Couch</a></p>
+                                                    <span class="price">
+                                                        <span>$362.99</span>
+                                                        <span class="fly-item"><span>2x</span></span>
+                                                    </span>
+                                                </div>
+                                                <a href="" class="item-remove"><i
+                                                        class="ri-close-line"></i></a>
+                                            </li>
+                                            <li class="item">
+                                                <div class="thumbnail object-cover">
+                                                    <a href="#"><img src="{{ asset('front/img/products/home5.jpg') }}"
+                                                            alt=""></a>
+                                                </div>
+                                                <div class="item-content">
+                                                    <p><a href="#">Awesome Bed for a Couole</a></p>
+                                                    <span class="price">
+                                                        <span>$279.99</span>
+                                                        <span class="fly-item"><span>2x</span></span>
+                                                    </span>
+                                                </div>
+                                                <a href="" class="item-remove"><i
+                                                        class="ri-close-line"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="cart-footer">
+                                        <div class="subtotal">
+                                            <p class="m-0">Subtotal</p>
+                                            <p class="m-0"><strong>$1,622.95</strong></p>
+                                        </div>
+                                        <div class="actions">
+                                            <a href="/cart.html" class="primary-button">Checkout</a>
+                                            <a href="/checkout.html" class="secondary-button">View Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -182,8 +266,9 @@
                         <div class="dpt-head">
                             <div class="main-text">All Departments</div>
                             <div class="mini-text mobile-hide">Total 1059 Products</div>
-                            <a href="" class="dpt-trigger mobile-hide">
+                            <a href="#" class="dpt-trigger mobile-hide">
                                 <i class="ri-menu-3-line ri-xl"></i>
+                                <i class="ri-close-line ri-xl"></i>
                             </a>
                         </div>
                         <div class="dpt-menu">

@@ -107,7 +107,7 @@ const divPopup = document.querySelector(divtoShow);
 const divTrigger = document.querySelector('.cart-trigger');
 
 divTrigger.addEventListener('click', () => {
-    
+
     setTimeout(() => {
         if (!divPopup.classList.contains('show')) {
             divPopup.classList.add('show');
@@ -122,9 +122,13 @@ document.addEventListener('click', (e) => {
     }
 })
 
-window.onload = function(){
-    document.querySelector('.site').classList.toggle('showmodal')
-}
-document.querySelector('.modalclose').addEventListener('click',function(){
-    document.querySelector('.site').classList.remove('showmodal')
-})
+
+
+// show modal
+
+// window.onload = function () {
+//     document.querySelector('.site').classList.toggle('showmodal')
+// }
+// document.querySelector('.modalclose').addEventListener('click', function () {
+//     document.querySelector('.site').classList.remove('showmodal')
+// })
