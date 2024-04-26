@@ -12,19 +12,48 @@
                 </div>
                 <div class="right">
                     <ul class="flexitem main-links">
-                        <li><a href="#">Sign Up</a></li>
-                        <li><a href="#">My Account</a></li>
-                        <li><a href="#">Order Tracking</a></li>
-                        <li>
-                            <a href="#">USD <span class="icon-small"><i class="ri-arrow-down-s-line"></i></span>
-                            </a>
-                            <ul>
-                                <li class="current"><a href="#">USD</a></li>
-                                <li><a href="#">EURO</a></li>
-                                <li><a href="#">GBP</a></li>
-                                <li><a href="#">IDR</a></li>
-                            </ul>
-                        </li>
+                        @guest
+
+                            @if (Route::has('login'))
+                                <li><a href="{{ route('login') }}">Login</a></li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li><a href="{{ route('register') }}">Register</a></li>
+                            @endif
+                        @else
+                            <li>
+                                <a href="#">{{ Auth::user()->name }} <span class="icon-small"><i class="ri-arrow-down-s-line"></i></span>
+                                </a>
+                                <ul>
+                                    
+                                    <li><a onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"
+                                            href="{{ route('logout') }}" class="dropdown-item ai-icon">
+                                            Logout </a>
+                                    </li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                    <li><a href="#">My Account</a></li>
+                                    <li class="w-110"><a href="#">Order Tracking</a></li>
+                                </ul>
+                            </li>
+                        @endguest
+
+                        @if (false)
+                            <li>
+                                <a href="#">USD <span class="icon-small"><i
+                                            class="ri-arrow-down-s-line"></i></span>
+                                </a>
+                                <ul>
+                                    <li class="current"><a href="#">USD</a></li>
+                                    <li><a href="#">EURO</a></li>
+                                    <li><a href="#">GBP</a></li>
+                                    <li><a href="#">IDR</a></li>
+                                </ul>
+                            </li>
+                        @endif
                         <li><a href="#">English <span class="icon-small"><i class="ri-arrow-down-s-line"></i></a>
                             <ul>
                                 <li class="current"><a href="#">English</a></li>
@@ -178,7 +207,8 @@
                                         <ul class="pl-0 m-0 products mini">
                                             <li class="item">
                                                 <div class="thumbnail object-cover">
-                                                    <a href="#"><img src="{{ asset('front/img/products/home2.jpg') }}"
+                                                    <a href="#"><img
+                                                            src="{{ asset('front/img/products/home2.jpg') }}"
                                                             alt=""></a>
                                                 </div>
                                                 <div class="item-content">
@@ -193,7 +223,8 @@
                                             </li>
                                             <li class="item">
                                                 <div class="thumbnail object-cover">
-                                                    <a href="#"><img src="{{ asset('front/img/products/home3.jpg') }}"
+                                                    <a href="#"><img
+                                                            src="{{ asset('front/img/products/home3.jpg') }}"
                                                             alt=""></a>
                                                 </div>
                                                 <div class="item-content">
@@ -209,7 +240,8 @@
                                             </li>
                                             <li class="item">
                                                 <div class="thumbnail object-cover">
-                                                    <a href="#"><img src="{{ asset('front/img/products/home4.jpg') }}"
+                                                    <a href="#"><img
+                                                            src="{{ asset('front/img/products/home4.jpg') }}"
                                                             alt=""></a>
                                                 </div>
                                                 <div class="item-content">
@@ -224,7 +256,8 @@
                                             </li>
                                             <li class="item">
                                                 <div class="thumbnail object-cover">
-                                                    <a href="#"><img src="{{ asset('front/img/products/home5.jpg') }}"
+                                                    <a href="#"><img
+                                                            src="{{ asset('front/img/products/home5.jpg') }}"
                                                             alt=""></a>
                                                 </div>
                                                 <div class="item-content">

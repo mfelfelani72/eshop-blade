@@ -2377,8 +2377,13 @@ input[type="range"]::-webkit-slider-thumb {
     color: var(--white-color);
 }
 
+/* mohammad style start */
 
+.w-110 {
+    width: 110px;
+}
 
+/* mohammad style end */
 
 
 
