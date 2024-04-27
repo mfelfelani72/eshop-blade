@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+{{-- <html lang="en"> --}}
+<html>
 
 <head>
     @yield('tag-head')

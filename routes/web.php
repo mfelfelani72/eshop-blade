@@ -1,13 +1,27 @@
 <?php
 
+use App\Http\Controllers\Administrator\DashboardController;
+use App\Http\Controllers\Front\FrontController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
+
 
 // Route::withoutMiddleware([Administrator::class])->group(function () {
 
-Route::get('/', [App\Http\Controllers\Front\FrontController::class, 'index'])->name('front');
+Route::get('/', [FrontController::class, 'index'])->name('front');
 
 
-
+Route::get('/{locale}', function ($locale) {
+    if (!in_array($locale, ['en', 'fa'])) {
+        // dd("sad");
+        abort(400);
+    }
+    // dd($locale);
+    app()->setLocale($locale);
+    // dd(App::currentLocale());
+    session()->put('locale', $locale);
+    return redirect()->back();
+})->name('lang');
 
 // });
 
@@ -20,12 +34,9 @@ Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
     // Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
     // Route::redirect('/admin', '/login');
 
-    Route::get('/{locale}', function ($locale) {
-        session()->put('locale', $locale);
-        return redirect()->back();
-    })->name('lang');
+    
 
-    Route::get('/admin/dashboard', [App\Http\Controllers\Administrator\DashboardController::class, 'index'])
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard');
     
     // Route::resource('admin/home', \App\Http\Controllers\Admin\HomeController::class)->parameters(['home' => 'id']);
