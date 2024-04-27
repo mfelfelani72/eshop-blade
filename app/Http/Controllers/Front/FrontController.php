@@ -4,23 +4,14 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 
 class FrontController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-
-       
-
-        // $locale = App::currentLocale();
-       
-        // dd(App::currentLocale());
-
         $address = 'front/front/index';
         return view('front.front.base-index', compact('address'));
     }

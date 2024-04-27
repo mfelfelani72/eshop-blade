@@ -54,12 +54,10 @@
                                 </ul>
                             </li>
                         @endif
-                        <li><a href="#">English <span class="icon-small"><i class="ri-arrow-down-s-line"></i></a>
+                        <li><a href="#">Language <span class="icon-small"><i class="ri-arrow-down-s-line"></i></a>
                             <ul>
-                                <li class="current"><a href="#">English</a></li>
                                 <li><a href="{{ route('lang', 'en') }}">en</a></li>
                                 <li><a href="{{ route('lang', 'fa') }}">fa</a></li>
-                                <li><a href="#">Bahasa</a></li>
                             </ul>
                         </li>
                         </li>
@@ -77,8 +75,8 @@
                     <div class="logo"><a href="/"><span class="circle">.Store</span></a></div>
                     <nav class="mobile-hide">
                         <ul class="flexitem second-links">
-                            <li><a href="#">{{ __('dashboard.Register') }}</a></li>
-                            <li><a href="#">Shop</a></li>
+                            <li><a href="#">{{ __('front.home') }}</a></li>
+                            <li><a href="#">{{ __('front.shop') }}</a></li>
                             <li class="has-child">
                                 <a href="#">Women
                                     <div class="icon-small"><i class="ri-arrow-down-s-line"></i></div>
