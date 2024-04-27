@@ -23,10 +23,11 @@
                             @endif
                         @else
                             <li>
-                                <a href="#">{{ Auth::user()->name }} <span class="icon-small"><i class="ri-arrow-down-s-line"></i></span>
+                                <a href="#">{{ Auth::user()->name }} <span class="icon-small"><i
+                                            class="ri-arrow-down-s-line"></i></span>
                                 </a>
                                 <ul>
-                                    
+
                                     <li><a onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"
                                             href="{{ route('logout') }}" class="dropdown-item ai-icon">
@@ -35,6 +36,9 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+                                    @if (Auth::user()->role == 'admin')
+                                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                    @endif
                                     <li><a href="#">My Account</a></li>
                                     <li class="w-110"><a href="#">Order Tracking</a></li>
                                 </ul>
