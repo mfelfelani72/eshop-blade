@@ -22,6 +22,9 @@ class Localization
 
             App::SetLocale(Session::get('locale'));
         }
+        else
+            session()->put('locale', 'en');
+
         return $next($request);
     }
 }

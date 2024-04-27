@@ -18,7 +18,7 @@ class Administrator
     public function handle(Request $request, Closure $next): Response
     {
         // for lock admin dashboard route from regular users and guests
-
+       
         $patern = '/^\/admin/m';
         $allowRoutesFrom = ['login', 'register'];
         $dontAllowRoutesFrom = ['home'];
@@ -59,7 +59,7 @@ class Administrator
                 
                 abort('404', "NOT FOUND");
             }
-           
+          
             return $next($request);
         }
 
