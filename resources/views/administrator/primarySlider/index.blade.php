@@ -44,7 +44,7 @@
                                         <td>{{ $item->title }}</td>
                                         <td>{{ $item->slogan }}</td>
                                         <td>{{ $item->category }}</td>
-                                        <td>{{ $item->link-title }}</td>
+                                        <td>{{ $item->link_title }}</td>
                                         <td>{{ $item->link }}</td>
                                         <td>{{ $item->description }}</td>
                                        

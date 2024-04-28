@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('primary_slider', function (Blueprint $table) {
             $table->id();
+            $table->string('img');
             $table->string('title');
             $table->string('slogan');
             $table->string('category');
-            $table->string('link-title');
+            $table->string('link_title');
             $table->string('link');
             $table->string('description');
             $table->string('extra');

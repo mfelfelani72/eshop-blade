@@ -14,7 +14,7 @@ class PrimarySliderController extends Controller
     public function index()
     {
         $primarySlider = PrimarySlider::all();
-        dd($primarySlider->link-title);
+        // dd($primarySlider->link_title);
         $address = 'administrator/primarySlider/index';
         return view('administrator.dashboard.base-index', compact('address','primarySlider'));
     }
