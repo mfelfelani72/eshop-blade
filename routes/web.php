@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Administrator\DashboardController;
+use App\Http\Controllers\Administrator\PrimarySliderController;
 use App\Http\Controllers\Front\FrontController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,8 +18,13 @@ Route::get('/lang/{locale}', function ($locale) {
 Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
 
     Auth::routes();
-    
+
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])
         ->name('dashboard');
+
+    // settings
+    Route::get('/admin/dashboard/settings/primary-slider', [PrimarySliderController::class, 'index'])
+        ->name('primary-slider');
+    // settings
 
 });

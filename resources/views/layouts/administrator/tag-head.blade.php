@@ -10,7 +10,10 @@
 <link href="{{ asset('administrator/css/jquery-nice-select/nice-select.css') }}" rel="stylesheet">
 <link href="{{ asset('administrator/css/owlcarousel/owl.carousel.min.css') }}" rel="stylesheet">
 <link href="{{ asset('administrator/css/owlcarousel/owl.theme.default.min.css') }}" rel="stylesheet">
-<link href="{{ asset('administrator/css/nouislider/nouislider.min.css') }} rel="stylesheet"">
+<link href="{{ asset('administrator/css/nouislider/nouislider.min.css') }}" rel="stylesheet">
+
+<!-- Datatable -->
+<link href="{{ asset('vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
 
 <!-- Style css -->
 <link href="{{ asset('administrator/css/style.css') }}" rel="stylesheet">

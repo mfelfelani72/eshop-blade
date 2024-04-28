@@ -12,8 +12,8 @@
                     </defs>
                 </svg>
                 <div class="brand-title">
-                    <h2 class="">Fillow.</h2>
-                    <span class="brand-sub-title">@soengsouy</span>
+                    <h2 class="">Eshop.</h2>
+                    <span class="brand-sub-title">@Cloner Team</span>
                 </div>
             </a>
             <div class="nav-control">
