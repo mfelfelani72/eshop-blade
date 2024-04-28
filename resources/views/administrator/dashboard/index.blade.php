@@ -1,7 +1,7 @@
  <!--**********************************
             Content body start
 ***********************************-->
- @if (false)
+ @if (true)
      <div class="content-body">
          <!-- row -->
          <div class="container-fluid">
