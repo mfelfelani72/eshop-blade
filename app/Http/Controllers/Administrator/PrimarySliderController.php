@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrator;
 
 use App\Http\Controllers\Controller;
+use App\Models\Administrator\PrimarySlider;
 use Illuminate\Http\Request;
 
 class PrimarySliderController extends Controller
@@ -12,7 +13,8 @@ class PrimarySliderController extends Controller
      */
     public function index()
     {
-        $primarySlider = "dasd";
+        $primarySlider = PrimarySlider::all();
+        dd($primarySlider->link-title);
         $address = 'administrator/primarySlider/index';
         return view('administrator.dashboard.base-index', compact('address','primarySlider'));
     }
