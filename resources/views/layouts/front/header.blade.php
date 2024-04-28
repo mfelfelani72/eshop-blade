@@ -82,7 +82,7 @@
                             <li><a href="#">{{ __('front.home') }}</a></li>
                             <li><a href="#">{{ __('front.shop') }}</a></li>
                             <li class="has-child">
-                                <a href="#">Women
+                                <a href="#">{{ __('front.women') }}
                                     <div class="icon-small"><i class="ri-arrow-down-s-line"></i></div>
                                 </a>
                                 <div class="mega">
