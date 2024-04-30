@@ -7,7 +7,7 @@
                         <div class="swiper-slide">
                             <div class="item">
                                 <div class="image object-cover">
-                                    <img src={{ asset('front/img/' . $item->img) }} alt={{ $item->des }}>
+                                    <img src={{ asset('front/img/slider/' . $item->img) }} alt={{ $item->des }}>
                                 </div>
                                 <div class="text-content flexcol">
                                     <h4>{{ $item->title }}</h4>

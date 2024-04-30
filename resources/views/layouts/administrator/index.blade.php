@@ -28,12 +28,20 @@
         @yield('footer')
 
     </div>
-    
+
     <!--**********************************
         Main wrapper end
     ***********************************-->
 
     @yield('tag-script')
+
+    <script>
+        function destroyItem(event, $id) {
+
+            event.preventDefault();
+            document.querySelector('#itemDelete-' + $id).submit();
+        }
+    </script>
 
 </body>
 

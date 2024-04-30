@@ -64,8 +64,21 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                            
-                                   <button type="submit">save</button>
+                                    <label class="col-sm-2 col-form-label col-form-label-lg">Image</label>
+                                    <div class="col-sm-10">
+                                        <img class="" width="200"
+                                            src={{ asset('front/img/slider/' . $primarySlider->img) }}>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Upload Image</span>
+                                    <div class="form-file">
+                                        <input type="file" class="form-file-input form-control" name="image">
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="float-end btn btn-primary mb-2">Save</button>
                                 </div>
                             </form>
                         </div>

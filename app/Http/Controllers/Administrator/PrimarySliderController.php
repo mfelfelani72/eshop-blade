@@ -15,7 +15,7 @@ class PrimarySliderController extends Controller
     {
         $primarySliders = PrimarySlider::all();
         $address = 'administrator/primarySlider/index';
-        return view('administrator.dashboard.base-index', compact('address','primarySliders'));
+        return view('administrator.dashboard.base-index', compact('address', 'primarySliders'));
     }
 
     /**
@@ -33,15 +33,7 @@ class PrimarySliderController extends Controller
     {
         //
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
+    
     /**
      * Show the form for editing the specified resource.
      */
@@ -50,7 +42,6 @@ class PrimarySliderController extends Controller
         $primarySlider = PrimarySlider::findOrFail($id);
         $address = 'administrator/primarySlider/edit';
         return view('administrator.dashboard.base-index', compact('address', 'primarySlider'));
-
     }
 
     /**
@@ -58,8 +49,33 @@ class PrimarySliderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-        dd($request->title);
+        $primarySlider = PrimarySlider::findOrFail($id);
+        $file = $request->file('image');
+        $img = "";
+
+        if (!empty($file)) {
+            if (file_exists('front/img/slider/' . $primarySlider->img)) {
+                unlink('front/img/slider/' . $primarySlider->img);
+            }
+            $img = time() . "." . $file->getClientOriginalExtension();
+            $file->move('front/img/slider', $img);
+        } else {
+            $img = $primarySlider->img;
+        }
+
+        $primarySlider->update([
+
+            'title' => $request->title,
+            'slogan' => $request->slogan,
+            'category' => $request->category,
+            'link_title' => $request->link_title,
+            'link' => $request->link,
+            'description' => $request->description,
+            'img' => $img,
+
+        ]);
+
+        return redirect()->route('primary-slider.index');
     }
 
     /**
@@ -67,6 +83,10 @@ class PrimarySliderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+      
+        $primarySlider = PrimarySlider::findOrFail($id);
+
+        $primarySlider->destroy($id);
+        return redirect()->route('primary-slider.index');
     }
 }

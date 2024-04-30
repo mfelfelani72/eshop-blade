@@ -39,7 +39,8 @@
                                     @foreach ($primarySliders as $item)
                                         <tr>
                                             <td><img class="" width="100"
-                                                    src={{ asset('front/img/' . $item->img) }} alt=""></td>
+                                                    src={{ asset('front/img/slider/' . $item->img) }} alt="">
+                                            </td>
                                             <td>{{ $item->title }}</td>
                                             <td>{{ $item->slogan }}</td>
                                             <td>{{ $item->category }}</td>
@@ -51,9 +52,20 @@
                                                 <div class="d-flex">
                                                     <a href="{{ route('primary-slider.edit', ['id' => $item->id]) }}"
                                                         class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                            class="fas fa-pencil-alt"></i></a>
-                                                    <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
+                                                            class="fas fa-pencil-alt"></i>
+                                                    </a>
+
+                                                    <a href="#" class="btn btn-danger shadow btn-xs sharp"
+                                                        onclick="destroyItem(event,{{ $item->id }})"><i
                                                             class="fa fa-trash"></i></a>
+                                                    <form
+                                                        action="{{ route('primary-slider.destroy', ['id' => $item->id]) }}"
+                                                        id="itemDelete-{{ $item->id }}" method="POST">
+                                                        @csrf
+                                                        @method('delete')
+                                                    </form>
+
+
                                                 </div>
                                             </td>
                                         </tr>
