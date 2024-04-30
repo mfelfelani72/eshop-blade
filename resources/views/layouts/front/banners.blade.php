@@ -8,7 +8,7 @@
                         <div class="row">
                             <div class="item">
                                 <div class="image">
-                                    <img src="{{ asset('front/img/banner/banner1.jpg') }}" alt="">
+                                    <img src="{{ asset('front/img/banner/' . $item->img) }}" alt="">
                                 </div>
                                 <div class="text-content flexcol">
                                     <h4>{{ $item->title }}</h4>
