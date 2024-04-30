@@ -3,19 +3,19 @@
 namespace App\Http\Controllers\Administrator;
 
 use App\Http\Controllers\Controller;
-use App\Models\Administrator\PrimarySlider;
+use App\Models\Administrator\PrimaryBanner;
 use Illuminate\Http\Request;
 
-class PrimarySliderController extends Controller
+class PrimaryBannerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $primarySliders = PrimarySlider::all();
-        $address = 'administrator/primarySlider/index';
-        return view('administrator.dashboard.base-index', compact('address', 'primarySliders'));
+        $primaryBanners = PrimaryBanner::all();
+        $address = 'administrator/primaryBanner/index';
+        return view('administrator.dashboard.base-index', compact('address', 'primaryBanners'));
     }
 
     /**
@@ -23,7 +23,7 @@ class PrimarySliderController extends Controller
      */
     public function create()
     {
-        $address = 'administrator/primarySlider/create';
+        $address = 'administrator/primaryBanner/create';
         return view('administrator.dashboard.base-index', compact('address'));
     }
 
@@ -32,16 +32,15 @@ class PrimarySliderController extends Controller
      */
     public function store(Request $request)
     {
-
         $file = $request->file('image');
         $img = "";
 
         if (!empty($file)) {
             $img = time() . "." . $file->getClientOriginalExtension();
-            $file->move('front/img/slider', $img);
+            $file->move('front/img/banner', $img);
         }
 
-        PrimarySlider::create(
+        PrimaryBanner::create(
             [
                 'title' => $request->title,
                 'slogan' => $request->slogan,
@@ -54,8 +53,7 @@ class PrimarySliderController extends Controller
             ]
         );
 
-        return redirect()->route('primary-slider.index');
-        
+        return redirect()->route('primary-banner.index');
     }
 
     /**
@@ -63,9 +61,9 @@ class PrimarySliderController extends Controller
      */
     public function edit(string $id)
     {
-        $primarySlider = PrimarySlider::findOrFail($id);
-        $address = 'administrator/primarySlider/edit';
-        return view('administrator.dashboard.base-index', compact('address', 'primarySlider'));
+        $primaryBanner = PrimaryBanner::findOrFail($id);
+        $address = 'administrator/primaryBanner/edit';
+        return view('administrator.dashboard.base-index', compact('address', 'primaryBanner'));
     }
 
     /**
@@ -73,21 +71,21 @@ class PrimarySliderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $primarySlider = PrimarySlider::findOrFail($id);
+        $primaryBanner = PrimaryBanner::findOrFail($id);
         $file = $request->file('image');
         $img = "";
 
         if (!empty($file)) {
-            if (file_exists('front/img/slider/' . $primarySlider->img)) {
-                unlink('front/img/slider/' . $primarySlider->img);
+            if (file_exists('front/img/banner/' . $primaryBanner->img)) {
+                unlink('front/img/banner/' . $primaryBanner->img);
             }
             $img = time() . "." . $file->getClientOriginalExtension();
-            $file->move('front/img/slider', $img);
+            $file->move('front/img/banner', $img);
         } else {
-            $img = $primarySlider->img;
+            $img = $primaryBanner->img;
         }
 
-        $primarySlider->update([
+        $primaryBanner->update([
 
             'title' => $request->title,
             'slogan' => $request->slogan,
@@ -99,7 +97,7 @@ class PrimarySliderController extends Controller
 
         ]);
 
-        return redirect()->route('primary-slider.index');
+        return redirect()->route('primary-banner.index');
     }
 
     /**
@@ -107,10 +105,9 @@ class PrimarySliderController extends Controller
      */
     public function destroy(string $id)
     {
-      
-        $primarySlider = PrimarySlider::findOrFail($id);
+        $primaryBanner = PrimaryBanner::findOrFail($id);
 
-        $primarySlider->destroy($id);
-        return redirect()->route('primary-slider.index');
+        $primaryBanner->destroy($id);
+        return redirect()->route('primary-banner.index');
     }
 }
