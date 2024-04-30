@@ -59,6 +59,7 @@ class PrimarySliderController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        dd($request->title);
     }
 
     /**
