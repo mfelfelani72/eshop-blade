@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Administrator\PrimaryBanner;
 use App\Models\Administrator\PrimarySlider;
 use Illuminate\Http\Request;
 
@@ -15,9 +16,10 @@ class FrontController extends Controller
     {
 
         $primarySliders = PrimarySlider::all();
+        $primaryBanners = PrimaryBanner::all();
         
         $address = 'front/front/index';
-        return view('front.front.base-index', compact('address', 'primarySliders'));
+        return view('front.front.base-index', compact('address', 'primarySliders', 'primaryBanners'));
     }
 
     /**

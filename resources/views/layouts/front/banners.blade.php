@@ -3,33 +3,23 @@
         <div class="wrapper">
             <div class="column">
                 <div class="banner flexwrap">
-                    <div class="row">
-                        <div class="item">
-                            <div class="image">
-                                <img src="{{ asset('front/img/banner/banner1.jpg') }}" alt="">
-                            </div>
-                            <div class="text-content flexcol">
-                                <h4>Brutal Sale!</h4>
-                                <h3><span>Get the deal in here</span><br>Living Room Chair</h3>
-                                <a href="#" class="primary-button">Shop Now</a>
-                            </div>
-                            <a href="#" class="over-link"></a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="item get-gray">
-                            <div class="image">
-                                <img src="{{ asset('front/img/banner/banner2.jpg') }}" alt="">
-                            </div>
-                            <div class="text-content flexcol">
-                                <h4>Brutal Sale!</h4>
-                                <h3><span>Discount everyday</span><br>Office outfit</h3>
-                                <a href="#" class="primary-button">Shop Now</a>
-                            </div>
-                            <a href="#" class="over-link"></a>
-                        </div>
-                    </div>
 
+                    @foreach ($primaryBanners as $item)
+                        <div class="row">
+                            <div class="item">
+                                <div class="image">
+                                    <img src="{{ asset('front/img/banner/banner1.jpg') }}" alt="">
+                                </div>
+                                <div class="text-content flexcol">
+                                    <h4>{{ $item->title }}</h4>
+                                    <h3><span>{{ $item->slogan }}</span><br>{{ $item->category }}</h3>
+                                    <a href="{{ $item->link }}" class="primary-button">{{ $item->link_title }}</a>
+                                </div>
+                                <a href="{{ $item->link_title }}" class="over-link"></a>
+                            </div>
+                        </div>
+                    @endforeach
+                    
                     <div class="product-categories flexwrap">
                         <div class="row">
                             <div class="item">
