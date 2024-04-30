@@ -13,9 +13,9 @@ class PrimarySliderController extends Controller
      */
     public function index()
     {
-        $primarySlider = PrimarySlider::all();
+        $primarySliders = PrimarySlider::all();
         $address = 'administrator/primarySlider/index';
-        return view('administrator.dashboard.base-index', compact('address','primarySlider'));
+        return view('administrator.dashboard.base-index', compact('address','primarySliders'));
     }
 
     /**
@@ -47,7 +47,10 @@ class PrimarySliderController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $primarySlider = PrimarySlider::findOrFail($id);
+        $address = 'administrator/primarySlider/edit';
+        return view('administrator.dashboard.base-index', compact('address', 'primarySlider'));
+
     }
 
     /**

@@ -3,7 +3,7 @@
         <div class="wrapper">
             <div class="myslider swiper">
                 <div class="swiper-wrapper">
-                    @foreach ($primarySlider as $item)
+                    @foreach ($primarySliders as $item)
                         <div class="swiper-slide">
                             <div class="item">
                                 <div class="image object-cover">

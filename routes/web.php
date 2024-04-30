@@ -22,9 +22,11 @@ Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])
         ->name('dashboard');
 
+
     // settings
-    Route::get('/admin/dashboard/settings/primary-slider', [PrimarySliderController::class, 'index'])
-        ->name('primary-slider');
+
+    Route::resource('/admin/dashboard/settings/primary-slider', PrimarySliderController::class)->parameters(['primary-slider' => 'id']);
+    
     // settings
 
 });

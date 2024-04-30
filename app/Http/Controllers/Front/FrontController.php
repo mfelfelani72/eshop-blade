@@ -14,10 +14,10 @@ class FrontController extends Controller
     public function index()
     {
 
-        $primarySlider = PrimarySlider::all();
+        $primarySliders = PrimarySlider::all();
         
         $address = 'front/front/index';
-        return view('front.front.base-index', compact('address', 'primarySlider'));
+        return view('front.front.base-index', compact('address', 'primarySliders'));
     }
 
     /**
