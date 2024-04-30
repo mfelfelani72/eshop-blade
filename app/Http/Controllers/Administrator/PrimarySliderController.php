@@ -23,7 +23,8 @@ class PrimarySliderController extends Controller
      */
     public function create()
     {
-        //
+        $address = 'administrator/primarySlider/create';
+        return view('administrator.dashboard.base-index', compact('address'));
     }
 
     /**
@@ -31,9 +32,31 @@ class PrimarySliderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $file = $request->file('image');
+        $img = "";
+
+        if (!empty($file)) {
+            $img = time() . "." . $file->getClientOriginalExtension();
+            $file->move('front/img/slider', $img);
+        }
+
+        PrimarySlider::create(
+            [
+                'title' => $request->title,
+                'slogan' => $request->slogan,
+                'category' => $request->category,
+                'link_title' => $request->link_title,
+                'link' => $request->link,
+                'description' => $request->description,
+                'extra' => 'empty',
+                'img' => $img,
+            ]
+        );
+
+        return redirect()->route('primary-slider.index');
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      */

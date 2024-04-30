@@ -2,10 +2,15 @@
     <div class="container-fluid">
 
         <div class="row page-titles">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item active"><a>Settings / Public Front</a></li>
-                <li class="breadcrumb-item"><a href="">Slider</a></li>
-            </ol>
+            <div class="col-6 mt-2">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active"><a>Settings / Public Front</a></li>
+                    <li class="breadcrumb-item"><a href="">Slider</a></li>
+                </ol>
+            </div>
+            <div class="col-6">
+                <a href="{{ route('primary-slider.create') }}" class="float-end btn btn-rounded btn-success">New image +</a>
+            </div>
         </div>
 
 
