@@ -3,6 +3,7 @@ return [
    
     'home' => 'خانه',
     'shop' => 'فروشگاه',
-    'women' => 'زن',
+    'stock_place' => 'استوک کده',
+    'laptop' => 'لپتاب',
 ];
 

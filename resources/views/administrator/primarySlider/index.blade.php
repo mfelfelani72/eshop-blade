@@ -15,16 +15,17 @@
 
                     @if (false)
                         <div class="card-header">
-                        <h4 class="card-title">Profile Datatable</h4>
-                    </div>
+                            <h4 class="card-title">Profile Datatable</h4>
+                        </div>
                     @endif
 
-                    
+
                     <div class="card-body">
                         <div class="table-responsive">
                             <table id="example3" class="display" style="min-width: 845px">
                                 <thead>
                                     <tr>
+                                        <th>image</th>
                                         <th>title</th>
                                         <th>slogan</th>
                                         <th>category</th>
@@ -35,29 +36,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($primarySlider as $item )
-                                        
+                                    @foreach ($primarySlider as $item)
+                                        <tr>
+                                            <td><img class="" width="100"
+                                                    src={{ asset('front/img/' . $item->img) }} alt=""></td>
+                                            <td>{{ $item->title }}</td>
+                                            <td>{{ $item->slogan }}</td>
+                                            <td>{{ $item->category }}</td>
+                                            <td>{{ $item->link_title }}</td>
+                                            <td>{{ $item->link }}</td>
+                                            <td>{{ $item->description }}</td>
+
+                                            <td>
+                                                <div class="d-flex">
+                                                    <a href="#"
+                                                        class="btn btn-primary shadow btn-xs sharp me-1"><i
+                                                            class="fas fa-pencil-alt"></i></a>
+                                                    <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
+                                                            class="fa fa-trash"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     @endforeach
-                                    <tr>
-                                        {{-- <td><img class="rounded-circle" width="35"
-                                                src="images/profile/small/pic1.jpg" alt=""></td> --}}
-                                        <td>{{ $item->title }}</td>
-                                        <td>{{ $item->slogan }}</td>
-                                        <td>{{ $item->category }}</td>
-                                        <td>{{ $item->link_title }}</td>
-                                        <td>{{ $item->link }}</td>
-                                        <td>{{ $item->description }}</td>
-                                       
-                                        <td>
-                                            <div class="d-flex">
-                                                <a href="#" class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                        class="fas fa-pencil-alt"></i></a>
-                                                <a href="#" class="btn btn-danger shadow btn-xs sharp"><i
-                                                        class="fa fa-trash"></i></a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                  
                                 </tbody>
                             </table>
                         </div>

@@ -76,13 +76,13 @@
             <div class="wrapper flexitem">
                 <a href="#" class="trigger desktop-hide"><span class="i ri-menu-2-line"></span></a>
                 <div class="left flexitem">
-                    <div class="logo"><a href="/"><span class="circle">.Store</span></a></div>
+                    <div class="logo"><a href="/"><span class="circle">.ClonerStore</span></a></div>
                     <nav class="mobile-hide">
                         <ul class="flexitem second-links">
                             <li><a href="#">{{ __('front.home') }}</a></li>
                             <li><a href="#">{{ __('front.shop') }}</a></li>
                             <li class="has-child">
-                                <a href="#">{{ __('front.women') }}
+                                <a href="#">{{ __('front.stock_place') }}
                                     <div class="icon-small"><i class="ri-arrow-down-s-line"></i></div>
                                 </a>
                                 <div class="mega">
@@ -90,11 +90,11 @@
                                         <div class="wrapper">
                                             <div class="flexcol">
                                                 <div class="row">
-                                                    <h4>Womens Clothing</h4>
+                                                    <h4>{{ __('front.laptop') }}</h4>
                                                     <ul>
-                                                        <li><a href="#">Dresses</a></li>
-                                                        <li><a href="#">Tops & Tees</a></li>
-                                                        <li><a href="#">Jackets & Coats</a></li>
+                                                        <li><a href="#">{{ __('front.asus') }}</a></li>
+                                                        <li><a href="#">{{ __('front.lenovo') }}</a></li>
+                                                        <li><a href="#">Toshiba</a></li>
                                                         <li><a href="#">Pants & Capris</a></li>
                                                         <li><a href="#">Sweaters</a></li>
                                                         <li><a href="#">Costumes</a></li>

@@ -3,6 +3,7 @@ return [
    
     'home' => 'Home',
     'shop' => 'Shop',
-    'women' => 'Women',
+    'stock_place' => 'Stock Place',
+    'laptop' => 'Laptop',
     
 ];
