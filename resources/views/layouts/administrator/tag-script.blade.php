@@ -20,6 +20,8 @@
 <script src="{{ asset('administrator/js/plugins-init/datatables.init.js') }}"></script>
 
 <script src="{{ asset('vendor/jquery-nice-select/js/jquery.nice-select.min.js') }}"></script>
+<script src="{{ asset('vendor/select2/js/select2.full.min.js') }}"></script>
+<script src="{{ asset('administrator/js/plugins-init/select2-init.js') }}"></script>
 
 
 
@@ -30,6 +32,7 @@
 <script src="{{ asset('administrator/js/dlabnav-init.js') }}"></script>
 <script src="{{ asset('administrator/js/demo.js') }}"></script>
 <script src="{{ asset('administrator/js/styleSwitcher.js') }}"></script>
+
 <script>
     function cardsCenter() {
 

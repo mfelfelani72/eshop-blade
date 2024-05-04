@@ -11,6 +11,7 @@
 <link href="{{ asset('administrator/css/owlcarousel/owl.carousel.min.css') }}" rel="stylesheet">
 <link href="{{ asset('administrator/css/owlcarousel/owl.theme.default.min.css') }}" rel="stylesheet">
 <link href="{{ asset('administrator/css/nouislider/nouislider.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('vendor/select2/css/select2.min.css') }}">
 
 <!-- Datatable -->
 <link href="{{ asset('vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
