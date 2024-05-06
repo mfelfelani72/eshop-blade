@@ -182,6 +182,11 @@
       tags: true
   });
 
+  // tagging with multi value select box
+  $('#multi-value-select3').select2({
+      tags: true
+  });
+
 
   // single-select-placeholder
   $(".single-select-placeholder").select2({

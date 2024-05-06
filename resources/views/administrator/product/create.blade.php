@@ -29,23 +29,26 @@
                                         <input type="text" class="form-control form-control-lg" name="title">
                                     </div>
                                 </div>
-                                <div class="mb-3 row">
-                                    <label class="col-sm-1 col-form-label col-form-label-lg">+</label>
-                                    <label class="col-sm-2 col-form-label col-form-label-lg">Information Title</label>
-                                    <div class="col-sm-2">
-                                        <input type="text" class="form-control form-control-lg" name="title">
+                                <div class="mb-3">
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label col-form-label-lg">Information
+                                            Title</label>
+                                        <div class="col-sm-2">
+                                            <input type="text" class="form-control form-control-lg" name="title">
+                                        </div>
+                                        <label class="col-sm-3 col-form-label col-form-label-lg">Information
+                                            description</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control form-control-lg" name="title">
+                                        </div>
                                     </div>
-                                    <label class="col-sm-3 col-form-label col-form-label-lg">Information
-                                        description</label>
-                                    <div class="col-sm-4">
-                                        <select id="multi-value-select" multiple=""
-                                            data-select2-id="multi-value-select" tabindex="-1"
-                                            class="select2-hidden-accessible" aria-hidden="true">
-                                            <option selected="selected" data-select2-id="482">orange</option>
-                                            <option data-select2-id="1323">white</option>
-                                            <option selected="selected" data-select2-id="49fer">purple</option>
-                                        </select>
+                                    <div class="row" id="addInfoTiDes">
+
+
                                     </div>
+
+                                    <a href="javascript:void(0)" class="pointer" onclick="addInfoTiDes()"><span><i
+                                                class="fa fa-plus" aria-hidden="true"></i></span></a>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-sm-1 col-form-label col-form-label-lg">details</label>
@@ -68,8 +71,8 @@
                                     </div>
                                     <label class="col-sm-2 col-form-label col-form-label-lg">Category</label>
                                     <div class="col-sm-4">
-                                        <select id="multi-value-select2" multiple=""
-                                            data-select2-id="multi-value-select2" tabindex="-1"
+                                        <select id="multi-value-select3" multiple=""
+                                            data-select2-id="multi-value-select3" tabindex="-1"
                                             class="select2-hidden-accessible" aria-hidden="true">
                                             <option selected="selected" data-select2-id="482">orange</option>
                                             <option data-select2-id="1323">white</option>
@@ -96,3 +99,16 @@
 
     </div>
 </div>
+<script>
+    function addInfoTiDes() {
+        let resultDiv = document.getElementById('addInfoTiDes');
+        resultDiv.innerHTML += '<label class="col-sm-2 col-form-label col-form-label-lg">' +
+            'Information Title' +
+            ' </label>' +
+            ' <div class="col-sm-2">' + '<input type="text" class="form-control form-control-lg" name="title"></div>' +
+            '<label class="col-sm-3 col-form-label col-form-label-lg">Information description</label>' +
+            '<div class="col-sm-5">' +
+            '<input type="text" class="form-control form-control-lg" name="title">' +
+            '</div>';
+    }
+</script>
