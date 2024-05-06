@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Administrator;
 
 use App\Http\Controllers\Controller;
+use App\Models\Administrator\Product;
+use App\Models\Administrator\ProductImages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -12,7 +15,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+
+        $address = 'administrator/product/index';
+        return view('administrator.dashboard.base-index', compact('address', 'products'));
     }
 
     /**
@@ -29,7 +35,40 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->file('image'));
+
+        // for create informations
+        $count = 0;
+        foreach ($request->infoTitle as $title) {
+
+            if ($request->infoDesc[$count]) {
+
+                $informations[$title] = $request->infoDesc[$count++];
+            }
+        }
+        // for create informations
+
+        $result = Product::create(
+            [
+                'title' => $request->title,
+                'code' => $request->code,
+                'informations' => json_encode($informations),
+                'details' => $request->details,
+                'description' => $request->description,
+                'price' => $request->price,
+                'price_off' => $request->price_off,
+                'operator' => Auth::user()->id,
+                'extra' => 'empty',
+
+            ]
+        );
+
+        $image = $request->file('image');
+        $productImages = new ProductImages();
+        if ($result) {
+            $productImages->insertImages($result->id, $image);
+        }
+        dd($result->id);
+        return redirect()->route('product.index');
     }
 
     /**
@@ -61,6 +100,16 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        if ($product)
+
+            $product->update(
+                [
+                    'status' => 'deleted',
+                ]
+            );
+
+        return redirect()->route('product.index');
     }
 }
