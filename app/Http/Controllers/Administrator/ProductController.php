@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Administrator;
 
 use App\Http\Controllers\Controller;
 use App\Models\Administrator\Product;
+use App\Models\Administrator\ProductCategories;
 use App\Models\Administrator\ProductImages;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $categories = ProductCategories::all();
+        dd($categories);
         $address = 'administrator/product/create';
         return view('administrator.dashboard.base-index', compact('address'));
     }
@@ -58,16 +61,23 @@ class ProductController extends Controller
                 'price_off' => $request->price_off,
                 'operator' => Auth::user()->id,
                 'extra' => 'empty',
+                'status' => 'disable',
 
             ]
         );
 
-        $image = $request->file('image');
+       
+
+        $images = $request->file('image');
+    
         $productImages = new ProductImages();
+        $productCategories = new ProductCategories();
+
         if ($result) {
-            $productImages->insertImages($result->id, $image);
+            $productImages->insertImages($result->id, $images);
+            $productCategories->insertCategories($result->id, $request->category);
         }
-        dd($result->id);
+       
         return redirect()->route('product.index');
     }
 
