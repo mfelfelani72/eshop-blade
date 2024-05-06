@@ -4,7 +4,7 @@ namespace App\Models\Administrator;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
+
 
 class ProductCategories extends Model
 {
@@ -13,24 +13,32 @@ class ProductCategories extends Model
     public function insertCategories($product_id, $categories)
     {
 
-        $data = [];
+        // for find old categories object
+        $categoriesObject = Categories::select(
+            'id',
+            'title',
+        )
+            ->whereIn('title', $categories)->get()->toArray();
 
-        if (!empty($categories)) {
-            foreach ($categories as $item) {
+        // for find old categories object
 
-                $data[] =
-                    [
-                        'product_id' => $product_id,
-                        'code' => 'empty',
-                        'title' => $item,
-                        'description' => 'empty',
-                        'operator' => Auth::user()->id,
-                        'extra' => 'empty',
+        
+        // for add new categories
+        $oldCategories = [];
+        $newCategories = [];
 
-                    ];
-            }
-        }
+        foreach ($categoriesObject as $object)
+            $oldCategories[] = $object['title'];
 
-        return (ProductCategories::insert($data));
+        foreach ($categories as $item)
+
+            if (!in_array($item, $oldCategories))
+
+                $newCategories[] = $item;
+
+
+        // for add new categories
+
+        dd($newCategories);
     }
 }

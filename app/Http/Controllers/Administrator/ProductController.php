@@ -28,7 +28,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = ProductCategories::all();
-        dd($categories);
+       
         $address = 'administrator/product/create';
         return view('administrator.dashboard.base-index', compact('address'));
     }
