@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Administrator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ProductControllrt extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,7 +29,7 @@ class ProductControllrt extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->file('image'));
     }
 
     /**

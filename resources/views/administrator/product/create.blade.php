@@ -26,7 +26,7 @@
                                     </div>
                                     <label class="col-sm-1 col-form-label col-form-label-lg">Code</label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control form-control-lg" name="title">
+                                        <input type="text" class="form-control form-control-lg" name="code">
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -34,12 +34,14 @@
                                         <label class="col-sm-2 col-form-label col-form-label-lg">Information
                                             Title</label>
                                         <div class="col-sm-2">
-                                            <input type="text" class="form-control form-control-lg" name="title">
+                                            <input type="text" class="form-control form-control-lg"
+                                                name="infoTitle[]">
                                         </div>
                                         <label class="col-sm-3 col-form-label col-form-label-lg">Information
                                             description</label>
                                         <div class="col-sm-5">
-                                            <input type="text" class="form-control form-control-lg" name="title">
+                                            <input type="text" class="form-control form-control-lg"
+                                                name="infoDesc[]">
                                         </div>
                                     </div>
                                     <div class="row" id="addInfoTiDes">
@@ -53,31 +55,37 @@
                                 <div class="mb-3 row">
                                     <label class="col-sm-1 col-form-label col-form-label-lg">details</label>
                                     <div class="col-sm-5">
-                                        <textarea class="form-control" id="" rows="10" style="height: 100%"></textarea>
+                                        <textarea class="form-control" id="" rows="10" style="height: 100%" name="details"></textarea>
                                     </div>
                                     <label class="col-sm-1 col-form-label col-form-label-lg">desc</label>
                                     <div class="col-sm-5">
-                                        <textarea class="form-control" id="" rows="10" style="height: 100%"></textarea>
+                                        <textarea class="form-control" id="" rows="10" style="height: 100%" name="description"></textarea>
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-sm-1 col-form-label col-form-label-lg">Price</label>
                                     <div class="col-sm-2">
-                                        <input type="text" class="form-control form-control-lg" name="title">
+                                        <input type="text" class="form-control form-control-lg" name="price">
                                     </div>
                                     <label class="col-sm-1 col-form-label col-form-label-lg">Price off</label>
                                     <div class="col-sm-2">
-                                        <input type="text" class="form-control form-control-lg" name="title">
+                                        <input type="text" class="form-control form-control-lg" name="price_off">
                                     </div>
                                     <label class="col-sm-2 col-form-label col-form-label-lg">Category</label>
                                     <div class="col-sm-4">
-                                        <select id="multi-value-select3" multiple=""
+                                        <select id="multi-value-select3" multiple="" name="category[]"
                                             data-select2-id="multi-value-select3" tabindex="-1"
                                             class="select2-hidden-accessible" aria-hidden="true">
                                             <option selected="selected" data-select2-id="482">orange</option>
                                             <option data-select2-id="1323">white</option>
                                             <option selected="selected" data-select2-id="49fer">purple</option>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Upload Image</span>
+                                    <div class="form-file">
+                                        <input type="file" class="form-file-input form-control" name="image[]">
                                     </div>
                                 </div>
                                 <div class="input-group mb-3">
@@ -102,13 +110,15 @@
 <script>
     function addInfoTiDes() {
         let resultDiv = document.getElementById('addInfoTiDes');
+
         resultDiv.innerHTML += '<label class="col-sm-2 col-form-label col-form-label-lg">' +
             'Information Title' +
             ' </label>' +
-            ' <div class="col-sm-2">' + '<input type="text" class="form-control form-control-lg" name="title"></div>' +
+            ' <div class="col-sm-2">' +
+            '<input type="text" class="form-control form-control-lg" name="infoTitle[]"></div>' +
             '<label class="col-sm-3 col-form-label col-form-label-lg">Information description</label>' +
             '<div class="col-sm-5">' +
-            '<input type="text" class="form-control form-control-lg" name="title">' +
+            '<input type="text" class="form-control form-control-lg" name="infoDesc[]">' +
             '</div>';
     }
 </script>
