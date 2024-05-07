@@ -22,23 +22,45 @@ class ProductCategories extends Model
 
         // for find old categories object
 
-        
-        // for add new categories
-        $oldCategories = [];
-        $newCategories = [];
 
-        foreach ($categoriesObject as $object)
-            $oldCategories[] = $object['title'];
+        // for add new categories
+
+        $oldCategoriesTitle = [];
+        $oldCategoriesIds = [];
+        $newCategoriesTitle = [];
+
+        foreach ($categoriesObject as $object) {
+            $oldCategoriesTitle[] = $object['title'];
+            $oldCategoriesIds[] = $object['id'];
+        }
 
         foreach ($categories as $item)
 
-            if (!in_array($item, $oldCategories))
+            if (!in_array($item, $oldCategoriesTitle))
 
-                $newCategories[] = $item;
+                $newCategoriesTitle[] = $item;
 
+
+        $categories = new Categories();
+        $newCategoriesIds = $categories->insertCategories($newCategoriesTitle);
 
         // for add new categories
 
-        dd($newCategories);
+        $allCategories = array_merge($oldCategoriesIds, $newCategoriesIds);
+
+        // save all product categories 
+
+        $productCategories = [];
+
+        foreach ($allCategories as $category) {
+            $productCategories[] = [
+                'product_id' => $product_id,
+                'category_id' => $category,
+            ];
+        }
+        $result = ProductCategories::insert($productCategories);
+        // save all product categories 
+
+        return $result;
     }
 }

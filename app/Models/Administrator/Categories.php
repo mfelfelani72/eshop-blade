@@ -5,6 +5,7 @@ namespace App\Models\Administrator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Categories extends Model
 {
@@ -14,6 +15,7 @@ class Categories extends Model
     {
 
         $data = [];
+        $categoriesIds = [];
 
         if (!empty($categories)) {
             foreach ($categories as $item) {
@@ -24,12 +26,18 @@ class Categories extends Model
                         'title' => $item,
                         'description' => 'empty',
                         'operator' => Auth::user()->id,
-                        'extra' => 'empty',
+                        'extra' => 'empty'
 
                     ];
             }
         }
 
-        return (ProductCategories::insert($data));
+
+        foreach ($data as $row)
+            $categoriesIds[] = DB::table('categories')->insertGetId($row);
+
+
+
+        return $categoriesIds;
     }
 }

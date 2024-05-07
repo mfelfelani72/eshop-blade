@@ -76,17 +76,22 @@
                                         <select id="multi-value-select3" multiple="" name="category[]"
                                             data-select2-id="multi-value-select3" tabindex="-1"
                                             class="select2-hidden-accessible" aria-hidden="true">
-                                            {{-- <option selected="selected" data-select2-id="482">orange</option> --}}
+                                            @foreach ($categories as $category)
+                                                <option data-select2-id={{ $category->id }}>{{ $category->title }}
+                                                </option>
+                                            @endforeach
+
                                         </select>
                                     </div>
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Upload Image</span>
                                     <div class="form-file">
-                                        <input type="file" class="form-file-input form-control" name="image[]" multiple>
+                                        <input type="file" class="form-file-input form-control" name="image[]"
+                                            multiple>
                                     </div>
                                 </div>
-                              
+
 
                                 <div class="col-12">
                                     <button type="submit" class="float-end btn btn-primary mb-2">Save</button>

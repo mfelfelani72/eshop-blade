@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administrator;
 
 use App\Http\Controllers\Controller;
+use App\Models\Administrator\Categories;
 use App\Models\Administrator\Product;
 use App\Models\Administrator\ProductCategories;
 use App\Models\Administrator\ProductImages;
@@ -27,10 +28,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = ProductCategories::all();
-       
+        $categories = Categories::all();
+      
         $address = 'administrator/product/create';
-        return view('administrator.dashboard.base-index', compact('address'));
+        return view('administrator.dashboard.base-index', compact('address', 'categories'));
     }
 
     /**
@@ -50,7 +51,7 @@ class ProductController extends Controller
         }
         // for create informations
 
-        $result = Product::create(
+        $resultProduct = Product::create(
             [
                 'title' => $request->title,
                 'code' => $request->code,
@@ -66,16 +67,15 @@ class ProductController extends Controller
             ]
         );
 
-       
-
         $images = $request->file('image');
     
         $productImages = new ProductImages();
         $productCategories = new ProductCategories();
 
-        if ($result) {
-            $productImages->insertImages($result->id, $images);
-            $productCategories->insertCategories($result->id, $request->category);
+        if ($resultProduct) {
+            $resultImage = $productImages->insertImages($resultProduct->id, $images);
+            $resultProductCategories = $productCategories->insertCategories($resultProduct->id, $request->category);
+           
         }
        
         return redirect()->route('product.index');
