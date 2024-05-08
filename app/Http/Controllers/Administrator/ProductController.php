@@ -29,7 +29,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Categories::all();
-      
+
         $address = 'administrator/product/create';
         return view('administrator.dashboard.base-index', compact('address', 'categories'));
     }
@@ -68,16 +68,15 @@ class ProductController extends Controller
         );
 
         $images = $request->file('image');
-    
+
         $productImages = new ProductImages();
         $productCategories = new ProductCategories();
 
         if ($resultProduct) {
             $resultImage = $productImages->insertImages($resultProduct->id, $images);
             $resultProductCategories = $productCategories->insertCategories($resultProduct->id, $request->category);
-           
         }
-       
+
         return redirect()->route('product.index');
     }
 
@@ -94,7 +93,24 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+       
+        $categories = Categories::all();
+
+        // for selected categories for product
+        $productCategories = ProductCategories::select(
+            'category_id',
+        )
+            ->where('product_id', $product->id)->get()->toArray();
+
+        if ($productCategories)
+            foreach ($productCategories as $item)
+                $productCategoriesIds[] = $item["category_id"];
+
+        // for selected categories for product
+
+        $address = 'administrator/product/edit';
+        return view('administrator.dashboard.base-index', compact('address', 'product', 'categories', 'productCategoriesIds'));
     }
 
     /**
