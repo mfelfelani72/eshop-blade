@@ -13,6 +13,15 @@ class ProductCategories extends Model
     public function insertCategories($product_id, $categories)
     {
 
+
+        $productCategories = ProductCategories::where('product_id', $product_id)->get();
+
+        if ($productCategories)
+            foreach ($productCategories as $item)
+                $item->destroy($item->id);
+
+
+
         // for find old categories object
         $categoriesObject = Categories::select(
             'id',

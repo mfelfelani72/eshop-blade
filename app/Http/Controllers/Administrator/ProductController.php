@@ -81,20 +81,12 @@ class ProductController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
         $product = Product::findOrFail($id);
-       
+
         $categories = Categories::all();
 
         // for selected categories for product
@@ -118,7 +110,47 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        // for create informations
+        $count = 0;
+        foreach ($request->infoTitle as $title) {
+
+            if ($request->infoDesc[$count]) {
+
+                $informations[$title] = $request->infoDesc[$count++];
+            }
+        }
+        // for create informations
+
+
+        $resultProduct = $product->update(
+            [
+                'title' => $request->title,
+                'code' => $request->code,
+                'informations' => json_encode($informations),
+                'details' => $request->details,
+                'description' => $request->description,
+                'price' => $request->price,
+                'price_off' => $request->price_off,
+                'operator' => Auth::user()->id,
+                'extra' => 'empty',
+                'status' => $product->status,
+
+            ]
+        );
+
+        $images = $request->file('image');
+
+        $productImages = new ProductImages();
+        $productCategories = new ProductCategories();
+
+        if ($resultProduct) {
+            $resultImage = $productImages->insertImages($product->id, $images);
+            $resultProductCategories = $productCategories->insertCategories($product->id, $request->category);
+        }
+
+        return redirect()->route('product.index');
     }
 
     /**

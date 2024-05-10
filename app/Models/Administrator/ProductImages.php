@@ -15,6 +15,23 @@ class ProductImages extends Model
         $data = [];
         $img = "";
         $count = 0;
+
+        $productImages = ProductImages::where('product_id', $product_id)->get();
+
+        if ($productImages) {
+
+            foreach ($productImages as $item) {
+
+                if (file_exists('front/img/products/' . $item->img)) {
+                    unlink('front/img/products/' . $item->img);
+                    $item->destroy($item->id);
+
+                }
+
+            }
+
+        }
+
         if (!empty($images)) {
             foreach ($images as $item) {
 

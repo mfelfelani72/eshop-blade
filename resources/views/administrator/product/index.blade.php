@@ -41,12 +41,16 @@
                                 <tbody>
                                     @foreach ($products as $item)
                                         <tr>
-                                            <td><img class="" width="100"
+                                            <td>
+                                               @if (!empty($item->coverImage->img))
+                                                <img class="" width="100"
                                                     src={{ asset('front/img/products/' . $item->coverImage->img) }} alt="">
+                                                     @endif
+
                                             </td>
                                             
-                                            <td>{{ $item->title }}</td>
                                             <td>{{ $item->code }}</td>
+                                            <td>{{ $item->title }}</td>
                                             <td>25</td>
                                             <td>{{ $item->status }}</td>
                                             <td>
