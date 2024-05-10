@@ -110,6 +110,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
         $product = Product::findOrFail($id);
 
         // for create informations
@@ -146,7 +147,9 @@ class ProductController extends Controller
         $productCategories = new ProductCategories();
 
         if ($resultProduct) {
-            $resultImage = $productImages->insertImages($product->id, $images);
+            if ($request->changeImg)
+                $resultImage = $productImages->insertImages($product->id, $images);
+            
             $resultProductCategories = $productCategories->insertCategories($product->id, $request->category);
         }
 

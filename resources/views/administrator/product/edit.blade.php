@@ -17,9 +17,10 @@
                     </div>
                     <div class="card-body">
                         <div class="basic-form">
-                            <form action="{{ route('product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('product.update', $product->id) }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
-                                 @method('PUT')
+                                @method('PUT')
                                 <div class="mb-3 row">
                                     <label class="col-sm-1 col-form-label col-form-label-lg">Title</label>
                                     <div class="col-sm-5">
@@ -103,6 +104,11 @@
                                 </div>
                                 <div class="mb-3 row">
                                     <label class="col-sm-2 col-form-label col-form-label-lg">Images</label>
+                                    <div class="col-sm-6 col-form-label col-form-label-lg">
+                                        <input type="checkbox" class="form-check-input" id="customCheckBox1" name="changeImg">
+                                        <label class="form-check-label" for="customCheckBox1">Are you change
+                                            Images?</label>
+                                    </div>
                                     <div class="col-sm-10">
                                         @foreach ($product->ProductImages as $item)
                                             <img class="m-1" width="200" height="100"
