@@ -3,13 +3,13 @@
 
         <div class="row page-titles">
             <div class="col-6 mt-2">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item active"><a>Settings / Shop / Products</a></li>
-                    <li class="breadcrumb-item"><a href="">Index</a></li>
+                 <ol class="breadcrumb">
+                     <li class="breadcrumb-item active"><a>Settings / Shop / Cateogories</a></li>
+                <li class="breadcrumb-item"><a href="">Index</a></li>
                 </ol>
             </div>
             <div class="col-6">
-                <a href="{{ route('product.create') }}" class="float-end btn btn-rounded btn-success">New Product +</a>
+                <a href="{{ route('category.create') }}" class="float-end btn btn-rounded btn-success">New Category +</a>
             </div>
         </div>
 
@@ -30,35 +30,25 @@
                             <table id="example3" class="display" style="min-width: 845px">
                                 <thead>
                                     <tr>
-                                        <th>image</th>
                                         <th>code</th>
                                         <th>title</th>
-                                        <th>count</th>
+                                        <th>description</th>
                                         <th>operator</th>
-                                        <th>status</th>
                                         <th>action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($products as $item)
+                                    @foreach ($categories as $item)
                                         <tr>
-                                            <td>
-                                                @if (!empty($item->coverImage->img))
-                                                    <img class="" width="100"
-                                                        src={{ asset('front/img/products/' . $item->coverImage->img) }}
-                                                        alt="">
-                                                @endif
-
-                                            </td>
-
+                                           
                                             <td>{{ $item->code }}</td>
                                             <td>{{ $item->title }}</td>
-                                            <td>25</td>
+                                            <td>{{ $item->description }}</td>
                                             <td>{{ Auth::user($item->operator)->name }}</td>
-                                            <td>{{ $item->status }}</td>
+
                                             <td>
                                                 <div class="d-flex">
-                                                    <a href="{{ route('product.edit', ['id' => $item->id]) }}"
+                                                    <a href="{{ route('category.edit', ['id' => $item->id]) }}"
                                                         class="btn btn-primary shadow btn-xs sharp me-1"><i
                                                             class="fas fa-pencil-alt"></i>
                                                     </a>
@@ -66,7 +56,8 @@
                                                     <a href="#" class="btn btn-danger shadow btn-xs sharp"
                                                         onclick="destroyItem(event,{{ $item->id }})"><i
                                                             class="fa fa-trash"></i></a>
-                                                    <form action="{{ route('product.destroy', ['id' => $item->id]) }}"
+                                                    <form
+                                                        action="{{ route('category.destroy', ['id' => $item->id]) }}"
                                                         id="itemDelete-{{ $item->id }}" method="POST">
                                                         @csrf
                                                         @method('delete')

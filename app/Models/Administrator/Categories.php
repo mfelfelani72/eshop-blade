@@ -11,6 +11,15 @@ class Categories extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'code',
+        'description',
+        'operator',
+        'extra',
+        'status',
+    ];
+
     public function insertCategories($categories)
     {
 

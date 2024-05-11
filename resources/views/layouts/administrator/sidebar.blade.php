@@ -17,6 +17,14 @@
                             <li><a href="{{ route('product.create') }}">create</a></li>
                         </ul>
                     </li>
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Category</a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('category.index') }}">index</a></li>
+                        </ul>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('category.create') }}">create</a></li>
+                        </ul>
+                    </li>
 
 
 
