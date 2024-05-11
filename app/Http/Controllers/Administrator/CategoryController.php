@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Administrator;
 use App\Http\Controllers\Controller;
 use App\Models\Administrator\Categories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -34,7 +35,18 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Categories::create(
+            [
+                'title' => $request->title,
+                'code' => $request->code,
+                'description' => $request->description,
+                'operator' => Auth::user()->id,
+                'extra' => 'empty',
+                'status' => 'enable',
+            ]
+        );
+
+        return redirect()->route('category.index');
     }
 
     /**
@@ -42,7 +54,10 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $category = Categories::findOrFail($id);
+
+        $address = 'administrator/category/edit';
+        return view('administrator.dashboard.base-index', compact('address', 'category'));
     }
 
     /**
@@ -50,7 +65,20 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category = Categories::findOrFail($id);
+        
+        $category->update(
+            [
+                'title' => $request->title,
+                'code' => $request->code,
+                'description' => $request->description,
+                'operator' => Auth::user()->id,
+                'extra' => $category->extra,
+                'status' => $category->status,
+            ]
+        );
+
+        return redirect()->route('category.index');
     }
 
     /**
@@ -61,7 +89,7 @@ class CategoryController extends Controller
         $category = Categories::findOrFail($id);
 
         if ($category)
-       
+
             $category->update(
                 [
                     'status' => 'deleted',
