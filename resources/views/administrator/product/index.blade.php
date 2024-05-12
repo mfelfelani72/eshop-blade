@@ -44,7 +44,7 @@
                                         <tr>
                                             <td>
                                                 @if (!empty($item->coverImage->img))
-                                                    <img class="" width="100"
+                                                    <img class="" width="100" height="100em"
                                                         src={{ asset('front/img/products/' . $item->coverImage->img) }}
                                                         alt="">
                                                 @endif

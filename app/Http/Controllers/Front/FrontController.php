@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Administrator\PrimaryBanner;
 use App\Models\Administrator\PrimarySlider;
+use App\Models\Administrator\ProductFeatured;
+use App\Models\Administrator\ProductTrend;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -17,9 +19,12 @@ class FrontController extends Controller
 
         $primarySliders = PrimarySlider::all();
         $primaryBanners = PrimaryBanner::all();
+        $productTrends = ProductTrend::all();
+        $productFeatured = ProductFeatured::all();
+     
         
         $address = 'front/front/index';
-        return view('front.front.base-index', compact('address', 'primarySliders', 'primaryBanners'));
+        return view('front.front.base-index', compact('address', 'primarySliders', 'primaryBanners', 'productTrends','productFeatured'));
     }
 
     /**

@@ -55,12 +55,19 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row products mini">
+                    @php
+                        $count = 0;
+                    @endphp
+                    @while ($count <= 7)
+                        @if ($count == 0 || $count == 4)
+                            <div class="row products mini">
+                        @endif
                         <div class="item">
                             <div class="media">
                                 <div class="thumbnail object-cover">
                                     <a href="#">
-                                        <img src="{{ asset('front/img/products/apparel3.jpg') }}" alt="">
+                                        <img src="{{ asset('front/img/products/' . $productTrends[$count]->product->coverImage->img) }}"
+                                            alt="{{ $productTrends[$count]->product->description }}">
                                     </a>
                                 </div>
                                 <div class="hoverable">
@@ -70,17 +77,21 @@
                                         <li><a href=""><i class="ri-shuffle-line"></i></a></li>
                                     </ul>
                                 </div>
-                                <div class="discount circle flexcenter"><span>32%</span></div>
+                                <div class="discount circle flexcenter">
+                                    <span>
+                                        {{ round((1 - $productTrends[$count]->product->price_off / $productTrends[$count]->product->price) * 100, 0) }}%</span>
+                                </div>
                             </div>
                             <div class="content">
-                                <h3 class="mini-links"><a href="#">Black Women's Coat Dress</a></h3>
+                                <h3 class="mini-links"><a
+                                        href="#">{{ $productTrends[$count]->product->title }}</a></h3>
                                 <div class="rating">
                                     <div class="stars"></div>
                                     <span class="mini-text">(2,548)</span>
                                 </div>
                                 <div class="price">
-                                    <span class="current">$129.99</span>
-                                    <span class="normal mini-text">$189.98</span>
+                                    <span class="current">${{ $productTrends[$count]->product->price_off }}</span>
+                                    <span class="normal mini-text">${{ $productTrends[$count]->product->price }}</span>
                                 </div>
                                 <div class="mini-text">
                                     <p>2975 solid</p>
@@ -88,237 +99,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="media">
-                                <div class="thumbnail object-cover">
-                                    <a href="#">
-                                        <img src="{{ asset('front/img/products/apparel1.jpg') }}" alt="">
-                                    </a>
-                                </div>
-                                <div class="hoverable">
-                                    <ul>
-                                        <li class="active"><a href=""><i class="ri-heart-line"></i></a></li>
-                                        <li><a href=""><i class="ri-eye-line"></i></a></li>
-                                        <li><a href=""><i class="ri-shuffle-line"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="discount circle flexcenter"><span>25%</span></div>
-                            </div>
-                            <div class="content">
-                                <h3 class="mini-links"><a href="#">Under Armour Men's Tech</a></h3>
-                                <div class="rating">
-                                    <div class="stars"></div>
-                                    <span class="mini-text">(2,548)</span>
-                                </div>
-                                <div class="price">
-                                    <span class="current">$56.99</span>
-                                    <span class="normal mini-text">$46.98</span>
-                                </div>
-                                <div class="mini-text">
-                                    <p>2975 solid</p>
-                                    <p>Free Shipping</p>
-                                    <p class="stock-danger"> Stock: 7 left!</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="media">
-                                <div class="thumbnail object-cover">
-                                    <a href="#">
-                                        <img src="{{ asset('front/img/products/home1.jpg') }}" alt="">
-                                    </a>
-                                </div>
-                                <div class="hoverable">
-                                    <ul>
-                                        <li class="active"><a href=""><i class="ri-heart-line"></i></a></li>
-                                        <li><a href=""><i class="ri-eye-line"></i></a></li>
-                                        <li><a href=""><i class="ri-shuffle-line"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="discount circle flexcenter"><span>32%</span></div>
-                            </div>
-                            <div class="content">
-                                <h3 class="mini-links"><a href="#">Vonanda Velvet Sofa Couch</a></h3>
-                                <div class="rating">
-                                    <div class="stars"></div>
-                                    <span class="mini-text">(2,548)</span>
-                                </div>
-                                <div class="price">
-                                    <span class="current">$469.25</span>
-                                    <span class="normal mini-text">$421.98</span>
-                                </div>
-                                <div class="mini-text">
-                                    <p>2975 solid</p>
-                                    <p>Free Shipping</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="media">
-                                <div class="thumbnail object-cover">
-                                    <a href="#">
-                                        <img src="{{ asset('front/img/products/electronic3.jpg') }}" alt="">
-                                    </a>
-                                </div>
-                                <div class="hoverable">
-                                    <ul>
-                                        <li class="active"><a href=""><i class="ri-heart-line"></i></a></li>
-                                        <li><a href=""><i class="ri-eye-line"></i></a></li>
-                                        <li><a href=""><i class="ri-shuffle-line"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="discount circle flexcenter"><span>32%</span></div>
-                            </div>
-                            <div class="content">
-                                <h3 class="mini-links"><a href="#">Wireless Hedphones</a></h3>
-                                <div class="rating">
-                                    <div class="stars"></div>
-                                    <span class="mini-text">(2,548)</span>
-                                </div>
-                                <div class="price">
-                                    <span class="current">$99.99</span>
-                                    <span class="normal mini-text">$128.98</span>
-                                </div>
-                                <div class="mini-text">
-                                    <p>2975 solid</p>
-                                    <p>Free Shipping</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row products mini">
-                        <div class="item">
-                            <div class="media">
-                                <div class="thumbnail object-cover">
-                                    <a href="#">
-                                        <img src="{{ asset('front/img/products/shoe1.jpg') }}" alt="">
-                                    </a>
-                                </div>
-                                <div class="hoverable">
-                                    <ul>
-                                        <li class="active"><a href=""><i class="ri-heart-line"></i></a></li>
-                                        <li><a href=""><i class="ri-eye-line"></i></a></li>
-                                        <li><a href=""><i class="ri-shuffle-line"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="discount circle flexcenter"><span>32%</span></div>
-                            </div>
-                            <div class="content">
-                                <h3 class="mini-links"><a href="#">Men Slip On Shoes Casual With Arch
-                                        Support Insoles</a></h3>
-                                <div class="rating">
-                                    <div class="stars"></div>
-                                    <span class="mini-text">(2,548)</span>
-                                </div>
-                                <div class="price">
-                                    <span class="current">$129.99</span>
-                                    <span class="normal mini-text">$189.98</span>
-                                </div>
-                                <div class="mini-text">
-                                    <p>2975 solid</p>
-                                    <p>Free Shipping</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="media">
-                                <div class="thumbnail object-cover">
-                                    <a href="#">
-                                        <img src="{{ asset('front/img/products/apparel2.jpg') }}" alt="">
-                                    </a>
-                                </div>
-                                <div class="hoverable">
-                                    <ul>
-                                        <li class="active"><a href=""><i class="ri-heart-line"></i></a></li>
-                                        <li><a href=""><i class="ri-eye-line"></i></a></li>
-                                        <li><a href=""><i class="ri-shuffle-line"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="discount circle flexcenter"><span>32%</span></div>
-                            </div>
-                            <div class="content">
-                                <h3 class="mini-links"><a href="#">Women's Lightweight</a></h3>
-                                <div class="rating">
-                                    <div class="stars"></div>
-                                    <span class="mini-text">(2,548)</span>
-                                </div>
-                                <div class="price">
-                                    <span class="current">$37.99</span>
-                                    <span class="normal mini-text">$48.98</span>
-                                </div>
-                                <div class="mini-text">
-                                    <p>2975 solid</p>
-                                    <p>Free Shipping</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="media">
-                                <div class="thumbnail object-cover">
-                                    <a href="#">
-                                        <img src="{{ asset('front/img/products/home2.jpg') }}" alt="">
-                                    </a>
-                                </div>
-                                <div class="hoverable">
-                                    <ul>
-                                        <li class="active"><a href=""><i class="ri-heart-line"></i></a></li>
-                                        <li><a href=""><i class="ri-eye-line"></i></a></li>
-                                        <li><a href=""><i class="ri-shuffle-line"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="discount circle flexcenter"><span>32%</span></div>
-                            </div>
-                            <div class="content">
-                                <h3 class="mini-links"><a href="#">Dimmable Ceiling Light Modern</a></h3>
-                                <div class="rating">
-                                    <div class="stars"></div>
-                                    <span class="mini-text">(2,548)</span>
-                                </div>
-                                <div class="price">
-                                    <span class="current">$279.99</span>
-                                    <span class="normal mini-text">$301.98</span>
-                                </div>
-                                <div class="mini-text">
-                                    <p>2975 solid</p>
-                                    <p>Free Shipping</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="media">
-                                <div class="thumbnail object-cover">
-                                    <a href="#">
-                                        <img src="{{ asset('front/img/products/home3.jpg') }}" alt="">
-                                    </a>
-                                </div>
-                                <div class="hoverable">
-                                    <ul>
-                                        <li class="active"><a href=""><i class="ri-heart-line"></i></a></li>
-                                        <li><a href=""><i class="ri-eye-line"></i></a></li>
-                                        <li><a href=""><i class="ri-shuffle-line"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="discount circle flexcenter"><span>32%</span></div>
-                            </div>
-                            <div class="content">
-                                <h3 class="mini-links"><a href="#">Modern Srorage Cabinet</a></h3>
-                                <div class="rating">
-                                    <div class="stars"></div>
-                                    <span class="mini-text">(2,548)</span>
-                                </div>
-                                <div class="price">
-                                    <span class="current">$129.99</span>
-                                    <span class="normal mini-text">$189.98</span>
-                                </div>
-                                <div class="mini-text">
-                                    <p>2975 solid</p>
-                                    <p>Free Shipping</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        @if ($count == 3 || $count == 7)
                 </div>
+                @endif
+                @php
+                    $count++;
+                @endphp
+                @endwhile
             </div>
         </div>
     </div>
+</div>
 </div>
