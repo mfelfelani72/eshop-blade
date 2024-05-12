@@ -4,7 +4,7 @@
         <div class="row page-titles">
             <div class="col-6 mt-2">
                  <ol class="breadcrumb">
-                     <li class="breadcrumb-item active"><a>Settings / Shop / Product Trend</a></li>
+                     <li class="breadcrumb-item active"><a>Settings / Shop / Product Featured</a></li>
                 <li class="breadcrumb-item"><a href="">Index</a></li>
                 </ol>
             </div>
@@ -29,12 +29,13 @@
                                     <tr>
                                         <th>image</th>
                                         <th>product title</th>
+                                        <th>time</th>
                                         <th>operator</th>
                                         <th>action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($productsTrends as $item)
+                                    @foreach ($productsFeatureds as $item)
                                         <tr>
                                            <td>
                                                 @if (!empty($item->product->coverImage->img))
@@ -45,6 +46,7 @@
 
                                             </td>
                                             <td>{{ $item->product->title }}</td>
+                                            <td>{{ $item->time }}</td>
                                              <td>{{ Auth::user($item->operator)->name }}</td>
                                            
 
@@ -55,7 +57,7 @@
                                                         onclick="destroyItem(event,{{ $item->id }})"><i
                                                             class="fa fa-trash"></i></a>
                                                     <form
-                                                        action="{{ route('trend.destroy', ['id' => $item->id]) }}"
+                                                        action="{{ route('featured.destroy', ['id' => $item->id]) }}"
                                                         id="itemDelete-{{ $item->id }}" method="POST">
                                                         @csrf
                                                         @method('delete')

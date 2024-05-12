@@ -72,12 +72,22 @@
                                                         @method('delete')
                                                     </form>
 
-                                                    <a href="#" class="btn btn-info shadow btn-xs sharp me-1"
+                                                    <a href="#" title="trend" class="btn btn-info shadow btn-xs sharp me-1"
                                                         onclick="trendItem(event,{{ $item->id }})">
                                                         <i class="fa fa-trophy"></i>
                                                     </a>
                                                     <form action="{{ route('trend', ['id' => $item->id]) }}"
                                                         id="itemTrend-{{ $item->id }}" method="POST">
+                                                        @csrf
+                                                        @method('put')
+                                                    </form>
+
+                                                    <a href="#" title="featured" class="btn btn-success shadow btn-xs sharp me-1"
+                                                        onclick="featuredItem(event,{{ $item->id }})">
+                                                        <i class="fa fa-clock"></i>
+                                                    </a>
+                                                    <form action="{{ route('featured', ['id' => $item->id]) }}"
+                                                        id="itemFeatured-{{ $item->id }}" method="POST">
                                                         @csrf
                                                         @method('put')
                                                     </form>
@@ -98,10 +108,16 @@
     </div>
 </div>
 
- <script>
-        function trendItem(event, $id) {
+<script>
+    function trendItem(event, $id) {
 
-            event.preventDefault();
-            document.querySelector('#itemTrend-' + $id).submit();
-        }
-    </script>
+        event.preventDefault();
+        document.querySelector('#itemTrend-' + $id).submit();
+    }
+
+    function featuredItem(event, $id) {
+
+        event.preventDefault();
+        document.querySelector('#itemFeatured-' + $id).submit();
+    }
+</script>

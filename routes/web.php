@@ -5,9 +5,10 @@ use App\Http\Controllers\Administrator\DashboardController;
 use App\Http\Controllers\Administrator\PrimaryBannerController;
 use App\Http\Controllers\Administrator\PrimarySliderController;
 use App\Http\Controllers\Administrator\ProductController;
+use App\Http\Controllers\Administrator\ProductFeaturedController;
 use App\Http\Controllers\Administrator\ProductTrendController;
 use App\Http\Controllers\Front\FrontController;
-
+use App\Models\Administrator\ProductFeatured;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontController::class, 'index'])->name('front');
@@ -38,9 +39,13 @@ Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
 
     Route::put('/admin/dashboard/shop/product/trend/{id}', [ProductController::class, 'trend'])->name('trend');
 
+    Route::put('/admin/dashboard/shop/product/featured/{id}', [ProductController::class, 'featured'])->name('featured');
+
     Route::resource('/admin/dashboard/shop/category', CategoryController::class)->parameters(['category' => 'id']);
 
     Route::resource('/admin/dashboard/shop/trend', ProductTrendController::class)->parameters(['trend' => 'id']);
+
+    Route::resource('/admin/dashboard/shop/featured', ProductFeaturedController::class)->parameters(['featured' => 'id']);
     
     // settings
 

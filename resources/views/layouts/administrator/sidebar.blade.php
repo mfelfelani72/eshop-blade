@@ -26,7 +26,8 @@
                         </ul>
                     </li>
                     <li><a class="" href="{{ route('trend.index') }}" aria-expanded="false">Product Trend</a>
-                       
+                    </li>
+                    <li><a class="" href="{{ route('featured.index') }}" aria-expanded="false">Product Featured</a>
                     </li>
 
 

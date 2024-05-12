@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Administrator\Categories;
 use App\Models\Administrator\Product;
 use App\Models\Administrator\ProductCategories;
+use App\Models\Administrator\ProductFeatured;
 use App\Models\Administrator\ProductImages;
 use App\Models\Administrator\ProductTrend;
 use Illuminate\Http\Request;
@@ -179,17 +180,44 @@ class ProductController extends Controller
      */
     public function trend(string $id)
     {
+        $productTrend = ProductTrend::where('product_id', $id)->first();
 
-        ProductTrend::create(
-            [
-                'product_id' => $id,
-                'code' => 'empty',
-                'description' => 'empty',
-                'operator' => Auth::user()->id,
-                'extra' => 'empty',
-                'status' => 'enable'
-            ]
-        );
+        if (empty($productTrend))
+            ProductTrend::create(
+                [
+                    'product_id' => $id,
+                    'code' => 'empty',
+                    'description' => 'empty',
+                    'operator' => Auth::user()->id,
+                    'extra' => 'empty',
+                    'status' => 'enable'
+                ]
+            );
+
+        return redirect()->route('product.index');
+    }
+    /**
+     * Add to featured product list.
+     */
+    public function featured(string $id)
+    {
+
+        $productFeatured = ProductFeatured::where('product_id', $id)->first();
+
+        if (empty($productFeatured))
+
+            ProductFeatured::create(
+                [
+                    'product_id' => $id,
+                    'code' => 'empty',
+                    'time' => now(),
+                    'description' => 'empty',
+                    'operator' => Auth::user()->id,
+                    'extra' => 'empty',
+                    'status' => 'enable'
+                ]
+            );
+
         return redirect()->route('product.index');
     }
 }
