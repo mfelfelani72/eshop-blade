@@ -63,7 +63,7 @@
                                                             class="fas fa-pencil-alt"></i>
                                                     </a>
 
-                                                    <a href="#" class="btn btn-danger shadow btn-xs sharp"
+                                                    <a href="#" class="btn btn-danger shadow btn-xs sharp me-1"
                                                         onclick="destroyItem(event,{{ $item->id }})"><i
                                                             class="fa fa-trash"></i></a>
                                                     <form action="{{ route('product.destroy', ['id' => $item->id]) }}"
@@ -72,9 +72,10 @@
                                                         @method('delete')
                                                     </form>
 
-                                                    <a href="#" class="btn btn-danger shadow btn-xs sharp"
-                                                        onclick="trendItem(event,{{ $item->id }})"><i
-                                                            class="fa fa-bag"></i></a>
+                                                    <a href="#" class="btn btn-info shadow btn-xs sharp me-1"
+                                                        onclick="trendItem(event,{{ $item->id }})">
+                                                        <i class="fa fa-trophy"></i>
+                                                    </a>
                                                     <form action="{{ route('trend', ['id' => $item->id]) }}"
                                                         id="itemTrend-{{ $item->id }}" method="POST">
                                                         @csrf
