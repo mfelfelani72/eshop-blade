@@ -27,6 +27,7 @@
                             <table id="example3" class="display" style="min-width: 845px">
                                 <thead>
                                     <tr>
+                                        <th>image</th>
                                         <th>code</th>
                                         <th>product title</th>
                                         <th>description</th>
@@ -37,7 +38,14 @@
                                 <tbody>
                                     @foreach ($productsTrends as $item)
                                         <tr>
-                                           
+                                           <td>
+                                                @if (!empty($item->product->coverImage->img))
+                                                    <img class="" width="100"
+                                                        src={{ asset('front/img/products/' . $item->product->coverImage->img) }}
+                                                        alt="">
+                                                @endif
+
+                                            </td>
                                             <td>{{ $item->code }}</td>
                                             <td>{{ $item->product->title }}</td>
                                             <td>{{ $item->description }}</td>

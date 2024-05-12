@@ -7,6 +7,7 @@ use App\Models\Administrator\Categories;
 use App\Models\Administrator\Product;
 use App\Models\Administrator\ProductCategories;
 use App\Models\Administrator\ProductImages;
+use App\Models\Administrator\ProductTrend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -149,7 +150,7 @@ class ProductController extends Controller
         if ($resultProduct) {
             if ($request->changeImg)
                 $resultImage = $productImages->insertImages($product->id, $images);
-            
+
             $resultProductCategories = $productCategories->insertCategories($product->id, $request->category);
         }
 
@@ -171,6 +172,24 @@ class ProductController extends Controller
                 ]
             );
 
+        return redirect()->route('product.index');
+    }
+    /**
+     * Add to trend product list.
+     */
+    public function trend(string $id)
+    {
+
+        ProductTrend::create(
+            [
+                'product_id' => $id,
+                'code' => 'empty',
+                'description' => 'empty',
+                'operator' => Auth::user()->id,
+                'extra' => 'empty',
+                'status' => 'enable'
+            ]
+        );
         return redirect()->route('product.index');
     }
 }

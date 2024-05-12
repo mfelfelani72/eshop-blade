@@ -36,6 +36,8 @@ Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
 
     Route::resource('/admin/dashboard/shop/product', ProductController::class)->parameters(['product' => 'id']);
 
+    Route::put('/admin/dashboard/shop/product/trend/{id}', [ProductController::class, 'trend'])->name('trend');
+
     Route::resource('/admin/dashboard/shop/category', CategoryController::class)->parameters(['category' => 'id']);
 
     Route::resource('/admin/dashboard/shop/trend', ProductTrendController::class)->parameters(['trend' => 'id']);

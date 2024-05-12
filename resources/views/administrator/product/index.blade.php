@@ -72,6 +72,15 @@
                                                         @method('delete')
                                                     </form>
 
+                                                    <a href="#" class="btn btn-danger shadow btn-xs sharp"
+                                                        onclick="trendItem(event,{{ $item->id }})"><i
+                                                            class="fa fa-bag"></i></a>
+                                                    <form action="{{ route('trend', ['id' => $item->id]) }}"
+                                                        id="itemTrend-{{ $item->id }}" method="POST">
+                                                        @csrf
+                                                        @method('put')
+                                                    </form>
+
 
                                                 </div>
                                             </td>
@@ -87,3 +96,11 @@
 
     </div>
 </div>
+
+ <script>
+        function trendItem(event, $id) {
+
+            event.preventDefault();
+            document.querySelector('#itemTrend-' + $id).submit();
+        }
+    </script>

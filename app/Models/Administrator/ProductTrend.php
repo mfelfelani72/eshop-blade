@@ -12,6 +12,15 @@ class ProductTrend extends Model
 
     protected $table = 'product_trend';
 
+    protected $fillable = [
+        'product_id',
+        'code',
+        'description',
+        'operator',
+        'extra',
+        'status',
+    ];
+
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
