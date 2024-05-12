@@ -2,14 +2,17 @@
 
 namespace App\Models\Administrator;
 
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class Categories extends Model
+
+class Categories extends BaseModel
 {
     use HasFactory;
+
+  
 
     protected $fillable = [
         'title',
@@ -49,4 +52,6 @@ class Categories extends Model
 
         return $categoriesIds;
     }
+
+    
 }

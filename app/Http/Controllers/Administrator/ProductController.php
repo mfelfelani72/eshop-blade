@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::NotDelete()->get();
 
         $address = 'administrator/product/index';
         return view('administrator.dashboard.base-index', compact('address', 'products'));
@@ -28,7 +28,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Categories::all();
+        $categories = Categories::Active()->get();
 
         $address = 'administrator/product/create';
         return view('administrator.dashboard.base-index', compact('address', 'categories'));
@@ -87,7 +87,7 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        $categories = Categories::all();
+        $categories = Categories::Active()->get();
 
         // for selected categories for product
         $productCategories = ProductCategories::select(

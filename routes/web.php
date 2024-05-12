@@ -5,6 +5,7 @@ use App\Http\Controllers\Administrator\DashboardController;
 use App\Http\Controllers\Administrator\PrimaryBannerController;
 use App\Http\Controllers\Administrator\PrimarySliderController;
 use App\Http\Controllers\Administrator\ProductController;
+use App\Http\Controllers\Administrator\ProductTrendController;
 use App\Http\Controllers\Front\FrontController;
 
 use Illuminate\Support\Facades\Route;
@@ -33,9 +34,11 @@ Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
 
     Route::resource('/admin/dashboard/settings/primary-banner', PrimaryBannerController::class)->parameters(['primary-banner' => 'id']);
 
-    Route::resource('/admin/dashboard/product', ProductController::class)->parameters(['product' => 'id']);
+    Route::resource('/admin/dashboard/shop/product', ProductController::class)->parameters(['product' => 'id']);
 
-    Route::resource('/admin/dashboard/category', CategoryController::class)->parameters(['category' => 'id']);
+    Route::resource('/admin/dashboard/shop/category', CategoryController::class)->parameters(['category' => 'id']);
+
+    Route::resource('/admin/dashboard/shop/trend', ProductTrendController::class)->parameters(['trend' => 'id']);
     
     // settings
 

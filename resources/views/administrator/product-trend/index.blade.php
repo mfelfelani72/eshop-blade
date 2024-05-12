@@ -4,12 +4,9 @@
         <div class="row page-titles">
             <div class="col-6 mt-2">
                  <ol class="breadcrumb">
-                     <li class="breadcrumb-item active"><a>Settings / Shop / Cateogories</a></li>
+                     <li class="breadcrumb-item active"><a>Settings / Shop / Product Trend</a></li>
                 <li class="breadcrumb-item"><a href="">Index</a></li>
                 </ol>
-            </div>
-            <div class="col-6">
-                <a href="{{ route('category.create') }}" class="float-end btn btn-rounded btn-success">New Category +</a>
             </div>
         </div>
 
@@ -31,35 +28,30 @@
                                 <thead>
                                     <tr>
                                         <th>code</th>
-                                        <th>title</th>
+                                        <th>product title</th>
                                         <th>description</th>
                                         <th>operator</th>
-                                        <th>status</th>
                                         <th>action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($categories as $item)
+                                    @foreach ($productsTrends as $item)
                                         <tr>
                                            
                                             <td>{{ $item->code }}</td>
-                                            <td>{{ $item->title }}</td>
+                                            <td>{{ $item->product->title }}</td>
                                             <td>{{ $item->description }}</td>
-                                            <td>{{ Auth::user($item->operator)->name }}</td>
-                                            <td>{{ $item->status }}</td>
+                                             <td>{{ Auth::user($item->operator)->name }}</td>
+                                           
 
                                             <td>
                                                 <div class="d-flex">
-                                                    <a href="{{ route('category.edit', ['id' => $item->id]) }}"
-                                                        class="btn btn-primary shadow btn-xs sharp me-1"><i
-                                                            class="fas fa-pencil-alt"></i>
-                                                    </a>
-
+                                                
                                                     <a href="#" class="btn btn-danger shadow btn-xs sharp"
                                                         onclick="destroyItem(event,{{ $item->id }})"><i
                                                             class="fa fa-trash"></i></a>
                                                     <form
-                                                        action="{{ route('category.destroy', ['id' => $item->id]) }}"
+                                                        action="{{ route('trend.destroy', ['id' => $item->id]) }}"
                                                         id="itemDelete-{{ $item->id }}" method="POST">
                                                         @csrf
                                                         @method('delete')

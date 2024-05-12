@@ -25,6 +25,9 @@
                             <li><a href="{{ route('category.create') }}">create</a></li>
                         </ul>
                     </li>
+                    <li><a class="" href="{{ route('trend.index') }}" aria-expanded="false">Product Trend</a>
+                       
+                    </li>
 
 
 

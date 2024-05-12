@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Categories::all();
+        $categories = Categories::Active()->get();
 
         $address = 'administrator/category/index';
         return view('administrator.dashboard.base-index', compact('address', 'categories'));
