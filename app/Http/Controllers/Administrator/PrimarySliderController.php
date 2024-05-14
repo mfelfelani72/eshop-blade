@@ -42,6 +42,12 @@ class PrimarySliderController extends Controller
             $file->move('front/img/slider', $img);
         }
 
+        Validator::make(['img' => $img], [
+            'img' => 'required',
+        ], [
+            'img.required' => __('dashboard.image') . __('dashboard.is-required'),
+        ])->validate();
+
         Validator::make($request->all(), [
             'title' => 'required',
             'slogan' => 'required',
@@ -49,7 +55,6 @@ class PrimarySliderController extends Controller
             'link_title' => 'required',
             'link' => 'required',
             'description' => 'required',
-            'img' => 'required',
         ], [
             'title.required' => __('dashboard.title') . __('dashboard.is-required'),
             'slogan.required' => __('dashboard.slogan') . __('dashboard.is-required'),
@@ -57,7 +62,6 @@ class PrimarySliderController extends Controller
             'link_title.required' => __('dashboard.link_title') . __('dashboard.is-required'),
             'link.required' => __('dashboard.link') . __('dashboard.is-required'),
             'description.required' => __('dashboard.description') . __('dashboard.is-required'),
-            'img.required' => __('dashboard.image') . __('dashboard.is-required'),
         ])
             ->validate();
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Administrator;
 use App\Http\Controllers\Controller;
 use App\Models\Administrator\PrimaryBanner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PrimaryBannerController extends Controller
 {
@@ -40,8 +41,34 @@ class PrimaryBannerController extends Controller
             $file->move('front/img/banner', $img);
         }
 
+        Validator::make(['img' => $img], [
+            'img' => 'required',
+        ], [
+            'img.required' => __('dashboard.image') . __('dashboard.is-required'),
+        ])->validate();
+
+        Validator::make($request->all(), [
+            'title' => 'required',
+            'slogan' => 'required',
+            'category' => 'required',
+            'link_title' => 'required',
+            'link' => 'required',
+            'description' => 'required',
+        ], [
+
+            'title.required' => __('dashboard.title') . __('dashboard.is-required'),
+            'slogan.required' => __('dashboard.slogan') . __('dashboard.is-required'),
+            'category.required' => __('dashboard.category') . __('dashboard.is-required'),
+            'link_title.required' => __('dashboard.link_title') . __('dashboard.is-required'),
+            'link.required' => __('dashboard.link') . __('dashboard.is-required'),
+            'description.required' => __('dashboard.description') . __('dashboard.is-required'),
+        ])
+            ->validate();
+
+
         PrimaryBanner::create(
             [
+                'img' => $img,
                 'title' => $request->title,
                 'slogan' => $request->slogan,
                 'category' => $request->category,
@@ -49,7 +76,6 @@ class PrimaryBannerController extends Controller
                 'link' => $request->link,
                 'description' => $request->description,
                 'extra' => 'empty',
-                'img' => $img,
             ]
         );
 
