@@ -23,10 +23,16 @@
                                     <label class="col-sm-1 col-form-label col-form-label-lg">Title</label>
                                     <div class="col-sm-5">
                                         <input type="text" class="form-control form-control-lg" name="title">
+                                        @error('title')
+                                            <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <label class="col-sm-1 col-form-label col-form-label-lg">Code</label>
                                     <div class="col-sm-5">
                                         <input type="text" class="form-control form-control-lg" name="code">
+                                        @error('code')
+                                            <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -36,12 +42,18 @@
                                         <div class="col-sm-2">
                                             <input type="text" class="form-control form-control-lg"
                                                 name="infoTitle[]">
+                                            @error('informations')
+                                                <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <label class="col-sm-3 col-form-label col-form-label-lg">Information
                                             description</label>
                                         <div class="col-sm-5">
                                             <input type="text" class="form-control form-control-lg"
                                                 name="infoDesc[]">
+                                            @error('informations')
+                                                <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="row" id="addInfoTiDes">
@@ -56,20 +68,32 @@
                                     <label class="col-sm-1 col-form-label col-form-label-lg">details</label>
                                     <div class="col-sm-5">
                                         <textarea class="form-control" id="" rows="10" style="height: 100%" name="details"></textarea>
+                                        @error('details')
+                                            <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <label class="col-sm-1 col-form-label col-form-label-lg">desc</label>
                                     <div class="col-sm-5">
                                         <textarea class="form-control" id="" rows="10" style="height: 100%" name="description"></textarea>
+                                        @error('description')
+                                            <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
-                                <div class="mb-3 row">
+                                <div class="mt-5 mb-3 row">
                                     <label class="col-sm-1 col-form-label col-form-label-lg">Price</label>
                                     <div class="col-sm-2">
                                         <input type="text" class="form-control form-control-lg" name="price">
+                                        @error('price')
+                                            <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <label class="col-sm-1 col-form-label col-form-label-lg">Price off</label>
                                     <div class="col-sm-2">
                                         <input type="text" class="form-control form-control-lg" name="price_off">
+                                        @error('price_off')
+                                            <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <label class="col-sm-2 col-form-label col-form-label-lg">Category</label>
                                     <div class="col-sm-4">
@@ -91,6 +115,9 @@
                                             multiple>
                                     </div>
                                 </div>
+                                @error('image')
+                                    <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
+                                @enderror
 
 
                                 <div class="col-12">

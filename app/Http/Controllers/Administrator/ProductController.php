@@ -11,6 +11,7 @@ use App\Models\Administrator\ProductImages;
 use App\Models\Administrator\ProductTrend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
@@ -52,6 +53,33 @@ class ProductController extends Controller
             }
         }
         // for create informations
+
+        // validate 
+
+        Validator::make($request->all(), [
+            'title' => 'required',
+            'code' => 'required',
+            'informations' => 'required',
+            'details' => 'required',
+            'description' => 'required',
+            'price' => 'required',
+            'price_off' => 'required',
+            'image' => 'required',
+
+        ], [
+            'title.required' => __('dashboard.title') . __('dashboard.is-required'),
+            'code.required' => __('dashboard.code') . __('dashboard.is-required'),
+            'informations.required' => __('dashboard.informations') . __('dashboard.is-required'),
+            'specialtie.required' => __('dashboard.specialtie') . __('dashboard.is-required'),
+            'details.required' => __('dashboard.details') . __('dashboard.is-required'),
+            'description.required' => __('dashboard.description') . __('dashboard.is-required'),
+            'price.required' => __('dashboard.price') . __('dashboard.is-required'),
+            'price_off.required' => __('dashboard.price_off') . __('dashboard.is-required'),
+            'image.required' => __('dashboard.image') . __('dashboard.is-required'),
+        ])
+            ->validate();
+
+        // validate 
 
         $resultProduct = Product::create(
             [
