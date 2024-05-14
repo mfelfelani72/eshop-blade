@@ -59,7 +59,7 @@ class ProductController extends Controller
         Validator::make($request->all(), [
             'title' => 'required',
             'code' => 'required',
-            'informations' => 'required',
+            // 'informations' => 'required',
             'details' => 'required',
             'description' => 'required',
             'price' => 'required',
@@ -104,7 +104,8 @@ class ProductController extends Controller
 
         if ($resultProduct) {
             $resultImage = $productImages->insertImages($resultProduct->id, $images);
-            $resultProductCategories = $productCategories->insertCategories($resultProduct->id, $request->category);
+            if (!empty($request->category))
+                $resultProductCategories = $productCategories->insertCategories($resultProduct->id, $request->category);
         }
 
         return redirect()->route('product.index');

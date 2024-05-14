@@ -22,14 +22,14 @@
                                 <div class="mb-3 row">
                                     <label class="col-sm-1 col-form-label col-form-label-lg">Title</label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control form-control-lg" name="title">
+                                        <input type="text" class="form-control form-control-lg" name="title" value="{{ old('title') }}">
                                         @error('title')
                                             <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <label class="col-sm-1 col-form-label col-form-label-lg">Code</label>
                                     <div class="col-sm-5">
-                                        <input type="text" class="form-control form-control-lg" name="code">
+                                        <input type="text" class="form-control form-control-lg" name="code" value="{{ old('code') }}">
                                         @error('code')
                                             <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -67,14 +67,16 @@
                                 <div class="mb-3 row">
                                     <label class="col-sm-1 col-form-label col-form-label-lg">details</label>
                                     <div class="col-sm-5">
-                                        <textarea class="form-control" id="" rows="10" style="height: 100%" name="details"></textarea>
+                                        <textarea class="form-control" id="" rows="10" style="height: 100%" 
+                                        name="details" value="{{ old('details') }}">{{ old('details') }}</textarea>
                                         @error('details')
                                             <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <label class="col-sm-1 col-form-label col-form-label-lg">desc</label>
                                     <div class="col-sm-5">
-                                        <textarea class="form-control" id="" rows="10" style="height: 100%" name="description"></textarea>
+                                        <textarea class="form-control" id="" rows="10" style="height: 100%" 
+                                        name="description" {{ old('description') }}>{{ old('description') }}</textarea>
                                         @error('description')
                                             <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -83,14 +85,14 @@
                                 <div class="mt-5 mb-3 row">
                                     <label class="col-sm-1 col-form-label col-form-label-lg">Price</label>
                                     <div class="col-sm-2">
-                                        <input type="text" class="form-control form-control-lg" name="price">
+                                        <input type="text" class="form-control form-control-lg" name="price" value='{{ old('price') }}'>
                                         @error('price')
                                             <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <label class="col-sm-1 col-form-label col-form-label-lg">Price off</label>
                                     <div class="col-sm-2">
-                                        <input type="text" class="form-control form-control-lg" name="price_off">
+                                        <input type="text" class="form-control form-control-lg" name="price_off" value='{{ old('price_off') }}'>
                                         @error('price_off')
                                             <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
                                         @enderror
