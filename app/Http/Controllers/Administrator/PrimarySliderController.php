@@ -79,7 +79,6 @@ class PrimarySliderController extends Controller
         );
 
         return redirect()->route('primary-slider.index');
-        
     }
 
     /**
@@ -131,8 +130,12 @@ class PrimarySliderController extends Controller
      */
     public function destroy(string $id)
     {
-      
+
         $primarySlider = PrimarySlider::findOrFail($id);
+
+        if (file_exists('front/img/slider/' . $primarySlider->img)) {
+            unlink('front/img/slider/' . $primarySlider->img);
+        }
 
         $primarySlider->destroy($id);
         return redirect()->route('primary-slider.index');

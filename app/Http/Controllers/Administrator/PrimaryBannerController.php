@@ -133,6 +133,10 @@ class PrimaryBannerController extends Controller
     {
         $primaryBanner = PrimaryBanner::findOrFail($id);
 
+        if (file_exists('front/img/banner/' . $primaryBanner->img)) {
+            unlink('front/img/banner/' . $primaryBanner->img);
+        }
+
         $primaryBanner->destroy($id);
         return redirect()->route('primary-banner.index');
     }
