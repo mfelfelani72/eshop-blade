@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('code');
-            $table->string('informations');
+            $table->string('informations')->default('');
             $table->string('details');
             $table->string('description');
             $table->string('price');

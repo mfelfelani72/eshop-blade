@@ -45,6 +45,7 @@ class ProductController extends Controller
 
         // for create informations
         $count = 0;
+        $informations = [];
         foreach ($request->infoTitle as $title) {
 
             if ($request->infoDesc[$count]) {
@@ -126,6 +127,8 @@ class ProductController extends Controller
         )
             ->where('product_id', $product->id)->get()->toArray();
 
+
+        $productCategoriesIds = [];
         if ($productCategories)
             foreach ($productCategories as $item)
                 $productCategoriesIds[] = $item["category_id"];
@@ -180,8 +183,8 @@ class ProductController extends Controller
         if ($resultProduct) {
             if ($request->changeImg)
                 $resultImage = $productImages->insertImages($product->id, $images);
-
-            $resultProductCategories = $productCategories->insertCategories($product->id, $request->category);
+            if (!empty($request->category))
+                $resultProductCategories = $productCategories->insertCategories($product->id, $request->category);
         }
 
         return redirect()->route('product.index');

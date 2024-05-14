@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Administrator\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
@@ -35,11 +36,24 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+
+        Validator::make($request->all(), [
+            'title' => 'required',
+            'code' => 'required',
+            // 'description' => 'required',
+        ], [
+            'title.required' => __('dashboard.title') . __('dashboard.is-required'),
+            'code.required' => __('dashboard.code') . __('dashboard.is-required'),
+            'description.required' => __('dashboard.description') . __('dashboard.is-required'),
+        ])
+            ->validate();
+
         Categories::create(
             [
                 'title' => $request->title,
                 'code' => $request->code,
-                'description' => $request->description,
+                // 'description' => $request->description,
+                'description' => 'empty',
                 'operator' => Auth::user()->id,
                 'extra' => 'empty',
                 'status' => 'enable',

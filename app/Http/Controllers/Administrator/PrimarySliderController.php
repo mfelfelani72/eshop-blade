@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Administrator;
 use App\Http\Controllers\Controller;
 use App\Models\Administrator\PrimarySlider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PrimarySliderController extends Controller
 {
@@ -40,6 +41,25 @@ class PrimarySliderController extends Controller
             $img = time() . "." . $file->getClientOriginalExtension();
             $file->move('front/img/slider', $img);
         }
+
+        Validator::make($request->all(), [
+            'title' => 'required',
+            'slogan' => 'required',
+            'category' => 'required',
+            'link_title' => 'required',
+            'link' => 'required',
+            'description' => 'required',
+            'img' => 'required',
+        ], [
+            'title.required' => __('dashboard.title') . __('dashboard.is-required'),
+            'slogan.required' => __('dashboard.slogan') . __('dashboard.is-required'),
+            'category.required' => __('dashboard.category') . __('dashboard.is-required'),
+            'link_title.required' => __('dashboard.link_title') . __('dashboard.is-required'),
+            'link.required' => __('dashboard.link') . __('dashboard.is-required'),
+            'description.required' => __('dashboard.description') . __('dashboard.is-required'),
+            'img.required' => __('dashboard.image') . __('dashboard.is-required'),
+        ])
+            ->validate();
 
         PrimarySlider::create(
             [

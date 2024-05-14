@@ -32,9 +32,9 @@
                                     <tr>
                                         <th>code</th>
                                         <th>title</th>
-                                        <th>description</th>
+                                        {{-- <th>description</th> --}}
                                         <th>operator</th>
-                                        <th>status</th>
+                                        {{-- <th>status</th> --}}
                                         <th>action</th>
                                     </tr>
                                 </thead>
@@ -44,9 +44,9 @@
                                            
                                             <td>{{ $item->code }}</td>
                                             <td>{{ $item->title }}</td>
-                                            <td>{{ $item->description }}</td>
+                                            {{-- <td>{{ $item->description }}</td> --}}
                                             <td>{{ Auth::user($item->operator)->name }}</td>
-                                            <td>{{ $item->status }}</td>
+                                            {{-- <td>{{ $item->status }}</td> --}}
 
                                             <td>
                                                 <div class="d-flex">
