@@ -11,7 +11,24 @@
                     </div>
                 </div>
                 <ul class="navbar-nav header-right">
-
+                    {{-- <li><a href="#">Language <span class="icon-small"><i class="ri-arrow-down-s-line"></i></a>
+                        <ul>
+                            <li><a href="{{ route('lang', 'en') }}">en</a></li>
+                            <li><a href="{{ route('lang', 'fa') }}">fa</a></li>
+                        </ul>
+                    </li> --}}
+                    <div class="basic-dropdown mt-3 pt-1">
+                        <div class="dropdown">
+                            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Language
+                            </button>
+                            <div class="dropdown-menu" style="margin: 0px;">
+                                <a class="dropdown-item" href="{{ route('lang', 'en') }}">en</a>
+                                <a class="dropdown-item" href="{{ route('lang', 'fa') }}">fa</a>
+                            </div>
+                        </div>
+                    </div>
                     @if (false)
                         <li class="nav-item d-flex align-items-center">
                             <div class="input-group search-area">

@@ -166,7 +166,7 @@ form.search button:hover {
     overflow: hidden;
     transition: max-height .3s cubic-bezier(0.215, 0.610, 0.355, 1);
 }
-
+/* here */
 .off-canvas .thetop-nav ul,
 .off-canvas nav>ul {
     flex-direction: column;
