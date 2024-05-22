@@ -1142,7 +1142,7 @@ textarea.form-control.is-invalid {
 }
 
 .breadcrumb-item+.breadcrumb-item::before {
-    float: left;
+    float: right;
     padding-right: 0.5rem;
     color: #6c757d;
     content: var(--bs-breadcrumb-divider, "/")
@@ -2980,6 +2980,32 @@ textarea.form-control.is-invalid {
     -webkit-transform: rotate(-315deg) translateY(-50%);
     transform: rotate(-315deg) translateY(-50%);
     /* margin-right: 2rem; */
+}
+
+.hamburger.is-active .line:nth-child(1) {
+    -webkit-transform: translateY(10px) translateX(12px) rotate(180deg);
+    transform: translateY(10px) translateX(12px) rotate(45deg);
+    margin-right: 1.7rem;
+}
+
+.hamburger.is-active .line:nth-child(3) {
+    -webkit-transform: translateY(-10px) translateX(12px) rotate(-180deg);
+    transform: translateY(-10px) translateX(12px) rotate(-45deg);
+    margin-right: 1.7rem;
+}
+
+@media only screen and (min-width: 48rem) {
+
+    [data-sidebar-style="mini"] .footer {
+        padding-right: 6.5rem;
+    }
+
+}
+
+.footer {
+    padding-right: 17.1875rem;
+    background-color: #F8F8F8;
+    font-size: 0.875rem;
 }
 
 

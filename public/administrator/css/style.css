@@ -10606,12 +10606,6 @@ label {
   background-color: #161717;
 }
 
-.footer {
-  padding-left: 17.1875rem;
-  background-color: #F8F8F8;
-  font-size: 0.875rem;
-}
-
 .footer .copyright {
   padding: 0.9375rem;
 }
@@ -10798,16 +10792,6 @@ label {
   transform: translateX(0px);
   width: 1.375rem;
   height: 0.125rem;
-}
-
-.hamburger.is-active .line:nth-child(1) {
-  -webkit-transform: translateY(4px) translateX(12px) rotate(45deg);
-  transform: translateY(4px) translateX(12px) rotate(45deg);
-}
-
-.hamburger.is-active .line:nth-child(3) {
-  -webkit-transform: translateY(-4px) translateX(12px) rotate(-45deg);
-  transform: translateY(-4px) translateX(12px) rotate(-45deg);
 }
 
 @media (min-width: 47.9375rem) {
@@ -16206,10 +16190,6 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
   [data-sidebar-style="mini"] .content-body {
     margin-left: 6.5rem;
-  }
-
-  [data-sidebar-style="mini"] .footer {
-    padding-left: 6.5rem;
   }
 
   [data-sidebar-style="mini"][data-header-position="fixed"] .content-body {

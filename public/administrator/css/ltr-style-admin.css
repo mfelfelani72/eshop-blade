@@ -2984,6 +2984,30 @@ textarea.form-control.is-invalid {
     /* margin-right: 2rem; */
 }
 
+.hamburger.is-active .line:nth-child(1) {
+    -webkit-transform: translateY(4px) translateX(12px) rotate(45deg);
+    transform: translateY(4px) translateX(12px) rotate(45deg);
+}
+
+.hamburger.is-active .line:nth-child(3) {
+    -webkit-transform: translateY(-4px) translateX(12px) rotate(-45deg);
+    transform: translateY(-4px) translateX(12px) rotate(-45deg);
+}
+
+@media only screen and (min-width: 48rem) {
+
+    [data-sidebar-style="mini"] .footer {
+        padding-left: 6.5rem;
+    }
+
+}
+
+.footer {
+    padding-left: 17.1875rem;
+    background-color: #F8F8F8;
+    font-size: 0.875rem;
+}
+
 
 
 
