@@ -22,7 +22,7 @@
                                 @csrf
                                 <div class="col-sm-6 col-form-label col-form-label-lg">
                                         <input type="checkbox" class="form-check-input" id="customCheckBox1" name="setDetails">
-                                        <label class="form-check-label" for="customCheckBox1">Are you set
+                                        <label class="form-check-label" for="customCheckBox1">Would you like to set
                                             details?</label>
                                     </div>
                                 <div class="mb-3 row">

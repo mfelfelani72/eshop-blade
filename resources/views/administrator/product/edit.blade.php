@@ -106,7 +106,7 @@
                                     <label class="col-sm-2 col-form-label col-form-label-lg">Images</label>
                                     <div class="col-sm-6 col-form-label col-form-label-lg">
                                         <input type="checkbox" class="form-check-input" id="customCheckBox1" name="changeImg">
-                                        <label class="form-check-label" for="customCheckBox1">Are you change
+                                        <label class="form-check-label" for="customCheckBox1">Would you like to change
                                             Images?</label>
                                     </div>
                                     <div class="col-sm-10">
