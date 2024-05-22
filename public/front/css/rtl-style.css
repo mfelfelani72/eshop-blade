@@ -16,13 +16,14 @@ body {
     font-size: 1.25em;
     margin-right: auto;
 }
+
 /* rotate in rtl */
 
 .dpt-menu .second-links .has-child a .icon-small {
     rotate: 180deg;
 }
 
-.view-all i{
+.view-all i {
     rotate: 180deg;
 }
 
@@ -166,6 +167,7 @@ form.search button:hover {
     overflow: hidden;
     transition: max-height .3s cubic-bezier(0.215, 0.610, 0.355, 1);
 }
+
 /* here */
 .off-canvas .thetop-nav ul,
 .off-canvas nav>ul {
@@ -179,6 +181,7 @@ form.search button:hover {
     border-top: 1px solid var(--border-color);
 
 }
+
 .off-canvas nav .mega {
     padding: 0;
 }
@@ -214,24 +217,6 @@ form.search button:hover {
     border: 1px solid var(--border-color);
     line-height: 16px;
     margin: 0 0 0.5em 0.5em;
-}
-
-.slider .item {
-    position: relative;
-    height: 427px;
-}
-
-.slider .item::before {
-    content: '';
-    position: absolute;
-    top: 30%;
-    left: 0;
-    width: 450px;
-    height: 300px;
-    background-color: var(--white-color);
-    z-index: 1;
-    filter: blur(50px);
-    opacity: .8;
 }
 
 .slider .text-content {
@@ -337,6 +322,7 @@ form.search button:hover {
     left: -0.6em;
     color: var(--light-text-color);
 }
+
 .products :where(.image, .thumbnail) img {
     transition: transform .3s;
 }
@@ -1052,6 +1038,7 @@ form.search button:hover {
     margin: 1em 0 1em 2em;
     transition: var(--trans-color);
 }
+
 .products .collapse .has-child>a {
     position: relative;
     font-weight: var(--fw7);

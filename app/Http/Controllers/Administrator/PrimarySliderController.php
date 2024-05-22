@@ -48,31 +48,43 @@ class PrimarySliderController extends Controller
             'img.required' => __('dashboard.image') . __('dashboard.is-required'),
         ])->validate();
 
-        Validator::make($request->all(), [
-            'title' => 'required',
-            'slogan' => 'required',
-            'category' => 'required',
-            'link_title' => 'required',
-            'link' => 'required',
-            'description' => 'required',
-        ], [
-            'title.required' => __('dashboard.title') . __('dashboard.is-required'),
-            'slogan.required' => __('dashboard.slogan') . __('dashboard.is-required'),
-            'category.required' => __('dashboard.category') . __('dashboard.is-required'),
-            'link_title.required' => __('dashboard.link_title') . __('dashboard.is-required'),
-            'link.required' => __('dashboard.link') . __('dashboard.is-required'),
-            'description.required' => __('dashboard.description') . __('dashboard.is-required'),
-        ])
-            ->validate();
+
+        $title = 'empty';
+        $slogan = 'empty';
+        $category = 'empty';
+
+        if ($request->setDetails == "on") {
+
+            Validator::make($request->all(), [
+                'title' => 'required',
+                'slogan' => 'required',
+                'category' => 'required',
+                'link_title' => 'required',
+                'link' => 'required',
+                'description' => 'required',
+            ], [
+                'title.required' => __('dashboard.title') . __('dashboard.is-required'),
+                'slogan.required' => __('dashboard.slogan') . __('dashboard.is-required'),
+                'category.required' => __('dashboard.category') . __('dashboard.is-required'),
+                'link_title.required' => __('dashboard.link_title') . __('dashboard.is-required'),
+                'link.required' => __('dashboard.link') . __('dashboard.is-required'),
+                'description.required' => __('dashboard.description') . __('dashboard.is-required'),
+            ])
+                ->validate();
+
+            $title = $request->title;
+            $slogan = $request->slogan;
+            $category = $request->category;
+        }
 
         PrimarySlider::create(
             [
-                'title' => $request->title,
-                'slogan' => $request->slogan,
-                'category' => $request->category,
+                'title' => $title,
+                'slogan' => $slogan,
+                'category' => $category,
+                'description' => $request->description,
                 'link_title' => $request->link_title,
                 'link' => $request->link,
-                'description' => $request->description,
                 'extra' => 'empty',
                 'img' => $img,
             ]

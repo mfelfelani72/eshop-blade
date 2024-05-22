@@ -20,6 +20,11 @@
                             <form action="{{ route('primary-slider.store') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
+                                <div class="col-sm-6 col-form-label col-form-label-lg">
+                                        <input type="checkbox" class="form-check-input" id="customCheckBox1" name="setDetails">
+                                        <label class="form-check-label" for="customCheckBox1">Are you set
+                                            details?</label>
+                                    </div>
                                 <div class="mb-3 row">
                                     <label class="col-sm-2 col-form-label col-form-label-lg">Title</label>
                                     <div class="col-sm-10">
@@ -50,6 +55,18 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <hr>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-2 col-form-label col-form-label-lg">Description</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-lg" name="description"
+                                            value="{{ old('description') }}">
+                                        @error('description')
+                                            <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                        
                                 <div class="mb-3 row">
                                     <label class="col-sm-2 col-form-label col-form-label-lg">Link Title</label>
                                     <div class="col-sm-10">
@@ -70,16 +87,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="mb-3 row">
-                                    <label class="col-sm-2 col-form-label col-form-label-lg">Description</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-lg" name="description"
-                                            value="{{ old('description') }}">
-                                        @error('description')
-                                            <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
+                                
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Upload Image</span>
                                     <div class="form-file">
