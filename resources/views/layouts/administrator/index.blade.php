@@ -1,47 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+
+@if (in_array(Session::get('locale'), Config::get('config-app.rtl-langs')))
+    <html lang={{ str_replace('_', '-', app()->getLocale()) }} dir="rtl">
+@else
+    <html lang={{ str_replace('_', '-', app()->getLocale()) }} dir="ltr">
+@endif
+
 
 <head>
     @yield('tag-head')
 </head>
+@if (in_array(Session::get('locale'), Config::get('config-app.rtl-langs')))
 
-<body>
+    <body direction="rtl">
+    @else
 
-    @yield('preloader')
+        <body direction="ltr">
+@endif
 
-    <!--**********************************
+
+
+@yield('preloader')
+
+<!--**********************************
         Main wrapper start
     ***********************************-->
 
-    <div id="main-wrapper">
+<div id="main-wrapper">
 
-        @yield('navheader')
+    @yield('navheader')
 
-        @yield('chat')
+    @yield('chat')
 
-        @yield('header')
+    @yield('header')
 
-        @yield('sidebar')
+    @yield('sidebar')
 
-        @yield('content')
+    @yield('content')
 
-        @yield('footer')
+    @yield('footer')
 
-    </div>
+</div>
 
-    <!--**********************************
+<!--**********************************
         Main wrapper end
     ***********************************-->
 
-    @yield('tag-script')
+@yield('tag-script')
 
-    <script>
-        function destroyItem(event, $id) {
+<script>
+    function destroyItem(event, $id) {
 
-            event.preventDefault();
-            document.querySelector('#itemDelete-' + $id).submit();
-        }
-    </script>
+        event.preventDefault();
+        document.querySelector('#itemDelete-' + $id).submit();
+    }
+</script>
 
 </body>
 

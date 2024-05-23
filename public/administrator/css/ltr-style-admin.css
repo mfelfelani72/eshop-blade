@@ -2,6 +2,15 @@
 
 body {
     direction: ltr;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #393939;
+    background-color: #F8F8F8;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     font-family: 'vazir' !important;
 }
 
@@ -2981,7 +2990,6 @@ textarea.form-control.is-invalid {
 .dlabnav .metismenu .mm-active>.has-arrow:after {
     -webkit-transform: rotate(-135deg) translateY(-50%);
     transform: rotate(-135deg) translateY(-50%);
-    /* margin-right: 2rem; */
 }
 
 .hamburger.is-active .line:nth-child(1) {

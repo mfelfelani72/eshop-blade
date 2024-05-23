@@ -302,18 +302,6 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   }
 }
 
-body {
-  margin: 0;
-  font-family: "Roboto", sans-serif;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #393939;
-  background-color: #F8F8F8;
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
 }
@@ -39161,7 +39149,7 @@ table.dataTable.display tbody td {
 }
 
 [direction="rtl"] .content-body {
-  margin-right: 21.563rem;
+  margin-right: 17rem;
   margin-left: auto;
 }
 
