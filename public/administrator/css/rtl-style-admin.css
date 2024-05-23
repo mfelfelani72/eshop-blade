@@ -2916,7 +2916,6 @@ textarea.form-control.is-invalid {
 
 [data-sidebar-style="full"][data-layout="vertical"] .dlabnav .metismenu>li .has-arrow:after {
     right: 14rem;
-    rotate: 90deg;
 }
 
 [data-sidebar-style="full"][data-layout="vertical"] .menu-toggle .nav-header .nav-control {
@@ -2985,12 +2984,6 @@ textarea.form-control.is-invalid {
     padding-right: 1.875rem;
 }
 
-.dlabnav .metismenu .has-arrow[aria-expanded=true]:after,
-.dlabnav .metismenu .mm-active>.has-arrow:after {
-    -webkit-transform: rotate(-135deg) translateY(-50%);
-    transform: rotate(-135deg) translateY(-50%);
-    
-}
 
 .hamburger.is-active .line:nth-child(1) {
     -webkit-transform: translateY(10px) translateX(12px) rotate(180deg);

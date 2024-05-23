@@ -8910,7 +8910,7 @@ fieldset:disabled .btn {
 }
 
 @media (min-width: 1440) {
- 
+
   .float-xxl-none {
     float: none !important;
   }
@@ -13870,6 +13870,7 @@ svg.pulse-svg .third-circle {
     float: none !important;
   }
 }
+
 /* here rtl */
 [direction="rtl"][data-theme-version="dark"] .border,
 [direction="rtl"][data-theme-version="dark"] .border-left,
@@ -15379,6 +15380,12 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   }
 }
 
+.dlabnav .metismenu .has-arrow[aria-expanded=true]:after,
+.dlabnav .metismenu .mm-active>.has-arrow:after {
+  -webkit-transform: rotate(-135deg) translateY(-50%);
+  transform: rotate(-135deg) translateY(-50%);
+}
+
 .dlabnav .main-menu {
   padding: 0.625rem 1.875rem;
 }
@@ -16012,7 +16019,8 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   [data-sidebar-style="mini"] .nav-header .nav-control {
     z-index: -1;
   }
-/* here */
+
+  /* here */
   [data-sidebar-style="mini"] .nav-header .nav-control .hamburger {
     left: 6.25rem !important;
   }

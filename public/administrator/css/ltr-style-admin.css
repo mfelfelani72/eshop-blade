@@ -2986,11 +2986,6 @@ textarea.form-control.is-invalid {
     padding-left: 1.875rem;
 }
 
-.dlabnav .metismenu .has-arrow[aria-expanded=true]:after,
-.dlabnav .metismenu .mm-active>.has-arrow:after {
-    -webkit-transform: rotate(-135deg) translateY(-50%);
-    transform: rotate(-135deg) translateY(-50%);
-}
 
 .hamburger.is-active .line:nth-child(1) {
     -webkit-transform: translateY(4px) translateX(12px) rotate(45deg);
