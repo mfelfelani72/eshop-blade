@@ -18,12 +18,12 @@
 
 
 {{-- for set ltr or rtl style --}}
-@if (in_array(Session::get('locale'), Config::get('config-app.rtl-langs')))
+{{-- @if (in_array(Session::get('locale'), Config::get('config-app.rtl-langs')))
     <link rel="stylesheet" href="{{ asset('administrator/css/rtl-style-admin.css') }}">
 @else
     <link rel="stylesheet" href="{{ asset('administrator/css/ltr-style-admin.css') }}">
-@endif
+@endif --}}
 {{-- for set ltr or rtl style --}}
 
 <!-- Style css -->
-{{-- <link href="{{ asset('administrator/css/style.css') }}" rel="stylesheet"> --}}
+<link href="{{ asset('administrator/css/style.css') }}" rel="stylesheet">
