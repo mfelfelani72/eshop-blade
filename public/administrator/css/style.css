@@ -5406,6 +5406,14 @@ fieldset:disabled .btn {
   ;
 }
 
+[direction="rtl"] .breadcrumb-item+.breadcrumb-item::before {
+  float: right;
+  padding-left: 0.5rem;
+  color: #6c757d;
+  content: var(--bs-breadcrumb-divider, "/")
+  ;
+}
+
 .breadcrumb-item.active {
   color: #6c757d;
 }
@@ -7305,8 +7313,12 @@ fieldset:disabled .btn {
   float: left !important;
 }
 
-.float-end {
+[direction="ltr"] .float-end {
   float: right !important;
+}
+
+[direction="rtl"] .float-end {
+  float: left !important;
 }
 
 .float-none {
@@ -43827,5 +43839,11 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 [data-theme-version="dark"] .footer .copyright p {
   color: #fff;
 }
+
+/* mohammad style */
+
+
+
+/* mohammad style */
 
 /*# sourceMappingURL=style.css.map */
