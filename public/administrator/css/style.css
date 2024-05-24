@@ -31303,6 +31303,14 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   top: 1.875rem;
 }
 
+.ps__rail-y {
+  right: 315px !important;
+}
+
+.ps__thumb-y{
+  width: 15px !important;
+}
+
 .ps__rail-x:hover,
 .ps__rail-y:hover,
 .ps__rail-x:focus,
@@ -42493,15 +42501,20 @@ table.dataTable.display tbody td {
   padding-right: 0;
   padding-left: 0.625rem;
 }
-
+/* here */
 [direction="rtl"] .dlab-demo-panel {
-  right: auto;
-  left: -380px;
+  left: auto;
+  right: 100%;
 }
 
 [direction="rtl"] .dlab-demo-panel.show {
   right: unset;
   left: 0;
+
+    /* right: 0;
+  box-shadow: 0rem 0rem 3.125rem rgba(0, 0, 0, 0.2);
+  z-index: 99999;
+  overflow: hidden; */
 }
 
 [direction="rtl"] .dlab-demo-panel .dlab-demo-trigger {
