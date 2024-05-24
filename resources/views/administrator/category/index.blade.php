@@ -55,7 +55,7 @@
                                                             class="fas fa-pencil-alt"></i>
                                                     </a>
 
-                                                    <a href="#" class="btn btn-danger shadow btn-xs sharp"
+                                                    <a href="#" class="btn btn-danger shadow btn-xs sharp me-1"
                                                         onclick="destroyItem(event,{{ $item->id }})"><i
                                                             class="fa fa-trash"></i></a>
                                                     <form
