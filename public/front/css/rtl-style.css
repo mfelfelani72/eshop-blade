@@ -50,6 +50,7 @@ body {
     display: flex;
     padding: 0.25em;
     margin-left: 0.5em;
+    rotate: 180deg;
 }
 
 .logo a {
@@ -636,7 +637,7 @@ form.search button:hover {
 }
 
 .newsletter {
-    padding: 2.5em 0;
+    padding: 2.5em;
     background-color: var(--dark-color);
     color: var(--white-color);
 }
@@ -1913,6 +1914,20 @@ input[type="range"]::-webkit-slider-thumb {
 
 .w-110 {
     width: 110px;
+}
+
+.site-off {
+    position: fixed;
+    width: 320px;
+    height: var(--percent100);
+    background-color: var(--white-color);
+    overflow-y: auto;
+    z-index: 1000;
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform .4s, visibility .4s;
+    will-change: transform, visibility;
+
 }
 
 /* mohammad style end */

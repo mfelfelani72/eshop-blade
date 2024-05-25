@@ -36,6 +36,12 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Rubik', sans-serif;
     font-size: 16px;
@@ -43,8 +49,8 @@ body {
     line-height: 1.4;
     color: var(--dark-color);
     background-color: var(--white-color);
-    margin: 0;
-    padding: 0;
+    /* margin: 0; */
+    /* padding: 0; */
     overflow-x: hidden;
 }
 
@@ -139,6 +145,7 @@ h4 {
     display: flex;
     align-items: center;
     margin: 0;
+    padding: 0;
 }
 
 .flexcol {
@@ -316,6 +323,7 @@ h4 {
 .dpt-cat .dpt-head .mini-text {
     color: var(--light-bg-color);
 }
+
 .dpt-menu>ul>li>a {
     font-weight: var(--font-small);
     height: 46px;
@@ -359,20 +367,6 @@ form.search :where(span, button) {
     font-size: 1em;
     color: var(--light-text-color);
     height: var(--percent100);
-}
-
-.site-off {
-    position: fixed;
-    width: 320px;
-    height: var(--percent100);
-    background-color: var(--white-color);
-    overflow-y: auto;
-    z-index: 1000;
-    transform: translateX(-100%);
-    visibility: hidden;
-    transition: transform .4s, visibility .4s;
-    will-change: transform, visibility;
-
 }
 
 .showmenu .site-off {
