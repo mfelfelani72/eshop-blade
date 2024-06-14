@@ -35,6 +35,5 @@ return [
     'contact' => 'Contact',
     'contact-setting' => 'Contact setting',
     'subject' => 'Subject',
-    'code' => 'Code',
     
 ];
