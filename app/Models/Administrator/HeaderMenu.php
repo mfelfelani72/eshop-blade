@@ -9,6 +9,8 @@ class HeaderMenu extends Model
 {
     use HasFactory;
 
+    protected $table = 'header_menu';
+
     protected $fillable = [
         'title',
         'code',
