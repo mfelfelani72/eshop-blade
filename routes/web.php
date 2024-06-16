@@ -2,12 +2,14 @@
 
 use App\Http\Controllers\Administrator\CategoryController;
 use App\Http\Controllers\Administrator\DashboardController;
+use App\Http\Controllers\Administrator\HeaderMenuController;
 use App\Http\Controllers\Administrator\PrimaryBannerController;
 use App\Http\Controllers\Administrator\PrimarySliderController;
 use App\Http\Controllers\Administrator\ProductController;
 use App\Http\Controllers\Administrator\ProductFeaturedController;
 use App\Http\Controllers\Administrator\ProductTrendController;
 use App\Http\Controllers\Front\FrontController;
+use App\Models\Administrator\HeaderMenu;
 use App\Models\Administrator\ProductFeatured;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +33,8 @@ Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
 
     // settings
 
+    Route::resource('/admin/dashboard/settings/header-menu', HeaderMenuController::class)->parameters(['header-menu' => 'id']);
+
     Route::resource('/admin/dashboard/settings/primary-slider', PrimarySliderController::class)->parameters(['primary-slider' => 'id']);
 
     Route::resource('/admin/dashboard/settings/primary-banner', PrimaryBannerController::class)->parameters(['primary-banner' => 'id']);
@@ -46,6 +50,7 @@ Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
     Route::resource('/admin/dashboard/shop/trend', ProductTrendController::class)->parameters(['trend' => 'id']);
 
     Route::resource('/admin/dashboard/shop/featured', ProductFeaturedController::class)->parameters(['featured' => 'id']);
+
     
     // settings
 

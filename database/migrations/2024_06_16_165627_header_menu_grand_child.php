@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('header_menu_child', function (Blueprint $table) {
+        Schema::create('header_menu_grandChild', function (Blueprint $table) {
 
             $table->id();
 
-            $table->bigInteger('header_menu_id')->unsigned()->index()->nullable();
-            $table->foreign('header_menu_id')->references('id')->on('header_menu')->onDelete('cascade');
+            $table->bigInteger('header_menu_child_id')->unsigned()->index()->nullable();
+            $table->foreign('header_menu_child_id')->references('id')->on('header_menu_child')->onDelete('cascade');
 
             $table->date('title');
             $table->string('code');
-            $table->string('image');
+            $table->string('link');
             $table->string('operator');
             $table->string('extra');
             $table->enum('status', ['enable', 'disable', 'deleted']);
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::drop('header_menu_child');
+        Schema::drop('header_menu_grandChild');
     }
 };
