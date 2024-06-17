@@ -20,7 +20,7 @@
                             <form action="{{ route('header-menu.store') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
-                                   <div class="mb-3 row">
+                                <div class="mb-3 row">
                                     <label class="col-sm-2 col-form-label col-form-label-lg">Title</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control form-control-lg" name="title"
@@ -50,6 +50,29 @@
                                         @enderror
                                     </div>
                                 </div>
+
+                                <h4 class="card-title">Header Menu Child Details</h4>
+                                <hr>
+
+                                <div class="mb-3 row">
+                                    <label class="col-sm-2 col-form-label col-form-label-lg">Title</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-lg" name="title_child"
+                                            value="{{ old('title_child') }}">
+                                        @error('title_child')
+                                            <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text">Upload Image</span>
+                                    <div class="form-file">
+                                        <input type="file" class="form-file-input form-control" name="image">
+                                    </div>
+                                </div>
+                                @error('image')
+                                    <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
+                                @enderror
                                 <div class="col-12">
                                     <button type="submit" class="float-end btn btn-primary mb-2">Save</button>
                                 </div>

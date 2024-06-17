@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Administrator;
 
 use App\Http\Controllers\Controller;
 use App\Models\Administrator\HeaderMenu;
+use App\Models\Administrator\HeaderMenuChild;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +36,20 @@ class HeaderMenuController extends Controller
     public function store(Request $request)
     {
 
+        $file = $request->file('image');
+        $img = "";
+
+        if (!empty($file)) {
+            $img = time() . "." . $file->getClientOriginalExtension();
+            $file->move('front/img/header-menu', $img);
+        }
+
+        Validator::make(['img' => $img], [
+            'img' => 'required',
+        ], [
+            'img.required' => __('dashboard.image') . __('dashboard.is-required'),
+        ])->validate();
+
         Validator::make($request->all(), [
             'title' => 'required',
             // 'link' => 'required',
@@ -57,7 +72,7 @@ class HeaderMenuController extends Controller
         if ($request->lable)
             $lable = $request->lable;
 
-        HeaderMenu::create(
+        $resultHeaderMenu = HeaderMenu::create(
             [
                 'code' => "empty",
                 'title' => $request->title,
@@ -67,6 +82,18 @@ class HeaderMenuController extends Controller
                 'extra' => 'empty',
             ]
         );
+        if ($resultHeaderMenu) {
+            HeaderMenuChild::create(
+                [
+                    'code' => "empty",
+                    'title' => $request->title_child,
+                    'header_menu_id' => $resultHeaderMenu->id,
+                    'image' => $img,
+                    'operator' => Auth::user()->id,
+                    'extra' => 'empty',
+                ]
+            );
+        }
 
         return redirect()->route('header-menu.index');
     }

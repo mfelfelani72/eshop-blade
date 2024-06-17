@@ -18,7 +18,7 @@ return new class extends Migration
             $table->bigInteger('header_menu_id')->unsigned()->index()->nullable();
             $table->foreign('header_menu_id')->references('id')->on('header_menu')->onDelete('cascade');
 
-            $table->date('title');
+            $table->srting('title');
             $table->string('code');
             $table->string('image');
             $table->string('operator');
