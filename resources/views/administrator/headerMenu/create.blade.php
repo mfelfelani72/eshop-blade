@@ -26,14 +26,13 @@
                                 <div class="mb-3 row">
                                     <label class="col-sm-2 col-form-label col-form-label-lg">Title</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-lg" name="title"
-                                            value="{{ old('title') }}">
+                                        <input type="text" class="form-control form-control-lg" name="title">
                                         @error('title')
                                             <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="mb-3 row">
+                                <div class="mb-3 row" id="menu_link">
                                     <label class="col-sm-2 col-form-label col-form-label-lg">Link</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control form-control-lg" name="link"
@@ -60,7 +59,7 @@
 
                                 <div class="col-sm-6 col-form-label col-form-label-lg">
                                     <input type="checkbox" class="form-check-input" id="customCheckBox1"
-                                        name="changeImg" onclick="addChildsDetails()">
+                                        name="addChild" onclick="addChildsDetails()">
                                     <label class="form-check-label" for="customCheckBox1">Would you like
                                         Add childs for this subject?</label>
                                 </div>
@@ -129,12 +128,17 @@
 <script>
     function addChildsDetails() {
 
-        var element = document.getElementById("menu-child");
+        var child = document.getElementById("menu-child");
+        var link = document.getElementById("menu_link");
 
-        if (element.classList.value == 'disable')
-            element.classList.remove("disable");
-        else
-            element.classList.add("disable");
+        if (child.classList.value == 'disable'){
+            child.classList.remove("disable");
+            link.classList.add("disable");
+        }
+        else{
+            child.classList.add("disable");
+            link.classList.remove("disable");
+        }
     }
 
     function addGrandChildDetails() {
@@ -149,7 +153,7 @@
             'Grand Child Link' +
             '</label>' +
             '<div class="col-sm-5">' +
-            '<input type="text" class="form-control form-control-lg" name="limk_grand_child[]"></div>' +
+            '<input type="text" class="form-control form-control-lg" name="link_grand_child[]"></div>' +
             '</div>';
     }
 </script>

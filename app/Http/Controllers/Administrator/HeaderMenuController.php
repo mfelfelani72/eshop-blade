@@ -35,6 +35,7 @@ class HeaderMenuController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
 
         $file = $request->file('image');
         $img = "";
