@@ -5410,8 +5410,7 @@ fieldset:disabled .btn {
   float: right;
   padding-left: 0.5rem;
   color: #6c757d;
-  content: var(--bs-breadcrumb-divider, "/")
-  ;
+  content: var(--bs-breadcrumb-divider, "/");
 }
 
 .breadcrumb-item.active {
@@ -31307,7 +31306,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   right: 315px !important;
 }
 
-.ps__thumb-y{
+.ps__thumb-y {
   width: 15px !important;
 }
 
@@ -42501,6 +42500,7 @@ table.dataTable.display tbody td {
   padding-right: 0;
   padding-left: 0.625rem;
 }
+
 /* here */
 [direction="rtl"] .dlab-demo-panel {
   left: auto;
@@ -42511,7 +42511,7 @@ table.dataTable.display tbody td {
   right: unset;
   left: 0;
 
-    /* right: 0;
+  /* right: 0;
   box-shadow: 0rem 0rem 3.125rem rgba(0, 0, 0, 0.2);
   z-index: 99999;
   overflow: hidden; */
@@ -43855,6 +43855,9 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
 
 /* mohammad style */
 
+.disable {
+  display: none;
+}
 
 
 /* mohammad style */

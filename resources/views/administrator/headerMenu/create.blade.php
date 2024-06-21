@@ -20,6 +20,9 @@
                             <form action="{{ route('header-menu.store') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
+
+                                {{-- header menu --}}
+
                                 <div class="mb-3 row">
                                     <label class="col-sm-2 col-form-label col-form-label-lg">Title</label>
                                     <div class="col-sm-10">
@@ -51,28 +54,66 @@
                                     </div>
                                 </div>
 
-                                <h4 class="card-title">Header Menu Child Details</h4>
-                                <hr>
+                                {{-- header menu --}}
 
-                                <div class="mb-3 row">
-                                    <label class="col-sm-2 col-form-label col-form-label-lg">Title</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-lg" name="title_child"
-                                            value="{{ old('title_child') }}">
-                                        @error('title_child')
-                                            <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+                                {{-- header menu childs --}}
+
+                                <div class="col-sm-6 col-form-label col-form-label-lg">
+                                    <input type="checkbox" class="form-check-input" id="customCheckBox1"
+                                        name="changeImg" onclick="addChildsDetails()">
+                                    <label class="form-check-label" for="customCheckBox1">Would you like
+                                        Add childs for this subject?</label>
                                 </div>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text">Upload Image</span>
-                                    <div class="form-file">
-                                        <input type="file" class="form-file-input form-control" name="image">
+                                <div class="disable" id="menu-child">
+                                    <h4 class="card-title">Header Menu Child Details</h4>
+                                    <hr>
+
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-2 col-form-label col-form-label-lg">Child Title</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control form-control-lg"
+                                                name="title_child" value="{{ old('title_child') }}">
+                                            @error('title_child')
+                                                <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                     </div>
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Upload Image</span>
+                                        <div class="form-file">
+                                            <input type="file" class="form-file-input form-control" name="image">
+                                        </div>
+                                    </div>
+                                    @error('image')
+                                        <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                    <div class="mb-1 row">
+                                        <label class="col-sm-2 col-form-label col-form-label-lg">Grand Child
+                                            Title</label>
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control form-control-lg"
+                                                name="title_grand_child[]">
+
+                                        </div>
+                                        <label class="col-sm-2 col-form-label col-form-label-lg">Grand Child
+                                            Link</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control form-control-lg"
+                                                name="link_grand_child[]">
+                                        </div>
+                                    </div>
+                                    <div class="mb-1 row" id="grand_child_details">
+                                       
+                                    </div>
+
+                                    <a href="javascript:void(0)" class="pointer"
+                                        onclick="addGrandChildDetails()"><span><i class="fa fa-plus"
+                                                aria-hidden="true"></i></span></a>
+
                                 </div>
-                                @error('image')
-                                    <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
-                                @enderror
+                                {{-- header menu childs --}}
+
+
                                 <div class="col-12">
                                     <button type="submit" class="float-end btn btn-primary mb-2">Save</button>
                                 </div>
@@ -84,3 +125,31 @@
         </div>
     </div>
 </div>
+
+<script>
+    function addChildsDetails() {
+
+        var element = document.getElementById("menu-child");
+
+        if (element.classList.value == 'disable')
+            element.classList.remove("disable");
+        else
+            element.classList.add("disable");
+    }
+
+    function addGrandChildDetails() {
+        let resultDiv = document.getElementById('grand_child_details');
+
+        resultDiv.innerHTML += '<label class="col-sm-2 col-form-label col-form-label-lg">' +
+            'Grand Child Title' +
+            '</label>' +
+            '<div class="col-sm-3">' +
+            '<input type="text" class="form-control form-control-lg" name="title_grand_child[]"></div>' +
+            '<label class="col-sm-2 col-form-label col-form-label-lg">' +
+            'Grand Child Link' +
+            '</label>' +
+            '<div class="col-sm-5">' +
+            '<input type="text" class="form-control form-control-lg" name="limk_grand_child[]"></div>' +
+            '</div>';
+    }
+</script>
