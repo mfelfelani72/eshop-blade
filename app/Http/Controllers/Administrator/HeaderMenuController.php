@@ -36,8 +36,8 @@ class HeaderMenuController extends Controller
      */
     public function store(Request $request)
     {
-       
-       
+
+     
         $file = $request->file('image');
         $img = "";
 
@@ -46,25 +46,36 @@ class HeaderMenuController extends Controller
             $file->move('front/img/header-menu', $img);
         }
 
-        Validator::make(['image' => $img], [
-            'image' => 'required',
-        ], [
-            'image.required' => __('dashboard.image') . __('dashboard.is-required'),
-        ])->validate();
-
         Validator::make($request->all(), [
             'title' => 'required',
-            // 'link' => 'required',
-            // 'lable' => 'required',
-
         ], [
 
             'title.required' => __('dashboard.title') . __('dashboard.is-required'),
-            // 'link.required' => __('dashboard.link') . __('dashboard.is-required'),
-            // 'lable.required' => __('dashboard.lable') . __('dashboard.is-required'),
-
+           
         ])
             ->validate();
+
+        if ($request->addChild) {
+
+            Validator::make(['image' => $img], [
+                'image' => 'required',
+            ], [
+                'image.required' => __('dashboard.image') . __('dashboard.is-required'),
+            ])->validate();
+
+            Validator::make($request->all(), [
+                'title_child' => 'required',
+            ], [
+
+                'title_child.required' => __('dashboard.title_child') . __('dashboard.is-required'),
+
+            ])
+                ->validate();
+
+          
+        }
+
+        
 
         $link = "empty";
         if ($request->link)
@@ -84,7 +95,7 @@ class HeaderMenuController extends Controller
                 'extra' => 'empty',
             ]
         );
-        if ($resultHeaderMenu) {
+        if ($resultHeaderMenu && $request->addChild=="on") {
             $resultHeaderMenuChild = HeaderMenuChild::create(
                 [
                     'code' => "empty",
@@ -95,7 +106,7 @@ class HeaderMenuController extends Controller
                     'extra' => 'empty',
                 ]
             );
-            if ($resultHeaderMenuChild) {
+            if ($resultHeaderMenuChild && $request->grand_child[0]['title'] && $request->grand_child[0]['link']) {
                 foreach ($request->grand_child as $item) {
                     HeaderMenuGrandchild::create([
                         'code' => "empty",

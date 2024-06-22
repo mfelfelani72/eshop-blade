@@ -26,7 +26,8 @@
                                 <div class="mb-3 row">
                                     <label class="col-sm-2 col-form-label col-form-label-lg">Title</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-lg" name="title">
+                                        <input type="text" class="form-control form-control-lg" name="title"
+                                            value="{{ old('title') }}">
                                         @error('title')
                                             <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -57,16 +58,35 @@
 
                                 {{-- header menu childs --}}
 
+                                @php
+                                    $status = 'disable';
+                                    $checked= "";
+                                    if (old('title')) {
+                                        $status = '';
+                                        $checked="checked";
+                                    }
+                                @endphp
+
                                 <div class="col-sm-6 col-form-label col-form-label-lg">
-                                    <input type="checkbox" class="form-check-input" id="customCheckBox1" name="addChild"
+                                    <input type="checkbox" class="form-check-input" {{ $checked }} id="customCheckBox1" name="addChild"
                                         onclick="addChildsDetails()">
                                     <label class="form-check-label" for="customCheckBox1">Would you like
                                         Add childs for this subject?</label>
                                 </div>
-                                <div class="disable" id="menu-child">
+                                
+                                <div class="{{ $status }}" id="menu-child">
                                     <h4 class="card-title">Header Menu Child Details</h4>
                                     <hr>
 
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Upload Image</span>
+                                        <div class="form-file">
+                                            <input type="file" class="form-file-input form-control" name="image">
+                                        </div>
+                                    </div>
+                                    @error('image')
+                                        <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                     <div class="mb-3 row">
                                         <label class="col-sm-2 col-form-label col-form-label-lg">Child Title</label>
                                         <div class="col-sm-10">
@@ -77,15 +97,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text">Upload Image</span>
-                                        <div class="form-file">
-                                            <input type="file" class="form-file-input form-control" name="image">
-                                        </div>
-                                    </div>
-                                    @error('image')
-                                        <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
-                                    @enderror
+
                                     @php
                                         $count = 0;
                                     @endphp
