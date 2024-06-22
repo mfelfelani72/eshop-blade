@@ -75,8 +75,6 @@ class HeaderMenuController extends Controller
           
         }
 
-        
-
         $link = "empty";
         if ($request->link)
             $link = $request->link;
@@ -143,6 +141,13 @@ class HeaderMenuController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $HeaderMenu = HeaderMenu::findOrFail($id);
+
+        if (file_exists('front/img/header-menu/' . $HeaderMenu->child->image)) {
+            unlink('front/img/header-menu/' . $HeaderMenu->child->image);
+        }
+
+        $HeaderMenu->destroy($id);
+        return redirect()->route('header-menu.index');
     }
 }
