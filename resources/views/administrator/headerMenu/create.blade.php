@@ -58,8 +58,8 @@
                                 {{-- header menu childs --}}
 
                                 <div class="col-sm-6 col-form-label col-form-label-lg">
-                                    <input type="checkbox" class="form-check-input" id="customCheckBox1"
-                                        name="addChild" onclick="addChildsDetails()">
+                                    <input type="checkbox" class="form-check-input" id="customCheckBox1" name="addChild"
+                                        onclick="addChildsDetails()">
                                     <label class="form-check-label" for="customCheckBox1">Would you like
                                         Add childs for this subject?</label>
                                 </div>
@@ -86,23 +86,26 @@
                                     @error('image')
                                         <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
                                     @enderror
+                                    @php
+                                        $count = 0;
+                                    @endphp
                                     <div class="mb-1 row">
                                         <label class="col-sm-2 col-form-label col-form-label-lg">Grand Child
                                             Title</label>
                                         <div class="col-sm-3">
                                             <input type="text" class="form-control form-control-lg"
-                                                name="title_grand_child[]">
+                                                name="grand_child[{{ $count }}][title]">
 
                                         </div>
                                         <label class="col-sm-2 col-form-label col-form-label-lg">Grand Child
                                             Link</label>
-                                        <div class="col-sm-5">
+                                        <div class="col-sm-5" id="count" count="{{ $count }}">
                                             <input type="text" class="form-control form-control-lg"
-                                                name="link_grand_child[]">
+                                                name="grand_child[{{ $count }}][link]">
                                         </div>
                                     </div>
                                     <div class="mb-1 row" id="grand_child_details">
-                                       
+
                                     </div>
 
                                     <a href="javascript:void(0)" class="pointer"
@@ -131,11 +134,10 @@
         var child = document.getElementById("menu-child");
         var link = document.getElementById("menu_link");
 
-        if (child.classList.value == 'disable'){
+        if (child.classList.value == 'disable') {
             child.classList.remove("disable");
             link.classList.add("disable");
-        }
-        else{
+        } else {
             child.classList.add("disable");
             link.classList.remove("disable");
         }
@@ -143,17 +145,20 @@
 
     function addGrandChildDetails() {
         let resultDiv = document.getElementById('grand_child_details');
-
+        var count = parseInt(document.getElementById("count").getAttribute("count"));
+        console.log(count);
+        count = count + 1;
         resultDiv.innerHTML += '<label class="col-sm-2 col-form-label col-form-label-lg">' +
             'Grand Child Title' +
             '</label>' +
             '<div class="col-sm-3">' +
-            '<input type="text" class="form-control form-control-lg" name="title_grand_child[]"></div>' +
+            '<input type="text" class="form-control form-control-lg" name="grand_child[' + count + '][title]"></div>' +
             '<label class="col-sm-2 col-form-label col-form-label-lg">' +
             'Grand Child Link' +
             '</label>' +
             '<div class="col-sm-5">' +
-            '<input type="text" class="form-control form-control-lg" name="link_grand_child[]"></div>' +
+            '<input type="text" class="form-control form-control-lg" name="grand_child[' + count + '][link]"></div>' +
             '</div>';
+        document.getElementById('count').setAttribute("count", count);
     }
 </script>

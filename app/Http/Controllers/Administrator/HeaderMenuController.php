@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Administrator;
 use App\Http\Controllers\Controller;
 use App\Models\Administrator\HeaderMenu;
 use App\Models\Administrator\HeaderMenuChild;
+use App\Models\Administrator\HeaderMenuGrandchild;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -35,8 +36,8 @@ class HeaderMenuController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
-
+       
+       
         $file = $request->file('image');
         $img = "";
 
@@ -45,10 +46,10 @@ class HeaderMenuController extends Controller
             $file->move('front/img/header-menu', $img);
         }
 
-        Validator::make(['img' => $img], [
-            'img' => 'required',
+        Validator::make(['image' => $img], [
+            'image' => 'required',
         ], [
-            'img.required' => __('dashboard.image') . __('dashboard.is-required'),
+            'image.required' => __('dashboard.image') . __('dashboard.is-required'),
         ])->validate();
 
         Validator::make($request->all(), [
@@ -59,8 +60,8 @@ class HeaderMenuController extends Controller
         ], [
 
             'title.required' => __('dashboard.title') . __('dashboard.is-required'),
-            'link.required' => __('dashboard.link') . __('dashboard.is-required'),
-            'lable.required' => __('dashboard.lable') . __('dashboard.is-required'),
+            // 'link.required' => __('dashboard.link') . __('dashboard.is-required'),
+            // 'lable.required' => __('dashboard.lable') . __('dashboard.is-required'),
 
         ])
             ->validate();
@@ -84,7 +85,7 @@ class HeaderMenuController extends Controller
             ]
         );
         if ($resultHeaderMenu) {
-            HeaderMenuChild::create(
+            $resultHeaderMenuChild = HeaderMenuChild::create(
                 [
                     'code' => "empty",
                     'title' => $request->title_child,
@@ -94,6 +95,18 @@ class HeaderMenuController extends Controller
                     'extra' => 'empty',
                 ]
             );
+            if ($resultHeaderMenuChild) {
+                foreach ($request->grand_child as $item) {
+                    HeaderMenuGrandchild::create([
+                        'code' => "empty",
+                        'title' => $item['title'],
+                        'link' => $item['link'],
+                        'header_menu_child_id' => $resultHeaderMenuChild->id,
+                        'operator' => Auth::user()->id,
+                        'extra' => 'empty',
+                    ]);
+                }
+            }
         }
 
         return redirect()->route('header-menu.index');
