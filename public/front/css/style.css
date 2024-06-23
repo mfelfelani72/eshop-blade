@@ -443,3 +443,11 @@ form.search :where(span, button) {
     filter: blur(50px);
     opacity: .8;
 }
+
+/* mohammad styles */
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+/* mohammad styles */

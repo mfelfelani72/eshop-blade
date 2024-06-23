@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Administrator\HeaderMenu;
 use App\Models\Administrator\PrimaryBanner;
 use App\Models\Administrator\PrimarySlider;
 use App\Models\Administrator\ProductFeatured;
@@ -17,14 +18,17 @@ class FrontController extends Controller
     public function index()
     {
 
+        $headerMenu = HeaderMenu::all();
+
         $primarySliders = PrimarySlider::all();
         $primaryBanners = PrimaryBanner::all();
         $productTrends = ProductTrend::all();
         $productFeatured = ProductFeatured::all();
-     
-        
+
+
+
         $address = 'front/front/index';
-        return view('front.front.base-index', compact('address', 'primarySliders', 'primaryBanners', 'productTrends','productFeatured'));
+        return view('front.front.base-index', compact('address', 'headerMenu', 'primarySliders', 'primaryBanners', 'productTrends', 'productFeatured'));
     }
 
     /**

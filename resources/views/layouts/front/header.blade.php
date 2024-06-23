@@ -79,107 +79,170 @@
                     <div class="logo"><a href="/"><span class="circle">.ClonerStore</span></a></div>
                     <nav class="mobile-hide">
                         <ul class="flexitem second-links">
-                            <li><a href="#">{{ __('front.home') }}</a></li>
-                            <li><a href="#">{{ __('front.shop') }}</a></li>
-                            <li class="has-child">
-                                <a href="#">{{ __('front.stock_place') }}
-                                    <div class="icon-small"><i class="ri-arrow-down-s-line"></i></div>
-                                </a>
-                                <div class="mega">
-                                    <div class="container">
-                                        <div class="wrapper">
-                                            <div class="flexcol">
-                                                <div class="row">
-                                                    <h4>{{ __('front.laptop') }}</h4>
-                                                    <ul>
-                                                        <li><a href="#">{{ __('front.asus') }}</a></li>
-                                                        <li><a href="#">{{ __('front.lenovo') }}</a></li>
-                                                        <li><a href="#">Toshiba</a></li>
-                                                        <li><a href="#">Pants & Capris</a></li>
-                                                        <li><a href="#">Sweaters</a></li>
-                                                        <li><a href="#">Costumes</a></li>
-                                                        <li><a href="#">Hoodies & Sweatshirts</a></li>
-                                                        <li><a href="#">Pajamas & Robes</a></li>
-                                                        <li><a href="#">Shorts</a></li>
-                                                        <li><a href="#">Swimwear</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="flexcol">
-                                                <div class="row">
-                                                    <h4>jewelry</h4>
-                                                    <ul>
-                                                        <li><a href="#">accessories</a></li>
-                                                        <li><a href="#">bags & purses</a></li>
-                                                        <li><a href="#">necklaces</a></li>
-                                                        <li><a href="#">rings</a></li>
-                                                        <li><a href="#">earrings</a></li>
-                                                        <li><a href="#">bracelets</a></li>
-                                                        <li><a href="#">body jewelry</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="flexcol">
-                                                <div class="row">
-                                                    <h4>beauty</h4>
-                                                    <ul>
-                                                        <li><a href="#">bath accessories</a></li>
-                                                        <li><a href="#">makeuo & cosmetics</a></li>
-                                                        <li><a href="#">skin care</a></li>
-                                                        <li><a href="#">hair care</a></li>
-                                                        <li><a href="#">essentials oils</a></li>
-                                                        <li><a href="#">fragrences</a></li>
-                                                        <li><a href="#">soap & bath bombs</a></li>
-                                                        <li><a href="#">face masks & coverings</a></li>
-                                                        <li><a href="#">spa kits & gifts</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="flexcol">
-                                                <div class="row">
-                                                    <h4>top brands</h4>
-                                                    <ul class="women-brands">
-                                                        <li><a href="#">nike</a></li>
-                                                        <li><a href="#">louis vuitton</a></li>
-                                                        <li><a href="#">hermes</a></li>
-                                                        <li><a href="#">gucci</a></li>
-                                                        <li><a href="#">zalando</a></li>
-                                                        <li><a href="#">tiffany & co.</a></li>
-                                                        <li><a href="#">zara</a></li>
-                                                        <li><a href="#">h&m</a></li>
-                                                        <li><a href="#">cartier</a></li>
-                                                        <li><a href="#">chanel</a></li>
-                                                        <li><a href="#">hurley</a></li>
-                                                    </ul>
-                                                    <a href="#" class="view-all"> View all brands <i
-                                                            class="ri-arrow-right-line"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="flexcol products">
-                                                <div class="row">
-                                                    <div class="media">
-                                                        <div class="thumbnail object-cover">
-                                                            <a href="#">
-                                                                <img src="{{ asset('front/img/products/apparel4.jpg') }}"
-                                                                    alt="">
-                                                            </a>
+
+                            @foreach ($headerMenu as $item)
+                                @if ($item->child)
+                                    <li class="has-child">
+                                        <a href="#" class="capitalize">{{ $item->title }}
+                                            <div class="icon-small"><i class="ri-arrow-down-s-line"></i></div>
+                                        </a>
+                                        <div class="mega">
+                                            <div class="container">
+                                                <div class="wrapper">
+                                                    <div class="flexcol">
+                                                        <div class="row">
+                                                            <h4>{{ $item->child->title }}</h4>
+                                                            <ul>
+                                                                @foreach ($item->child->grandChilds as $row)
+                                                                    <li><a
+                                                                            href="{{ $row->link }}">{{ $row->title }}</a>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
                                                         </div>
                                                     </div>
-                                                    <div class="text-content">
-                                                        <h4>most wanted!</h4>
-                                                        <a href="#" class="primary-button">order now</a>
+
+                                                    <div class="flexcol products">
+                                                        <div class="row">
+                                                            <div class="media">
+                                                                <div class="thumbnail object-cover">
+                                                                    <a href="#">
+                                                                        <img src="{{ asset('front/img/header-menu/' . $item->child->image) }}"
+                                                                            alt="">
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            @if (false)
+                                                                <div class="text-content">
+                                                                    <h4>most wanted!</h4>
+                                                                    <a href="#" class="primary-button">order
+                                                                        now</a>
+                                                                </div>
+                                                            @endif
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                @else
+                                    <li>
+                                        <a class="capitalize" href="{{ $item->link }}">{{ $item->title }}
+                                            @if ($item->lable !== 'empty')
+                                                <div class="fly-item"><span
+                                                        class="capitalize">{{ $item->lable }}</span>
+                                                </div>
+                                            @endif
+                                        </a>
+                                    </li>
+                                @endif
+                            @endforeach
+
+                            @if (false)
+                                <li><a href="#">{{ __('front.home') }}</a></li>
+                                <li><a href="#">{{ __('front.shop') }}</a></li>
+                                <li class="has-child">
+                                    <a href="#">{{ __('front.stock_place') }}
+                                        <div class="icon-small"><i class="ri-arrow-down-s-line"></i></div>
+                                    </a>
+                                    <div class="mega">
+                                        <div class="container">
+                                            <div class="wrapper">
+                                                <div class="flexcol">
+                                                    <div class="row">
+                                                        <h4>{{ __('front.laptop') }}</h4>
+                                                        <ul>
+                                                            <li><a href="#">{{ __('front.asus') }}</a></li>
+                                                            <li><a href="#">{{ __('front.lenovo') }}</a></li>
+                                                            <li><a href="#">Toshiba</a></li>
+                                                            <li><a href="#">Pants & Capris</a></li>
+                                                            <li><a href="#">Sweaters</a></li>
+                                                            <li><a href="#">Costumes</a></li>
+                                                            <li><a href="#">Hoodies & Sweatshirts</a></li>
+                                                            <li><a href="#">Pajamas & Robes</a></li>
+                                                            <li><a href="#">Shorts</a></li>
+                                                            <li><a href="#">Swimwear</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="flexcol">
+                                                    <div class="row">
+                                                        <h4>jewelry</h4>
+                                                        <ul>
+                                                            <li><a href="#">accessories</a></li>
+                                                            <li><a href="#">bags & purses</a></li>
+                                                            <li><a href="#">necklaces</a></li>
+                                                            <li><a href="#">rings</a></li>
+                                                            <li><a href="#">earrings</a></li>
+                                                            <li><a href="#">bracelets</a></li>
+                                                            <li><a href="#">body jewelry</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="flexcol">
+                                                    <div class="row">
+                                                        <h4>beauty</h4>
+                                                        <ul>
+                                                            <li><a href="#">bath accessories</a></li>
+                                                            <li><a href="#">makeuo & cosmetics</a></li>
+                                                            <li><a href="#">skin care</a></li>
+                                                            <li><a href="#">hair care</a></li>
+                                                            <li><a href="#">essentials oils</a></li>
+                                                            <li><a href="#">fragrences</a></li>
+                                                            <li><a href="#">soap & bath bombs</a></li>
+                                                            <li><a href="#">face masks & coverings</a></li>
+                                                            <li><a href="#">spa kits & gifts</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="flexcol">
+                                                    <div class="row">
+                                                        <h4>top brands</h4>
+                                                        <ul class="women-brands">
+                                                            <li><a href="#">nike</a></li>
+                                                            <li><a href="#">louis vuitton</a></li>
+                                                            <li><a href="#">hermes</a></li>
+                                                            <li><a href="#">gucci</a></li>
+                                                            <li><a href="#">zalando</a></li>
+                                                            <li><a href="#">tiffany & co.</a></li>
+                                                            <li><a href="#">zara</a></li>
+                                                            <li><a href="#">h&m</a></li>
+                                                            <li><a href="#">cartier</a></li>
+                                                            <li><a href="#">chanel</a></li>
+                                                            <li><a href="#">hurley</a></li>
+                                                        </ul>
+                                                        <a href="#" class="view-all"> View all brands <i
+                                                                class="ri-arrow-right-line"></i></a>
+                                                    </div>
+                                                </div>
+                                                <div class="flexcol products">
+                                                    <div class="row">
+                                                        <div class="media">
+                                                            <div class="thumbnail object-cover">
+                                                                <a href="#">
+                                                                    <img src="{{ asset('front/img/products/apparel4.jpg') }}"
+                                                                        alt="">
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-content">
+                                                            <h4>most wanted!</h4>
+                                                            <a href="#" class="primary-button">order now</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </li>
-                            <li><a href="#">Men</a></li>
-                            <li><a href="#">Sports
-                                    <div class="fly-item"><span>New!</span></div>
-                                </a>
-                            </li>
+                                </li>
+                                <li><a href="#">Men</a></li>
+                                <li><a href="#">Sports
+                                        <div class="fly-item"><span>New!</span></div>
+                                    </a>
+                                </li>
+                            @endif
+
                         </ul>
                     </nav>
                 </div>
