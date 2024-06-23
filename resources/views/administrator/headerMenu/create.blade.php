@@ -60,20 +60,20 @@
 
                                 @php
                                     $status = 'disable';
-                                    $checked= "";
+                                    $checked = '';
                                     if (old('title')) {
                                         $status = '';
-                                        $checked="checked";
+                                        $checked = 'checked';
                                     }
                                 @endphp
 
                                 <div class="col-sm-6 col-form-label col-form-label-lg">
-                                    <input type="checkbox" class="form-check-input" {{ $checked }} id="customCheckBox1" name="addChild"
-                                        onclick="addChildsDetails()">
+                                    <input type="checkbox" class="form-check-input" {{ $checked }}
+                                        id="customCheckBox1" name="addChild" onclick="addChildsDetails()">
                                     <label class="form-check-label" for="customCheckBox1">Would you like
                                         Add childs for this subject?</label>
                                 </div>
-                                
+
                                 <div class="{{ $status }}" id="menu-child">
                                     <h4 class="card-title">Header Menu Child Details</h4>
                                     <hr>
@@ -87,47 +87,147 @@
                                     @error('image')
                                         <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
                                     @enderror
-                                    <div class="mb-3 row">
-                                        <label class="col-sm-2 col-form-label col-form-label-lg">Child Title</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control form-control-lg"
-                                                name="title_child" value="{{ old('title_child') }}">
-                                            @error('title_child')
-                                                <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
-                                            @enderror
+
+                                    <div class="col-xl-12">
+                                        <div class="card-body">
+                                            <!-- Nav tabs -->
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" data-bs-toggle="tab" href="#child-1">
+                                                        <span>
+                                                            Child 1
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-bs-toggle="tab" href="#child-2">
+                                                        <span>
+                                                           Child 2
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-bs-toggle="tab" href="#child-3">
+                                                        <span>
+                                                          Child 3
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-bs-toggle="tab" href="#child-4">
+                                                        <span>
+                                                           Child 4
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <!-- Tab panes -->
+                                            <div class="tab-content tabcontent-border">
+                                                <div class="tab-pane fade active show" id="child-1" role="tabpanel">
+                                                    <div class="pt-4">
+                                                        <div class="mb-3 row">
+                                                            <label
+                                                                class="col-sm-2 col-form-label col-form-label-lg">Child
+                                                                Title</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text"
+                                                                    class="form-control form-control-lg"
+                                                                    name="title_child"
+                                                                    value="{{ old('title_child') }}">
+                                                                @error('title_child')
+                                                                    <div class="pt-1 pb-1 mt-2 alert alert-danger">
+                                                                        {{ $message }}</div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+
+                                                        @php
+                                                            $count = 0;
+                                                        @endphp
+                                                        <div class="mb-1 row">
+                                                            <label
+                                                                class="col-sm-2 col-form-label col-form-label-lg">Grand
+                                                                Child
+                                                                Title</label>
+                                                            <div class="col-sm-3">
+                                                                <input type="text"
+                                                                    class="form-control form-control-lg"
+                                                                    name="grand_child[{{ $count }}][title]">
+
+                                                            </div>
+                                                            <label
+                                                                class="col-sm-2 col-form-label col-form-label-lg">Grand
+                                                                Child
+                                                                Link</label>
+                                                            <div class="col-sm-5" id="count"
+                                                                count="{{ $count }}">
+                                                                <input type="text"
+                                                                    class="form-control form-control-lg"
+                                                                    name="grand_child[{{ $count }}][link]">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-1 row" id="grand_child_details">
+
+                                                        </div>
+
+                                                        <a href="javascript:void(0)" class="pointer"
+                                                            onclick="addGrandChildDetails()"><span><i
+                                                                    class="fa fa-plus"
+                                                                    aria-hidden="true"></i></span></a>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="child-2" role="tabpanel">
+                                                    <div class="pt-4">
+                                                        <h4>This is icon title</h4>
+                                                        <p>Raw denim you probably haven't heard of them jean shorts
+                                                            Austin. Nesciunt tofu stumptown aliqua, retro synth
+                                                            master
+                                                            cleanse. Mustache cliche tempor.
+                                                        </p>
+                                                        <p>Raw denim you probably haven't heard of them jean shorts
+                                                            Austin. Nesciunt tofu stumptown aliqua, retro synth
+                                                            master
+                                                            cleanse. Mustache cliche tempor.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="child-3" role="tabpanel">
+                                                    <div class="pt-4">
+                                                        <h4>This is icon title</h4>
+                                                        <p>Raw denim you probably haven't heard of them jean shorts
+                                                            Austin. Nesciunt tofu stumptown aliqua, retro synth
+                                                            master
+                                                            cleanse. Mustache cliche tempor.
+                                                        </p>
+                                                        <p>Raw denim you probably haven't heard of them jean shorts
+                                                            Austin. Nesciunt tofu stumptown aliqua, retro synth
+                                                            master
+                                                            cleanse. Mustache cliche tempor.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade" id="child-4" role="tabpanel">
+                                                    <div class="pt-4">
+                                                        <h4>This is icon title</h4>
+                                                        <p>Raw denim you probably haven't heard of them jean shorts
+                                                            Austin. Nesciunt tofu stumptown aliqua, retro synth
+                                                            master
+                                                            cleanse. Mustache cliche tempor.
+                                                        </p>
+                                                        <p>Raw denim you probably haven't heard of them jean shorts
+                                                            Austin. Nesciunt tofu stumptown aliqua, retro synth
+                                                            master
+                                                            cleanse. Mustache cliche tempor.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    @php
-                                        $count = 0;
-                                    @endphp
-                                    <div class="mb-1 row">
-                                        <label class="col-sm-2 col-form-label col-form-label-lg">Grand Child
-                                            Title</label>
-                                        <div class="col-sm-3">
-                                            <input type="text" class="form-control form-control-lg"
-                                                name="grand_child[{{ $count }}][title]">
-
-                                        </div>
-                                        <label class="col-sm-2 col-form-label col-form-label-lg">Grand Child
-                                            Link</label>
-                                        <div class="col-sm-5" id="count" count="{{ $count }}">
-                                            <input type="text" class="form-control form-control-lg"
-                                                name="grand_child[{{ $count }}][link]">
-                                        </div>
-                                    </div>
-                                    <div class="mb-1 row" id="grand_child_details">
-
-                                    </div>
-
-                                    <a href="javascript:void(0)" class="pointer"
-                                        onclick="addGrandChildDetails()"><span><i class="fa fa-plus"
-                                                aria-hidden="true"></i></span></a>
 
                                 </div>
                                 {{-- header menu childs --}}
-
-
                                 <div class="col-12">
                                     <button type="submit" class="float-end btn btn-primary mb-2">Save</button>
                                 </div>
