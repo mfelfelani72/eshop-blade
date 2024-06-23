@@ -37,7 +37,7 @@ class HeaderMenuController extends Controller
     public function store(Request $request)
     {
 
-     
+
         $file = $request->file('image');
         $img = "";
 
@@ -51,7 +51,7 @@ class HeaderMenuController extends Controller
         ], [
 
             'title.required' => __('dashboard.title') . __('dashboard.is-required'),
-           
+
         ])
             ->validate();
 
@@ -71,8 +71,6 @@ class HeaderMenuController extends Controller
 
             ])
                 ->validate();
-
-          
         }
 
         $link = "empty";
@@ -93,7 +91,7 @@ class HeaderMenuController extends Controller
                 'extra' => 'empty',
             ]
         );
-        if ($resultHeaderMenu && $request->addChild=="on") {
+        if ($resultHeaderMenu && $request->addChild == "on") {
             $resultHeaderMenuChild = HeaderMenuChild::create(
                 [
                     'code' => "empty",
@@ -137,7 +135,72 @@ class HeaderMenuController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        dd($request);
+        $headerMenu = HeaderMenu::findOrFail($id);
+        $file = $request->file('image');
+        $img = "";
+
+        if (!empty($file)) {
+            if (file_exists('front/img/header-menu/' . $headerMenu->child->image)) {
+                unlink('front/img/header-menu/' . $headerMenu->child->image);
+            }
+            $img = time() . "." . $file->getClientOriginalExtension();
+            $file->move('front/img/header-menu', $img);
+        } else {
+            $img = $headerMenu->child->image;
+        }
+
+        $link = "empty";
+        if ($request->link !== "empty")
+            $link = $request->link;
+
+        $lable = "empty";
+        if ($request->lable !== "empty")
+            $lable = $request->lable;
+
+        $resultHeaderMenu = $headerMenu->update([
+            'code' => "empty",
+            'title' => $request->title,
+            'lable' => $lable,
+            'link' => $link,
+            'operator' => Auth::user()->id,
+            'extra' => 'empty',
+        ]);
+
+        if ($resultHeaderMenu && $request->addChild == "on") {
+            $headerMenuChild = HeaderMenuChild::findOrFail($headerMenu->child->id);
+            $resultHeaderMenuChild = $headerMenuChild->update(
+                [
+                    'code' => "empty",
+                    'title' => $request->title_child,
+                    // 'header_menu_id' => $id,
+                    'image' => $img,
+                    'operator' => Auth::user()->id,
+                    'extra' => 'empty',
+                ]
+            );
+
+            // delete last childs
+
+            $resultHeaderMenuGrandchildDelete = HeaderMenuGrandchild::where('header_menu_child_id', $headerMenuChild->id)->delete();
+
+
+            // delete last childs
+
+            if ($resultHeaderMenuChild && $resultHeaderMenuGrandchildDelete && $request->grand_child[0]['title'] && $request->grand_child[0]['link']) {
+                foreach ($request->grand_child as $item) {
+                    HeaderMenuGrandchild::create([
+                        'code' => "empty",
+                        'title' => $item['title'],
+                        'link' => $item['link'],
+                        'header_menu_child_id' => $headerMenuChild->id,
+                        'operator' => Auth::user()->id,
+                        'extra' => 'empty',
+                    ]);
+                }
+            }
+        }
+
+        return redirect()->route('header-menu.index');
     }
 
     /**
