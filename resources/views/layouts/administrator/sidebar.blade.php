@@ -60,6 +60,13 @@
                         </ul>
                     </li>
 
+                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('dashboard.menu') }}</a>
+                        <ul aria-expanded="false">
+                            <li><a href="{{ route('header-menu.index') }}">{{ __('dashboard.header menu') }}</a></li>
+                            
+                        </ul>
+                    </li>
+
                     {{-- Public Front --}}
 
                 </ul>

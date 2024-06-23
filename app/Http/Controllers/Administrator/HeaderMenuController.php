@@ -125,7 +125,11 @@ class HeaderMenuController extends Controller
      */
     public function edit(string $id)
     {
-        //
+
+        $headerMenu = HeaderMenu::findOrFail($id);
+
+        $address = 'administrator/headerMenu/edit';
+        return view('administrator.dashboard.base-index', compact('address', 'headerMenu'));
     }
 
     /**
@@ -133,7 +137,7 @@ class HeaderMenuController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -141,13 +145,13 @@ class HeaderMenuController extends Controller
      */
     public function destroy(string $id)
     {
-        $HeaderMenu = HeaderMenu::findOrFail($id);
+        $headerMenu = HeaderMenu::findOrFail($id);
 
-        if (file_exists('front/img/header-menu/' . $HeaderMenu->child->image)) {
-            unlink('front/img/header-menu/' . $HeaderMenu->child->image);
+        if (file_exists('front/img/header-menu/' . $headerMenu->child->image)) {
+            unlink('front/img/header-menu/' . $headerMenu->child->image);
         }
 
-        $HeaderMenu->destroy($id);
+        $headerMenu->destroy($id);
         return redirect()->route('header-menu.index');
     }
 }
