@@ -1,3 +1,9 @@
+@php
+    $backUrl = app('router')
+        ->getRoutes()
+        ->match(app('request')->create(url()->previous()))
+        ->getName();
+@endphp
 <div class="content-body">
     <div class="container-fluid">
 
@@ -33,12 +39,12 @@
                                         @enderror
                                     </div>
                                 </div>
-                                 @php
-                                      $status = "";
-                                      if($headerMenu->child){
-                                        $status = "disable";
-                                      }
-                                 @endphp
+                                @php
+                                    $status = '';
+                                    if ($headerMenu->child) {
+                                        $status = 'disable';
+                                    }
+                                @endphp
                                 <div class="mb-3 row {{ $status }}" id="menu_link">
                                     <label class="col-sm-2 col-form-label col-form-label-lg">Link</label>
                                     <div class="col-sm-10">
@@ -65,9 +71,10 @@
                                 {{-- header menu childs --}}
 
                                 @php
+
                                     $status = 'disable';
                                     $checked = '';
-                                    if ($headerMenu->child) {
+                                    if ($headerMenu->child || $backUrl == 'header-menu.edit') {
                                         $status = '';
                                         $checked = 'checked';
                                     }
@@ -84,13 +91,16 @@
                                     <h4 class="card-title">Header Menu Child Details</h4>
                                     <hr>
 
-                                    <div class="mb-3 row">
-                                        <label class="col-sm-2 col-form-label col-form-label-lg">Image</label>
-                                        <div class="col-sm-10">
-                                            <img class="" width="200"
-                                                src={{ asset('front/img/header-menu/' . $headerMenu->child->image) }}>
+                                    @if ($headerMenu->child)
+                                        <div class="mb-3 row">
+                                            <label class="col-sm-2 col-form-label col-form-label-lg">Image</label>
+                                            <div class="col-sm-10">
+                                                <img class="" width="200"
+                                                    src={{ asset('front/img/header-menu/' . $headerMenu->child->image) }}>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
+
 
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">Upload Image</span>
@@ -105,7 +115,10 @@
                                         <label class="col-sm-2 col-form-label col-form-label-lg">Child Title</label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control form-control-lg"
-                                                name="title_child" value="{{ $headerMenu->child->title }}">
+                                                name="title_child"
+                                                @if ($headerMenu->child) value="{{ $headerMenu->child->title }}" @endif
+                                                @if( old('title')) value="{{ old('title_child') }}" @endif
+                                                 >
                                             @error('title_child')
                                                 <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
                                             @enderror
@@ -115,25 +128,29 @@
                                     @php
                                         $count = 0;
                                     @endphp
-                                    @foreach ($headerMenu->child->grandChilds as $item )
-                                         <div class="mb-1 row">
-                                        <label class="col-sm-2 col-form-label col-form-label-lg">Grand Child
-                                            Title</label>
-                                        <div class="col-sm-3">
-                                            <input type="text" class="form-control form-control-lg"
-                                                name="grand_child[{{ $count }}][title]" value="{{ $item->title }}">
+                                    @if ($headerMenu->child)
+                                        @foreach ($headerMenu->child->grandChilds as $item)
+                                            <div class="mb-1 row">
+                                                <label class="col-sm-2 col-form-label col-form-label-lg">Grand Child
+                                                    Title</label>
+                                                <div class="col-sm-3">
+                                                    <input type="text" class="form-control form-control-lg"
+                                                        name="grand_child[{{ $count }}][title]"
+                                                        value="{{ $item->title }}">
 
-                                        </div>
-                                        <label class="col-sm-2 col-form-label col-form-label-lg">Grand Child
-                                            Link</label>
-                                        <div class="col-sm-5">
-                                            <input type="text" class="form-control form-control-lg"
-                                                name="grand_child[{{ $count++ }}][link]" value="{{ $item->link }}">
-                                        </div>
-                                    </div>
-                                    @endforeach
+                                                </div>
+                                                <label class="col-sm-2 col-form-label col-form-label-lg">Grand Child
+                                                    Link</label>
+                                                <div class="col-sm-5">
+                                                    <input type="text" class="form-control form-control-lg"
+                                                        name="grand_child[{{ $count++ }}][link]"
+                                                        value="{{ $item->link }}">
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @endif
                                     <div class="disable" id="count" count="{{ $count }}"></div>
-                                   
+
                                     <div class="mb-1 row" id="grand_child_details">
 
                                     </div>
@@ -176,8 +193,7 @@
     function addGrandChildDetails() {
         let resultDiv = document.getElementById('grand_child_details');
         var count = parseInt(document.getElementById("count").getAttribute("count"));
-        console.log(count);
-        count = count + 1;
+
         resultDiv.innerHTML += '<label class="col-sm-2 col-form-label col-form-label-lg">' +
             'Grand Child Title' +
             '</label>' +
@@ -189,6 +205,8 @@
             '<div class="col-sm-5">' +
             '<input type="text" class="form-control form-control-lg" name="grand_child[' + count + '][link]"></div>' +
             '</div>';
+
+        count = count + 1;
         document.getElementById('count').setAttribute("count", count);
     }
 </script>

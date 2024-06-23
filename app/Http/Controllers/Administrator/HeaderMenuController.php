@@ -135,19 +135,46 @@ class HeaderMenuController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // dd($request);
         $headerMenu = HeaderMenu::findOrFail($id);
         $file = $request->file('image');
         $img = "";
 
+        if (!empty($file))
+            $img = time() . "." . $file->getClientOriginalExtension();
+
+        if ($request->addChild) {
+
+            if (!$headerMenu->child) {
+
+                Validator::make(['image' => $img], [
+                    'image' => 'required',
+                ], [
+                    'image.required' => __('dashboard.image') . __('dashboard.is-required'),
+                ])->validate();
+               
+            }
+
+            Validator::make($request->all(), [
+                'title_child' => 'required',
+            ], [
+
+                'title_child.required' => __('dashboard.title_child') . __('dashboard.is-required'),
+
+            ])
+                ->validate();
+        }
+
         if (!empty($file)) {
-            if (file_exists('front/img/header-menu/' . $headerMenu->child->image)) {
+            if ($headerMenu->child && file_exists('front/img/header-menu/' . $headerMenu->child->image)) {
                 unlink('front/img/header-menu/' . $headerMenu->child->image);
             }
-            $img = time() . "." . $file->getClientOriginalExtension();
+
             $file->move('front/img/header-menu', $img);
-        } else {
+        } elseif ($headerMenu->child) {
             $img = $headerMenu->child->image;
         }
+
 
         $link = "empty";
         if ($request->link !== "empty")
@@ -166,33 +193,37 @@ class HeaderMenuController extends Controller
             'extra' => 'empty',
         ]);
 
+        // delete last childs
+        if ($headerMenu->child) {
+            $resultHeaderMenuchildDelete = HeaderMenuchild::where('header_menu_id', $headerMenu->id)->delete();
+            $resultHeaderMenuGrandchildDelete = HeaderMenuGrandchild::where('header_menu_child_id', $headerMenu->child->id)->delete();
+        }
+
+
+        // delete last childs
+
         if ($resultHeaderMenu && $request->addChild == "on") {
-            $headerMenuChild = HeaderMenuChild::findOrFail($headerMenu->child->id);
-            $resultHeaderMenuChild = $headerMenuChild->update(
+
+            $resultHeaderMenuChild = HeaderMenuChild::create(
                 [
                     'code' => "empty",
                     'title' => $request->title_child,
-                    // 'header_menu_id' => $id,
+                    'header_menu_id' => $id,
                     'image' => $img,
                     'operator' => Auth::user()->id,
                     'extra' => 'empty',
                 ]
             );
 
-            // delete last childs
-
-            $resultHeaderMenuGrandchildDelete = HeaderMenuGrandchild::where('header_menu_child_id', $headerMenuChild->id)->delete();
 
 
-            // delete last childs
-
-            if ($resultHeaderMenuChild && $resultHeaderMenuGrandchildDelete && $request->grand_child[0]['title'] && $request->grand_child[0]['link']) {
+            if ($resultHeaderMenuChild && $request->grand_child && $request->grand_child[0]['title'] && $request->grand_child[0]['link']) {
                 foreach ($request->grand_child as $item) {
                     HeaderMenuGrandchild::create([
                         'code' => "empty",
                         'title' => $item['title'],
                         'link' => $item['link'],
-                        'header_menu_child_id' => $headerMenuChild->id,
+                        'header_menu_child_id' => $resultHeaderMenuChild->id,
                         'operator' => Auth::user()->id,
                         'extra' => 'empty',
                     ]);
@@ -210,7 +241,7 @@ class HeaderMenuController extends Controller
     {
         $headerMenu = HeaderMenu::findOrFail($id);
 
-        if (file_exists('front/img/header-menu/' . $headerMenu->child->image)) {
+        if ($headerMenu->child && file_exists('front/img/header-menu/' . $headerMenu->child->image)) {
             unlink('front/img/header-menu/' . $headerMenu->child->image);
         }
 
