@@ -36,8 +36,7 @@ class HeaderMenuController extends Controller
      */
     public function store(Request $request)
     {
-
-
+        // dd($request);
         $file = $request->file('image');
         $img = "";
 
@@ -92,26 +91,30 @@ class HeaderMenuController extends Controller
             ]
         );
         if ($resultHeaderMenu && $request->addChild == "on") {
-            $resultHeaderMenuChild = HeaderMenuChild::create(
-                [
-                    'code' => "empty",
-                    'title' => $request->title_child,
-                    'header_menu_id' => $resultHeaderMenu->id,
-                    'image' => $img,
-                    'operator' => Auth::user()->id,
-                    'extra' => 'empty',
-                ]
-            );
-            if ($resultHeaderMenuChild && $request->grand_child[0]['title'] && $request->grand_child[0]['link']) {
-                foreach ($request->grand_child as $item) {
-                    HeaderMenuGrandchild::create([
+            $count = 1;
+            foreach ($request->title_child as $child) {
+                $resultHeaderMenuChild = HeaderMenuChild::create(
+                    [
                         'code' => "empty",
-                        'title' => $item['title'],
-                        'link' => $item['link'],
-                        'header_menu_child_id' => $resultHeaderMenuChild->id,
+                        'title' => $child,
+                        'header_menu_id' => $resultHeaderMenu->id,
+                        'image' => $img,
                         'operator' => Auth::user()->id,
                         'extra' => 'empty',
-                    ]);
+                    ]
+                );
+                if ($resultHeaderMenuChild && $request->grand_child['child_' . $count][0]['title'] && 
+                $request->grand_child['child_' . $count][0]['link']) {
+                    foreach ($request->grand_child['child_' . $count] as $item) {
+                        HeaderMenuGrandchild::create([
+                            'code' => "empty",
+                            'title' => $item['title'],
+                            'link' => $item['link'],
+                            'header_menu_child_id' => $resultHeaderMenuChild->id,
+                            'operator' => Auth::user()->id,
+                            'extra' => 'empty',
+                        ]);
+                    }
                 }
             }
         }
@@ -152,7 +155,6 @@ class HeaderMenuController extends Controller
                 ], [
                     'image.required' => __('dashboard.image') . __('dashboard.is-required'),
                 ])->validate();
-               
             }
 
             Validator::make($request->all(), [

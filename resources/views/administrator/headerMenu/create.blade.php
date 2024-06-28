@@ -102,21 +102,21 @@
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-bs-toggle="tab" href="#child-2">
                                                         <span>
-                                                           Child 2
+                                                            Child 2
                                                         </span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-bs-toggle="tab" href="#child-3">
                                                         <span>
-                                                          Child 3
+                                                            Child 3
                                                         </span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" data-bs-toggle="tab" href="#child-4">
                                                         <span>
-                                                           Child 4
+                                                            Child 4
                                                         </span>
                                                     </a>
                                                 </li>
@@ -124,6 +124,12 @@
                                             <!-- Tab panes -->
                                             <div class="tab-content tabcontent-border">
                                                 <div class="tab-pane fade active show" id="child-1" role="tabpanel">
+
+                                                    @php
+                                                        $child_1_count = 0;
+                                                        $child = 'child_1';
+                                                    @endphp
+
                                                     <div class="pt-4">
                                                         <div class="mb-3 row">
                                                             <label
@@ -132,7 +138,7 @@
                                                             <div class="col-sm-10">
                                                                 <input type="text"
                                                                     class="form-control form-control-lg"
-                                                                    name="title_child"
+                                                                    name="title_child[]"
                                                                     value="{{ old('title_child') }}">
                                                                 @error('title_child')
                                                                     <div class="pt-1 pb-1 mt-2 alert alert-danger">
@@ -141,9 +147,6 @@
                                                             </div>
                                                         </div>
 
-                                                        @php
-                                                            $count = 0;
-                                                        @endphp
                                                         <div class="mb-1 row">
                                                             <label
                                                                 class="col-sm-2 col-form-label col-form-label-lg">Grand
@@ -152,43 +155,83 @@
                                                             <div class="col-sm-3">
                                                                 <input type="text"
                                                                     class="form-control form-control-lg"
-                                                                    name="grand_child[{{ $count }}][title]">
+                                                                    name="grand_child[{{ $child }}][{{ $child_1_count }}][title]">
 
                                                             </div>
                                                             <label
                                                                 class="col-sm-2 col-form-label col-form-label-lg">Grand
                                                                 Child
                                                                 Link</label>
-                                                            <div class="col-sm-5" id="count"
-                                                                count="{{ $count }}">
+                                                            <div class="col-sm-5" id="{{ $child }}"
+                                                                count="{{ $child_1_count }}">
                                                                 <input type="text"
                                                                     class="form-control form-control-lg"
-                                                                    name="grand_child[{{ $count }}][link]">
+                                                                    name="grand_child[{{ $child }}][{{ $child_1_count }}][link]">
                                                             </div>
                                                         </div>
-                                                        <div class="mb-1 row" id="grand_child_details">
+                                                        <div class="mb-1 row" id="grand_details_child_1">
 
                                                         </div>
 
                                                         <a href="javascript:void(0)" class="pointer"
-                                                            onclick="addGrandChildDetails()"><span><i
+                                                            onclick="addGrandChildDetails('{{ $child }}')"><span><i
                                                                     class="fa fa-plus"
                                                                     aria-hidden="true"></i></span></a>
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="child-2" role="tabpanel">
+                                                    @php
+                                                        $child_2_count = 0;
+                                                        $child = 'child_2';
+                                                    @endphp
+
                                                     <div class="pt-4">
-                                                        <h4>This is icon title</h4>
-                                                        <p>Raw denim you probably haven't heard of them jean shorts
-                                                            Austin. Nesciunt tofu stumptown aliqua, retro synth
-                                                            master
-                                                            cleanse. Mustache cliche tempor.
-                                                        </p>
-                                                        <p>Raw denim you probably haven't heard of them jean shorts
-                                                            Austin. Nesciunt tofu stumptown aliqua, retro synth
-                                                            master
-                                                            cleanse. Mustache cliche tempor.
-                                                        </p>
+                                                        <div class="mb-3 row">
+                                                            <label
+                                                                class="col-sm-2 col-form-label col-form-label-lg">Child
+                                                                Title</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text"
+                                                                    class="form-control form-control-lg"
+                                                                    name="title_child[]"
+                                                                    value="{{ old('title_child') }}">
+                                                                @error('title_child')
+                                                                    <div class="pt-1 pb-1 mt-2 alert alert-danger">
+                                                                        {{ $message }}</div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="mb-1 row">
+                                                            <label
+                                                                class="col-sm-2 col-form-label col-form-label-lg">Grand
+                                                                Child
+                                                                Title</label>
+                                                            <div class="col-sm-3">
+                                                                <input type="text"
+                                                                    class="form-control form-control-lg"
+                                                                    name="grand_child[{{ $child }}][{{ $child_2_count }}][title]">
+
+                                                            </div>
+                                                            <label
+                                                                class="col-sm-2 col-form-label col-form-label-lg">Grand
+                                                                Child
+                                                                Link</label>
+                                                            <div class="col-sm-5" id="{{ $child }}"
+                                                                count="{{ $child_2_count }}">
+                                                                <input type="text"
+                                                                    class="form-control form-control-lg"
+                                                                    name="grand_child[{{ $child }}][{{ $child_2_count }}][link]">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-1 row" id="grand_details_child_2">
+
+                                                        </div>
+
+                                                        <a href="javascript:void(0)" class="pointer"
+                                                            onclick="addGrandChildDetails('{{ $child }}')"><span><i
+                                                                    class="fa fa-plus"
+                                                                    aria-hidden="true"></i></span></a>
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="child-3" role="tabpanel">
@@ -255,22 +298,26 @@
         }
     }
 
-    function addGrandChildDetails() {
-        let resultDiv = document.getElementById('grand_child_details');
-        var count = parseInt(document.getElementById("count").getAttribute("count"));
-        console.log(count);
+    function addGrandChildDetails(child) {
+console.log(child);
+        let resultDiv = document.getElementById('grand_details_' + child);
+
+        var count = parseInt(document.getElementById(child).getAttribute("count"));
+
         count = count + 1;
         resultDiv.innerHTML += '<label class="col-sm-2 col-form-label col-form-label-lg">' +
             'Grand Child Title' +
             '</label>' +
             '<div class="col-sm-3">' +
-            '<input type="text" class="form-control form-control-lg" name="grand_child[' + count + '][title]"></div>' +
+            '<input type="text" class="form-control form-control-lg" name="grand_child[' + child + '][' + count +
+            '][title]"></div>' +
             '<label class="col-sm-2 col-form-label col-form-label-lg">' +
             'Grand Child Link' +
             '</label>' +
             '<div class="col-sm-5">' +
-            '<input type="text" class="form-control form-control-lg" name="grand_child[' + count + '][link]"></div>' +
+            '<input type="text" class="form-control form-control-lg" name="grand_child[' + child + '][' + count +
+            '][link]"></div>' +
             '</div>';
-        document.getElementById('count').setAttribute("count", count);
+        document.getElementById(child).setAttribute("count", count);
     }
 </script>
