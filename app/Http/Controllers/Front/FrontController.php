@@ -19,8 +19,9 @@ class FrontController extends Controller
     {
 
         $headerMenu = HeaderMenu::all();
-
+// dd(($headerMenu));
         $primarySliders = PrimarySlider::all();
+        // dd(($primarySliders));
         $primaryBanners = PrimaryBanner::all();
         $productTrends = ProductTrend::all();
         $productFeatured = ProductFeatured::all();

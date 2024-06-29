@@ -82,49 +82,60 @@
 
                             @foreach ($headerMenu as $item)
                                 @if ($item->child)
+                                
                                     <li class="has-child">
+
                                         <a href="#" class="capitalize">{{ $item->title }}
                                             <div class="icon-small"><i class="ri-arrow-down-s-line"></i></div>
                                         </a>
+
                                         <div class="mega">
                                             <div class="container">
                                                 <div class="wrapper">
                                                     <div class="flexcol">
                                                         <div class="row">
-                                                            <h4>{{ $item->child->title }}</h4>
-                                                            <ul>
-                                                                @foreach ($item->child->grandChilds as $row)
-                                                                    <li><a
-                                                                            href="{{ $row->link }}">{{ $row->title }}</a>
-                                                                    </li>
-                                                                @endforeach
-                                                            </ul>
+                                                            @foreach ($item->childs as $row)
+                                                                <h4>{{ $row->title }}</h4>
+                                                                <ul>
+                                                                    @foreach ($row->grandChilds as $row2)
+                                                                        <li>
+                                                                            <a
+                                                                                href="{{ $row2->link }}">{{ $row2->title }}</a>
+                                                                        </li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            @endforeach
                                                         </div>
                                                     </div>
+                                                    @if (true)
+                                                        <div class="flexcol products">
+                                                            <div class="row">
+                                                                <div class="media">
+                                                                    <div class="thumbnail object-cover">
+                                                                        @if ($item->coverImage)
+                                                                            <a href="#">
+                                                                                <img src="{{ asset('front/img/header-menu/' . $item->coverImage->image) }}"
+                                                                                    alt="">
+                                                                            </a>
+                                                                        @endif
 
-                                                    <div class="flexcol products">
-                                                        <div class="row">
-                                                            <div class="media">
-                                                                <div class="thumbnail object-cover">
-                                                                    <a href="#">
-                                                                        <img src="{{ asset('front/img/header-menu/' . $item->child->image) }}"
-                                                                            alt="">
-                                                                    </a>
+                                                                    </div>
                                                                 </div>
+                                                                @if (false)
+                                                                    <div class="text-content">
+                                                                        <h4>most wanted!</h4>
+                                                                        <a href="#" class="primary-button">order
+                                                                            now</a>
+                                                                    </div>
+                                                                @endif
+
                                                             </div>
-                                                            @if (false)
-                                                                <div class="text-content">
-                                                                    <h4>most wanted!</h4>
-                                                                    <a href="#" class="primary-button">order
-                                                                        now</a>
-                                                                </div>
-                                                            @endif
-
                                                         </div>
-                                                    </div>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
+
                                     </li>
                                 @else
                                     <li>
