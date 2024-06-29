@@ -36,7 +36,7 @@ class HeaderMenuController extends Controller
      */
     public function store(Request $request)
     {
-     
+
         $file = $request->file('image');
         $img = "";
 
@@ -82,7 +82,7 @@ class HeaderMenuController extends Controller
 
         $resultHeaderMenu = HeaderMenu::create(
             [
-                'code' => "hm-". substr(str_shuffle("0123456789"), 0, 4),
+                'code' => "hm-" . substr(str_shuffle("0123456789"), 0, 4),
                 'title' => $request->title,
                 'lable' => $lable,
                 'link' => $link,
@@ -103,8 +103,10 @@ class HeaderMenuController extends Controller
                         'extra' => 'empty',
                     ]
                 );
-                if ($resultHeaderMenuChild && $request->grand_child['child_' . $count][0]['title'] && 
-                $request->grand_child['child_' . $count][0]['link']) {
+                if (
+                    $resultHeaderMenuChild && $request->grand_child['child_' . $count][0]['title'] &&
+                    $request->grand_child['child_' . $count][0]['link']
+                ) {
                     foreach ($request->grand_child['child_' . $count++] as $item) {
                         HeaderMenuGrandchild::create([
                             'code' => "hmgch-" . substr(str_shuffle("0123456789"), 0, 4),
@@ -187,7 +189,7 @@ class HeaderMenuController extends Controller
             $lable = $request->lable;
 
         $resultHeaderMenu = $headerMenu->update([
-            'code' => "empty",
+            'code' => $headerMenu->code,
             'title' => $request->title,
             'lable' => $lable,
             'link' => $link,
@@ -197,6 +199,13 @@ class HeaderMenuController extends Controller
 
         // delete last childs
         if ($headerMenu->child) {
+
+            foreach ($headerMenu->childs as $item)
+                foreach ($item->grandChilds as $item2)
+                    $childsCode[$item->code][] = $item2->code;
+
+            // dd($childsCode);
+
             $resultHeaderMenuchildDelete = HeaderMenuchild::where('header_menu_id', $headerMenu->id)->delete();
             $resultHeaderMenuGrandchildDelete = HeaderMenuGrandchild::where('header_menu_child_id', $headerMenu->child->id)->delete();
         }
