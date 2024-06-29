@@ -82,7 +82,6 @@
 
                             @foreach ($headerMenu as $item)
                                 @if ($item->child)
-                                
                                     <li class="has-child">
 
                                         <a href="#" class="capitalize">{{ $item->title }}
@@ -92,9 +91,9 @@
                                         <div class="mega">
                                             <div class="container">
                                                 <div class="wrapper">
-                                                    <div class="flexcol">
-                                                        <div class="row">
-                                                            @foreach ($item->childs as $row)
+                                                    @foreach ($item->childs as $row)
+                                                        <div class="flexcol">
+                                                            <div class="row">
                                                                 <h4>{{ $row->title }}</h4>
                                                                 <ul>
                                                                     @foreach ($row->grandChilds as $row2)
@@ -104,9 +103,9 @@
                                                                         </li>
                                                                     @endforeach
                                                                 </ul>
-                                                            @endforeach
+                                                            </div>
                                                         </div>
-                                                    </div>
+                                                    @endforeach
                                                     @if (true)
                                                         <div class="flexcol products">
                                                             <div class="row">

@@ -235,52 +235,134 @@
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="child-3" role="tabpanel">
+                                                    @php
+                                                        $child_3_count = 0;
+                                                        $child = 'child_3';
+                                                    @endphp
+
                                                     <div class="pt-4">
-                                                        <h4>This is icon title</h4>
-                                                        <p>Raw denim you probably haven't heard of them jean shorts
-                                                            Austin. Nesciunt tofu stumptown aliqua, retro synth
-                                                            master
-                                                            cleanse. Mustache cliche tempor.
-                                                        </p>
-                                                        <p>Raw denim you probably haven't heard of them jean shorts
-                                                            Austin. Nesciunt tofu stumptown aliqua, retro synth
-                                                            master
-                                                            cleanse. Mustache cliche tempor.
-                                                        </p>
+                                                        <div class="mb-3 row">
+                                                            <label
+                                                                class="col-sm-2 col-form-label col-form-label-lg">Child
+                                                                Title</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text"
+                                                                    class="form-control form-control-lg"
+                                                                    name="title_child[]"
+                                                                    value="{{ old('title_child') }}">
+                                                                @error('title_child')
+                                                                    <div class="pt-1 pb-1 mt-2 alert alert-danger">
+                                                                        {{ $message }}</div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="mb-1 row">
+                                                            <label
+                                                                class="col-sm-2 col-form-label col-form-label-lg">Grand
+                                                                Child
+                                                                Title</label>
+                                                            <div class="col-sm-3">
+                                                                <input type="text"
+                                                                    class="form-control form-control-lg"
+                                                                    name="grand_child[{{ $child }}][{{ $child_3_count }}][title]">
+
+                                                            </div>
+                                                            <label
+                                                                class="col-sm-2 col-form-label col-form-label-lg">Grand
+                                                                Child
+                                                                Link</label>
+                                                            <div class="col-sm-5" id="{{ $child }}"
+                                                                count="{{ $child_3_count }}">
+                                                                <input type="text"
+                                                                    class="form-control form-control-lg"
+                                                                    name="grand_child[{{ $child }}][{{ $child_3_count }}][link]">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-1 row" id="grand_details_child_3">
+
+                                                        </div>
+
+                                                        <a href="javascript:void(0)" class="pointer"
+                                                            onclick="addGrandChildDetails('{{ $child }}')"><span><i
+                                                                    class="fa fa-plus"
+                                                                    aria-hidden="true"></i></span></a>
                                                     </div>
                                                 </div>
                                                 <div class="tab-pane fade" id="child-4" role="tabpanel">
+                                                    @php
+                                                        $child_4_count = 0;
+                                                        $child = 'child_4';
+                                                    @endphp
+
                                                     <div class="pt-4">
-                                                        <h4>This is icon title</h4>
-                                                        <p>Raw denim you probably haven't heard of them jean shorts
-                                                            Austin. Nesciunt tofu stumptown aliqua, retro synth
-                                                            master
-                                                            cleanse. Mustache cliche tempor.
-                                                        </p>
-                                                        <p>Raw denim you probably haven't heard of them jean shorts
-                                                            Austin. Nesciunt tofu stumptown aliqua, retro synth
-                                                            master
-                                                            cleanse. Mustache cliche tempor.
-                                                        </p>
+                                                        <div class="mb-3 row">
+                                                            <label
+                                                                class="col-sm-2 col-form-label col-form-label-lg">Child
+                                                                Title</label>
+                                                            <div class="col-sm-10">
+                                                                <input type="text"
+                                                                    class="form-control form-control-lg"
+                                                                    name="title_child[]"
+                                                                    value="{{ old('title_child') }}">
+                                                                @error('title_child')
+                                                                    <div class="pt-1 pb-1 mt-2 alert alert-danger">
+                                                                        {{ $message }}</div>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="mb-1 row">
+                                                            <label
+                                                                class="col-sm-2 col-form-label col-form-label-lg">Grand
+                                                                Child
+                                                                Title</label>
+                                                            <div class="col-sm-3">
+                                                                <input type="text"
+                                                                    class="form-control form-control-lg"
+                                                                    name="grand_child[{{ $child }}][{{ $child_4_count }}][title]">
+
+                                                            </div>
+                                                            <label
+                                                                class="col-sm-2 col-form-label col-form-label-lg">Grand
+                                                                Child
+                                                                Link</label>
+                                                            <div class="col-sm-5" id="{{ $child }}"
+                                                                count="{{ $child_4_count }}">
+                                                                <input type="text"
+                                                                    class="form-control form-control-lg"
+                                                                    name="grand_child[{{ $child }}][{{ $child_4_count }}][link]">
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-1 row" id="grand_details_child_4">
+
+                                                        </div>
+
+                                                        <a href="javascript:void(0)" class="pointer"
+                                                            onclick="addGrandChildDetails('{{ $child }}')"><span><i
+                                                                    class="fa fa-plus"
+                                                                    aria-hidden="true"></i></span></a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
-                                {{-- header menu childs --}}
-                                <div class="col-12">
-                                    <button type="submit" class="float-end btn btn-primary mb-2">Save</button>
-                                </div>
-                            </form>
                         </div>
+
+
                     </div>
+                    {{-- header menu childs --}}
+                    <div class="col-12">
+                        <button type="submit" class="float-end btn btn-primary mb-2">Save</button>
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 
 <script>
@@ -299,7 +381,7 @@
     }
 
     function addGrandChildDetails(child) {
-console.log(child);
+        console.log(child);
         let resultDiv = document.getElementById('grand_details_' + child);
 
         var count = parseInt(document.getElementById(child).getAttribute("count"));

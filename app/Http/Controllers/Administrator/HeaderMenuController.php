@@ -36,7 +36,7 @@ class HeaderMenuController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+     
         $file = $request->file('image');
         $img = "";
 
@@ -105,7 +105,7 @@ class HeaderMenuController extends Controller
                 );
                 if ($resultHeaderMenuChild && $request->grand_child['child_' . $count][0]['title'] && 
                 $request->grand_child['child_' . $count][0]['link']) {
-                    foreach ($request->grand_child['child_' . $count] as $item) {
+                    foreach ($request->grand_child['child_' . $count++] as $item) {
                         HeaderMenuGrandchild::create([
                             'code' => "empty",
                             'title' => $item['title'],
