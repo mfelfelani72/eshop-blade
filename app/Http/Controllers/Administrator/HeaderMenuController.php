@@ -82,7 +82,7 @@ class HeaderMenuController extends Controller
 
         $resultHeaderMenu = HeaderMenu::create(
             [
-                'code' => "empty",
+                'code' => "hm-". substr(str_shuffle("0123456789"), 0, 4),
                 'title' => $request->title,
                 'lable' => $lable,
                 'link' => $link,
@@ -95,7 +95,7 @@ class HeaderMenuController extends Controller
             foreach ($request->title_child as $child) {
                 $resultHeaderMenuChild = HeaderMenuChild::create(
                     [
-                        'code' => "empty",
+                        'code' => "hmch-" . substr(str_shuffle("0123456789"), 0, 4),
                         'title' => $child,
                         'header_menu_id' => $resultHeaderMenu->id,
                         'image' => $img,
@@ -107,7 +107,7 @@ class HeaderMenuController extends Controller
                 $request->grand_child['child_' . $count][0]['link']) {
                     foreach ($request->grand_child['child_' . $count++] as $item) {
                         HeaderMenuGrandchild::create([
-                            'code' => "empty",
+                            'code' => "hmgch-" . substr(str_shuffle("0123456789"), 0, 4),
                             'title' => $item['title'],
                             'link' => $item['link'],
                             'header_menu_child_id' => $resultHeaderMenuChild->id,

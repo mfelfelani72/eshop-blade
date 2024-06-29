@@ -1,9 +1,11 @@
 <?php
 return [
-   
-    'home' => 'Home',
-    'shop' => 'Shop',
-    'stock_place' => 'Stock Place',
-    'laptop' => 'Laptop',
-    
+
+    //    start header menu
+
+    'hm-3652' => 'Home',
+    'hm-2548' => 'Shop',
+
+    //    start header menu
+
 ];

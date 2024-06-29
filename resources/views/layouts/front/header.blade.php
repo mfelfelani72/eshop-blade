@@ -138,7 +138,8 @@
                                     </li>
                                 @else
                                     <li>
-                                        <a class="capitalize" href="{{ $item->link }}">{{ $item->title }}
+                                        <a class="capitalize"
+                                            href="{{ $item->link }}">{{ __('front.' . $item->code) }}
                                             @if ($item->lable !== 'empty')
                                                 <div class="fly-item"><span
                                                         class="capitalize">{{ $item->lable }}</span>
