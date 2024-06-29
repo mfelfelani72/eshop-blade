@@ -111,55 +111,167 @@
                                     @error('image')
                                         <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
                                     @enderror
-                                    <div class="mb-3 row">
-                                        <label class="col-sm-2 col-form-label col-form-label-lg">Child Title</label>
-                                        <div class="col-sm-10">
-                                            <input type="text" class="form-control form-control-lg"
-                                                name="title_child"
-                                                @if ($headerMenu->child) value="{{ $headerMenu->child->title }}" @endif
-                                                @if( old('title')) value="{{ old('title_child') }}" @endif
-                                                 >
-                                            @error('title_child')
-                                                <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
-                                            @enderror
+
+
+                                    {{-- childs --}}
+
+                                    <div class="col-xl-12">
+                                        <div class="card-body">
+                                            <!-- Nav tabs -->
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                @foreach ($headerMenu->childs as $key => $row)
+                                                    @php
+                                                        $active = '';
+                                                        if ($key == 0) {
+                                                            $active = 'active';
+                                                        }
+                                                    @endphp
+
+                                                    <li class="nav-item">
+                                                        <a class="nav-link {{ $active }}" data-bs-toggle="tab"
+                                                            href='#child-{{ $key + 1 }}'>
+                                                            <span>
+                                                                child {{ $key + 1 }}
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                            <!-- Tab panes -->
+                                            <div class="tab-content tabcontent-border">
+                                                @foreach ($headerMenu->childs as $key => $row)
+                                                    @php
+                                                        $active = '';
+                                                        if ($key == 0) {
+                                                            $active = 'active show';
+                                                        }
+                                                    @endphp
+                                                    <div class="tab-pane fade {{ $active }}"
+                                                        id="child-{{ $key + 1 }}" role="tabpanel">
+
+                                                        @php
+                                                            $child_count[$key + 1] = 0;
+                                                            $child = 'child_' . $key + 1;
+                                                        @endphp
+
+                                                        <div class="pt-4">
+                                                            <div class="mb-3 row">
+                                                                <label
+                                                                    class="col-sm-2 col-form-label col-form-label-lg">Child
+                                                                    Title</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text"
+                                                                        class="form-control form-control-lg"
+                                                                        name="title_child[]" {{-- value="{{ old('title_child') }}" --}}
+                                                                        value="{{ $row->title }}">
+                                                                    @error('title_child')
+                                                                        <div class="pt-1 pb-1 mt-2 alert alert-danger">
+                                                                            {{ $message }}</div>
+                                                                    @enderror
+                                                                </div>
+                                                            </div>
+                                                            @foreach ($row->grandChilds as $row2)
+                                                                <div class="mb-1 row">
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-lg">Grand
+                                                                        Child
+                                                                        Title</label>
+                                                                    <div class="col-sm-3">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-lg"
+                                                                            name="grand_child[{{ $child }}][{{ $child_count[$key + 1] }}][title]"
+                                                                            value="{{ $row2->title }}">
+
+                                                                    </div>
+                                                                    <label
+                                                                        class="col-sm-2 col-form-label col-form-label-lg">Grand
+                                                                        Child
+                                                                        Link</label>
+                                                                    <div class="col-sm-5" id="{{ $child }}"
+                                                                        count="{{ $child_count[$key + 1] }}">
+                                                                        <input type="text"
+                                                                            class="form-control form-control-lg"
+                                                                            name="grand_child[{{ $child }}][{{ $child_count[$key + 1] }}][link]"
+                                                                            value="{{ $row2->link }}">
+                                                                    </div>
+                                                                </div>
+                                                            @endforeach
+
+                                                            <div class="mb-1 row"
+                                                                id="grand_details_child_{{ $key + 1 }}">
+
+                                                            </div>
+
+                                                            <a href="javascript:void(0)" class="pointer"
+                                                                onclick="addGrandChildDetails('{{ $child }}')"><span><i
+                                                                        class="fa fa-plus"
+                                                                        aria-hidden="true"></i></span></a>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
 
-                                    @php
-                                        $count = 0;
-                                    @endphp
-                                    @if ($headerMenu->child)
-                                        @foreach ($headerMenu->child->grandChilds as $item)
-                                            <div class="mb-1 row">
-                                                <label class="col-sm-2 col-form-label col-form-label-lg">Grand Child
-                                                    Title</label>
-                                                <div class="col-sm-3">
-                                                    <input type="text" class="form-control form-control-lg"
-                                                        name="grand_child[{{ $count }}][title]"
-                                                        value="{{ $item->title }}">
+                                    {{-- childs --}}
 
-                                                </div>
-                                                <label class="col-sm-2 col-form-label col-form-label-lg">Grand Child
-                                                    Link</label>
-                                                <div class="col-sm-5">
-                                                    <input type="text" class="form-control form-control-lg"
-                                                        name="grand_child[{{ $count++ }}][link]"
-                                                        value="{{ $item->link }}">
-                                                </div>
+
+                                    @if (false)
+                                        <div class="mb-3 row">
+                                            <label class="col-sm-2 col-form-label col-form-label-lg">Child
+                                                Title</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control form-control-lg"
+                                                    name="title_child"
+                                                    @if ($headerMenu->child) value="{{ $headerMenu->child->title }}" @endif
+                                                    @if (old('title')) value="{{ old('title_child') }}" @endif>
+                                                @error('title_child')
+                                                    <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
-                                        @endforeach
-                                    @endif
-                                    <div class="disable" id="count" count="{{ $count }}"></div>
+                                        </div>
 
-                                    <div class="mb-1 row" id="grand_child_details">
+                                        @php
+                                            $count = 0;
+                                        @endphp
+                                        @if ($headerMenu->child)
+                                            @foreach ($headerMenu->child->grandChilds as $item)
+                                                <div class="mb-1 row">
+                                                    <label class="col-sm-2 col-form-label col-form-label-lg">Grand
+                                                        Child
+                                                        Title</label>
+                                                    <div class="col-sm-3">
+                                                        <input type="text" class="form-control form-control-lg"
+                                                            name="grand_child[{{ $count }}][title]"
+                                                            value="{{ $item->title }}">
 
-                                    </div>
+                                                    </div>
+                                                    <label class="col-sm-2 col-form-label col-form-label-lg">Grand
+                                                        Child
+                                                        Link</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="text" class="form-control form-control-lg"
+                                                            name="grand_child[{{ $count++ }}][link]"
+                                                            value="{{ $item->link }}">
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                        <div class="disable" id="count" count="{{ $count }}"></div>
 
-                                    <a href="javascript:void(0)" class="pointer"
-                                        onclick="addGrandChildDetails()"><span><i class="fa fa-plus"
-                                                aria-hidden="true"></i></span></a>
+                                        <div class="mb-1 row" id="grand_child_details">
+
+                                        </div>
+
+                                        <a href="javascript:void(0)" class="pointer"
+                                            onclick="addGrandChildDetails()"><span><i class="fa fa-plus"
+                                                    aria-hidden="true"></i></span></a>
 
                                 </div>
+                                @endif
+
+
                                 {{-- header menu childs --}}
 
 
@@ -190,23 +302,27 @@
         }
     }
 
-    function addGrandChildDetails() {
-        let resultDiv = document.getElementById('grand_child_details');
-        var count = parseInt(document.getElementById("count").getAttribute("count"));
 
+    function addGrandChildDetails(child) {
+        console.log(child);
+        let resultDiv = document.getElementById('grand_details_' + child);
+
+        var count = parseInt(document.getElementById(child).getAttribute("count"));
+
+        count = count + 1;
         resultDiv.innerHTML += '<label class="col-sm-2 col-form-label col-form-label-lg">' +
             'Grand Child Title' +
             '</label>' +
             '<div class="col-sm-3">' +
-            '<input type="text" class="form-control form-control-lg" name="grand_child[' + count + '][title]"></div>' +
+            '<input type="text" class="form-control form-control-lg" name="grand_child[' + child + '][' + count +
+            '][title]"></div>' +
             '<label class="col-sm-2 col-form-label col-form-label-lg">' +
             'Grand Child Link' +
             '</label>' +
             '<div class="col-sm-5">' +
-            '<input type="text" class="form-control form-control-lg" name="grand_child[' + count + '][link]"></div>' +
+            '<input type="text" class="form-control form-control-lg" name="grand_child[' + child + '][' + count +
+            '][link]"></div>' +
             '</div>';
-
-        count = count + 1;
-        document.getElementById('count').setAttribute("count", count);
+        document.getElementById(child).setAttribute("count", count);
     }
 </script>
