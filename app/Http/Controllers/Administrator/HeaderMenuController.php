@@ -200,11 +200,16 @@ class HeaderMenuController extends Controller
         // delete last childs
         if ($headerMenu->child) {
 
-            foreach ($headerMenu->childs as $item)
-                foreach ($item->grandChilds as $item2)
-                    $childsCode[$item->code][] = $item2->code;
-
-            // dd($childsCode);
+            foreach ($headerMenu->childs as $key => $item) {
+                $count = 0;
+                $lastData[$key]['ch-code'] = $item->code;
+                $lastData[$key]['ch-title'] = $item->title;
+                foreach ($item->grandChilds as $item2) {
+                    $lastData[$key][$count]['gch-code'] = $item2->code;
+                    $lastData[$key][$count++]['gch-title'] = $item2->title;
+                }
+            }
+            dd($lastData);
 
             $resultHeaderMenuchildDelete = HeaderMenuchild::where('header_menu_id', $headerMenu->id)->delete();
             $resultHeaderMenuGrandchildDelete = HeaderMenuGrandchild::where('header_menu_child_id', $headerMenu->child->id)->delete();
@@ -215,31 +220,63 @@ class HeaderMenuController extends Controller
 
         if ($resultHeaderMenu && $request->addChild == "on") {
 
-            $resultHeaderMenuChild = HeaderMenuChild::create(
-                [
-                    'code' => "empty",
-                    'title' => $request->title_child,
-                    'header_menu_id' => $id,
-                    'image' => $img,
-                    'operator' => Auth::user()->id,
-                    'extra' => 'empty',
-                ]
-            );
+            $count = 1;
+            foreach ($request->title_child as $child) {
 
-
-
-            if ($resultHeaderMenuChild && $request->grand_child && $request->grand_child[0]['title'] && $request->grand_child[0]['link']) {
-                foreach ($request->grand_child as $item) {
-                    HeaderMenuGrandchild::create([
-                        'code' => "empty",
-                        'title' => $item['title'],
-                        'link' => $item['link'],
-                        'header_menu_child_id' => $resultHeaderMenuChild->id,
+                $resultHeaderMenuChild = HeaderMenuChild::create(
+                    [
+                        'code' => "hmch-" . substr(str_shuffle("0123456789"), 0, 4),
+                        'title' => $child,
+                        'header_menu_id' => $resultHeaderMenu->id,
+                        'image' => $img,
                         'operator' => Auth::user()->id,
                         'extra' => 'empty',
-                    ]);
+                    ]
+                );
+                if (
+                    $resultHeaderMenuChild && $request->grand_child['child_' . $count][0]['title'] &&
+                    $request->grand_child['child_' . $count][0]['link']
+                ) {
+                    foreach ($request->grand_child['child_' . $count++] as $item) {
+                        HeaderMenuGrandchild::create([
+                            'code' => "hmgch-" . substr(str_shuffle("0123456789"), 0, 4),
+                            'title' => $item['title'],
+                            'link' => $item['link'],
+                            'header_menu_child_id' => $resultHeaderMenuChild->id,
+                            'operator' => Auth::user()->id,
+                            'extra' => 'empty',
+                        ]);
+                    }
                 }
             }
+
+
+
+            // $resultHeaderMenuChild = HeaderMenuChild::create(
+            //     [
+            //         'code' => "empty",
+            //         'title' => $request->title_child,
+            //         'header_menu_id' => $id,
+            //         'image' => $img,
+            //         'operator' => Auth::user()->id,
+            //         'extra' => 'empty',
+            //     ]
+            // );
+
+
+
+            // if ($resultHeaderMenuChild && $request->grand_child && $request->grand_child[0]['title'] && $request->grand_child[0]['link']) {
+            //     foreach ($request->grand_child as $item) {
+            //         HeaderMenuGrandchild::create([
+            //             'code' => "empty",
+            //             'title' => $item['title'],
+            //             'link' => $item['link'],
+            //             'header_menu_child_id' => $resultHeaderMenuChild->id,
+            //             'operator' => Auth::user()->id,
+            //             'extra' => 'empty',
+            //         ]);
+            //     }
+            // }
         }
 
         return redirect()->route('header-menu.index');
