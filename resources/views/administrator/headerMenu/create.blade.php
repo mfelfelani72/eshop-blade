@@ -1,3 +1,6 @@
+@php
+    // dd($errors);
+@endphp
 <div class="content-body">
     <div class="container-fluid">
 
@@ -139,11 +142,13 @@
                                                                 <input type="text"
                                                                     class="form-control form-control-lg"
                                                                     name="title_child[]"
-                                                                    value="{{ old('title_child') }}">
-                                                                @error('title_child')
+                                                                    value="{{ old('title_child[0]') }}">
+                                                                {{-- error --}}
+                                                                @if ($errors->get('title_child'))
                                                                     <div class="pt-1 pb-1 mt-2 alert alert-danger">
-                                                                        {{ $message }}</div>
-                                                                @enderror
+                                                                        {{ $errors->get('title_child')[0] }}</div>
+                                                                @endif
+                                                                {{-- error --}}
                                                             </div>
                                                         </div>
 
@@ -156,6 +161,12 @@
                                                                 <input type="text"
                                                                     class="form-control form-control-lg"
                                                                     name="grand_child[{{ $child }}][{{ $child_1_count }}][title]">
+                                                                {{-- error --}}
+                                                                @if ($errors->get('title_gchild'))
+                                                                    <div class="pt-1 pb-1 mt-2 alert alert-danger">
+                                                                        {{ $errors->get('title_gchild')[0] }}</div>
+                                                                @endif
+                                                                {{-- error --}}
 
                                                             </div>
                                                             <label
@@ -167,6 +178,12 @@
                                                                 <input type="text"
                                                                     class="form-control form-control-lg"
                                                                     name="grand_child[{{ $child }}][{{ $child_1_count }}][link]">
+                                                                {{-- error --}}
+                                                                @if ($errors->get('link_gchild'))
+                                                                    <div class="pt-1 pb-1 mt-2 alert alert-danger">
+                                                                        {{ $errors->get('link_gchild')[0] }}</div>
+                                                                @endif
+                                                                {{-- error --}}
                                                             </div>
                                                         </div>
                                                         <div class="mb-1 row" id="grand_details_child_1">
@@ -193,12 +210,7 @@
                                                             <div class="col-sm-10">
                                                                 <input type="text"
                                                                     class="form-control form-control-lg"
-                                                                    name="title_child[]"
-                                                                    value="{{ old('title_child') }}">
-                                                                @error('title_child')
-                                                                    <div class="pt-1 pb-1 mt-2 alert alert-danger">
-                                                                        {{ $message }}</div>
-                                                                @enderror
+                                                                    name="title_child[]">
                                                             </div>
                                                         </div>
 
@@ -248,12 +260,8 @@
                                                             <div class="col-sm-10">
                                                                 <input type="text"
                                                                     class="form-control form-control-lg"
-                                                                    name="title_child[]"
-                                                                    value="{{ old('title_child') }}">
-                                                                @error('title_child')
-                                                                    <div class="pt-1 pb-1 mt-2 alert alert-danger">
-                                                                        {{ $message }}</div>
-                                                                @enderror
+                                                                    name="title_child[]">
+
                                                             </div>
                                                         </div>
 
@@ -303,12 +311,8 @@
                                                             <div class="col-sm-10">
                                                                 <input type="text"
                                                                     class="form-control form-control-lg"
-                                                                    name="title_child[]"
-                                                                    value="{{ old('title_child') }}">
-                                                                @error('title_child')
-                                                                    <div class="pt-1 pb-1 mt-2 alert alert-danger">
-                                                                        {{ $message }}</div>
-                                                                @enderror
+                                                                    name="title_child[]">
+
                                                             </div>
                                                         </div>
 

@@ -36,7 +36,7 @@ class HeaderMenuController extends Controller
      */
     public function store(Request $request)
     {
-
+        // dd($request);
         $file = $request->file('image');
         $img = "";
 
@@ -62,14 +62,28 @@ class HeaderMenuController extends Controller
                 'image.required' => __('dashboard.image') . __('dashboard.is-required'),
             ])->validate();
 
-            Validator::make($request->all(), [
-                'title_child' => 'required',
-            ], [
+            Validator::make(
+                [
+                    'title_child' => $request->title_child[0],
+                    'title_gchild' => $request->grand_child['child_1'][0]['title'],
+                    'link_gchild' => $request->grand_child['child_1'][0]['link'],
+                ],
+                [
+                    'title_child' => 'required',
+                    'title_gchild' => 'required',
+                    'link_gchild' => 'required',
+                ],
+                [
 
-                'title_child.required' => __('dashboard.title_child') . __('dashboard.is-required'),
-
-            ])
+                    'title_child.required' => __('dashboard.title_child') . __('dashboard.is-required'),
+                    'title_gchild.required' => __('dashboard.title_gchild') . __('dashboard.is-required'),
+                    'link_gchild.required' => __('dashboard.link_child') . __('dashboard.is-required'),
+                ]
+            )
                 ->validate();
+
+
+            // dd("ok");
         }
 
         $link = "empty";
@@ -92,30 +106,32 @@ class HeaderMenuController extends Controller
         );
         if ($resultHeaderMenu && $request->addChild == "on") {
             $count = 1;
-            foreach ($request->title_child as $child) {
-                $resultHeaderMenuChild = HeaderMenuChild::create(
-                    [
-                        'code' => "hmch-" . substr(str_shuffle("0123456789"), 0, 4),
-                        'title' => $child,
-                        'header_menu_id' => $resultHeaderMenu->id,
-                        'image' => $img,
-                        'operator' => Auth::user()->id,
-                        'extra' => 'empty',
-                    ]
-                );
+            foreach ($request->title_child as $title) {
+                if ($title)
+                    $resultHeaderMenuChild = HeaderMenuChild::create(
+                        [
+                            'code' => "hmch-" . substr(str_shuffle("0123456789"), 0, 4),
+                            'title' => $title,
+                            'header_menu_id' => $resultHeaderMenu->id,
+                            'image' => $img,
+                            'operator' => Auth::user()->id,
+                            'extra' => 'empty',
+                        ]
+                    );
                 if (
                     $resultHeaderMenuChild && $request->grand_child['child_' . $count][0]['title'] &&
                     $request->grand_child['child_' . $count][0]['link']
                 ) {
                     foreach ($request->grand_child['child_' . $count++] as $item) {
-                        HeaderMenuGrandchild::create([
-                            'code' => "hmgch-" . substr(str_shuffle("0123456789"), 0, 4),
-                            'title' => $item['title'],
-                            'link' => $item['link'],
-                            'header_menu_child_id' => $resultHeaderMenuChild->id,
-                            'operator' => Auth::user()->id,
-                            'extra' => 'empty',
-                        ]);
+                        if ($item['title'])
+                            HeaderMenuGrandchild::create([
+                                'code' => "hmgch-" . substr(str_shuffle("0123456789"), 0, 4),
+                                'title' => $item['title'],
+                                'link' => $item['link'],
+                                'header_menu_child_id' => $resultHeaderMenuChild->id,
+                                'operator' => Auth::user()->id,
+                                'extra' => 'empty',
+                            ]);
                     }
                 }
             }
