@@ -248,15 +248,16 @@ class HeaderMenuController extends Controller
                         $code = "hmgch-" . substr(str_shuffle("0123456789"), 0, 4);
                         if ($lastData[$key][$countCh]['gch-title'] == $item['title'])
                             $code = $lastData[$key][$countCh]['gch-code'];
-                        
-                        HeaderMenuGrandchild::create([
-                            'code' => $code,
-                            'title' => $item['title'],
-                            'link' => $item['link'],
-                            'header_menu_child_id' => $resultHeaderMenuChild->id,
-                            'operator' => Auth::user()->id,
-                            'extra' => 'empty',
-                        ]);
+
+                        if ($item['title'])
+                            HeaderMenuGrandchild::create([
+                                'code' => $code,
+                                'title' => $item['title'],
+                                'link' => $item['link'],
+                                'header_menu_child_id' => $resultHeaderMenuChild->id,
+                                'operator' => Auth::user()->id,
+                                'extra' => 'empty',
+                            ]);
                     }
                 }
             }

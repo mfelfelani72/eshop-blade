@@ -187,15 +187,19 @@
                                                                         class="col-sm-2 col-form-label col-form-label-lg">Grand
                                                                         Child
                                                                         Link</label>
-                                                                    <div class="col-sm-5" id="{{ $child }}"
-                                                                        count="{{ $child_count[$key + 1] }}">
+                                                                    <div class="col-sm-5">
                                                                         <input type="text"
                                                                             class="form-control form-control-lg"
                                                                             name="grand_child[{{ $child }}][{{ $child_count[$key + 1] }}][link]"
                                                                             value="{{ $row2->link }}">
                                                                     </div>
+                                                                    @php
+                                                                        $child_count[$key + 1]++;
+                                                                    @endphp
                                                                 </div>
                                                             @endforeach
+                                                            
+                                                            <div id="{{ $child }}" count="{{ $child_count[$key + 1] }}"></div>
 
                                                             <div class="mb-1 row"
                                                                 id="grand_details_child_{{ $key + 1 }}">
