@@ -209,7 +209,7 @@ class HeaderMenuController extends Controller
                     $lastData[$key][$count++]['gch-title'] = $item2->title;
                 }
             }
-            dd($lastData);
+            // dd($lastData);
 
             $resultHeaderMenuchildDelete = HeaderMenuchild::where('header_menu_id', $headerMenu->id)->delete();
             $resultHeaderMenuGrandchildDelete = HeaderMenuGrandchild::where('header_menu_child_id', $headerMenu->child->id)->delete();
@@ -221,13 +221,18 @@ class HeaderMenuController extends Controller
         if ($resultHeaderMenu && $request->addChild == "on") {
 
             $count = 1;
-            foreach ($request->title_child as $child) {
+            $key = 0;
+            foreach ($request->title_child as $title) {
+
+                $code = "hmch-" . substr(str_shuffle("0123456789"), 0, 4);
+                if ($lastData[$key]['ch-title'] == $title)
+                    $code = $lastData[$key]['ch-code'];
 
                 $resultHeaderMenuChild = HeaderMenuChild::create(
                     [
-                        'code' => "hmch-" . substr(str_shuffle("0123456789"), 0, 4),
-                        'title' => $child,
-                        'header_menu_id' => $resultHeaderMenu->id,
+                        'code' => $code,
+                        'title' => $title,
+                        'header_menu_id' => $id,
                         'image' => $img,
                         'operator' => Auth::user()->id,
                         'extra' => 'empty',
@@ -238,8 +243,14 @@ class HeaderMenuController extends Controller
                     $request->grand_child['child_' . $count][0]['link']
                 ) {
                     foreach ($request->grand_child['child_' . $count++] as $item) {
+
+                        $countCh = 0;
+                        $code = "hmgch-" . substr(str_shuffle("0123456789"), 0, 4);
+                        if ($lastData[$key][$countCh]['gch-title'] == $item['title'])
+                            $code = $lastData[$key][$countCh]['gch-code'];
+                        
                         HeaderMenuGrandchild::create([
-                            'code' => "hmgch-" . substr(str_shuffle("0123456789"), 0, 4),
+                            'code' => $code,
                             'title' => $item['title'],
                             'link' => $item['link'],
                             'header_menu_child_id' => $resultHeaderMenuChild->id,
