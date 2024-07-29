@@ -159,7 +159,7 @@
                                                     @endphp
                                                     <li class="nav-item">
                                                         <a class="nav-link {{ $active }}" data-bs-toggle="tab"
-                                                            href='#child-{{ $countChild + 1 }}'>
+                                                            href='#child_{{ $countChild + 1 }}'>
                                                             <span>
                                                                 child {{ $countChild + 1 }}
                                                             </span>
@@ -256,7 +256,12 @@
                                                 @endforeach
                                                 @php
                                                     $child = ['child_1', 'child_2', 'child_3', 'child_4'];
-                                                    $grand_details_child = ['grand_details_child_1', 'grand_details_child_2', 'grand_details_child_3', 'grand_details_child_4'];
+                                                    $grand_details_child = [
+                                                        'grand_details_child_1',
+                                                        'grand_details_child_2',
+                                                        'grand_details_child_3',
+                                                        'grand_details_child_4',
+                                                    ];
                                                 @endphp
                                                 @while ($countChild <= 3)
                                                     @php
@@ -265,7 +270,7 @@
                                                             $active = 'active show';
                                                         }
                                                     @endphp
-                                                    <div class="tab-pane fade {{ $active }}" id="child-1"
+                                                    <div class="tab-pane fade {{ $active }}" id="{{ $child[$countChild] }}"
                                                         role="tabpanel">
 
 
@@ -323,7 +328,8 @@
                                                                     {{-- error --}}
                                                                 </div>
                                                             </div>
-                                                            <div class="mb-1 row" id="grand_details_child[$countChild]">
+                                                            <div class="mb-1 row"
+                                                                id="{{ $grand_details_child[$countChild] }}">
 
                                                             </div>
 
@@ -434,7 +440,7 @@
     function addGrandChildDetails(child) {
         console.log(child);
         let resultDiv = document.getElementById('grand_details_' + child);
-
+        console.log(resultDiv)
         var count = parseInt(document.getElementById(child).getAttribute("count"));
 
         count = count + 1;
