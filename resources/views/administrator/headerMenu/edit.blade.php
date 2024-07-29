@@ -65,6 +65,16 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-2 col-form-label col-form-label-lg">priority</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-lg" name="priority"
+                                            value="{{ $headerMenu->priority }}">
+                                        @error('priority')
+                                            <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
 
                                 {{-- header menu --}}
 
@@ -119,6 +129,9 @@
                                         <div class="card-body">
                                             <!-- Nav tabs -->
                                             <ul class="nav nav-tabs" role="tablist">
+                                                @php
+                                                    $countChild = 0;
+                                                @endphp
                                                 @foreach ($headerMenu->childs as $key => $row)
                                                     @php
                                                         $active = '';
@@ -135,10 +148,34 @@
                                                             </span>
                                                         </a>
                                                     </li>
+                                                    {{ $countChild = $key }}
                                                 @endforeach
+                                                @while ($countChild <= 3)
+                                                    @php
+                                                        $active = '';
+                                                        if ($countChild == 0) {
+                                                            $active = 'active';
+                                                        }
+                                                    @endphp
+                                                    <li class="nav-item">
+                                                        <a class="nav-link {{ $active }}" data-bs-toggle="tab"
+                                                            href='#child-{{ $countChild + 1 }}'>
+                                                            <span>
+                                                                child {{ $countChild + 1 }}
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    @php
+                                                        $countChild++;
+                                                    @endphp
+                                                @endwhile
                                             </ul>
+
                                             <!-- Tab panes -->
                                             <div class="tab-content tabcontent-border">
+                                                @php
+                                                    $countChild = 0;
+                                                @endphp
                                                 @foreach ($headerMenu->childs as $key => $row)
                                                     @php
                                                         $active = '';
@@ -198,8 +235,9 @@
                                                                     @endphp
                                                                 </div>
                                                             @endforeach
-                                                            
-                                                            <div id="{{ $child }}" count="{{ $child_count[$key + 1] }}"></div>
+
+                                                            <div id="{{ $child }}"
+                                                                count="{{ $child_count[$key + 1] }}"></div>
 
                                                             <div class="mb-1 row"
                                                                 id="grand_details_child_{{ $key + 1 }}">
@@ -212,7 +250,93 @@
                                                                         aria-hidden="true"></i></span></a>
                                                         </div>
                                                     </div>
+                                                    @php
+                                                        $countChild = $key;
+                                                    @endphp
                                                 @endforeach
+                                                @php
+                                                    $child = ['child_1', 'child_2', 'child_3', 'child_4'];
+                                                    $grand_details_child = ['grand_details_child_1', 'grand_details_child_2', 'grand_details_child_3', 'grand_details_child_4'];
+                                                @endphp
+                                                @while ($countChild <= 3)
+                                                    @php
+                                                        $active = '';
+                                                        if ($countChild == 0) {
+                                                            $active = 'active show';
+                                                        }
+                                                    @endphp
+                                                    <div class="tab-pane fade {{ $active }}" id="child-1"
+                                                        role="tabpanel">
+
+
+
+                                                        <div class="pt-4">
+                                                            <div class="mb-3 row">
+                                                                <label
+                                                                    class="col-sm-2 col-form-label col-form-label-lg">Child
+                                                                    Title</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text"
+                                                                        class="form-control form-control-lg"
+                                                                        name="title_child[]"
+                                                                        value="{{ old('title_child[0]') }}">
+                                                                    {{-- error --}}
+                                                                    @if ($errors->get('title_child'))
+                                                                        <div class="pt-1 pb-1 mt-2 alert alert-danger">
+                                                                            {{ $errors->get('title_child')[0] }}</div>
+                                                                    @endif
+                                                                    {{-- error --}}
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="mb-1 row">
+                                                                <label
+                                                                    class="col-sm-2 col-form-label col-form-label-lg">Grand
+                                                                    Child
+                                                                    Title</label>
+                                                                <div class="col-sm-3">
+                                                                    <input type="text"
+                                                                        class="form-control form-control-lg"
+                                                                        name="grand_child[{{ $child[$countChild] }}][{{ $countChild }}][title]">
+                                                                    {{-- error --}}
+                                                                    @if ($errors->get('title_gchild'))
+                                                                        <div class="pt-1 pb-1 mt-2 alert alert-danger">
+                                                                            {{ $errors->get('title_gchild')[0] }}</div>
+                                                                    @endif
+                                                                    {{-- error --}}
+
+                                                                </div>
+                                                                <label
+                                                                    class="col-sm-2 col-form-label col-form-label-lg">Grand
+                                                                    Child
+                                                                    Link</label>
+                                                                <div class="col-sm-5" id="{{ $child[$countChild] }}"
+                                                                    count="{{ $countChild }}">
+                                                                    <input type="text"
+                                                                        class="form-control form-control-lg"
+                                                                        name="grand_child[{{ $child[$countChild] }}][{{ $countChild }}][link]">
+                                                                    {{-- error --}}
+                                                                    @if ($errors->get('link_gchild'))
+                                                                        <div class="pt-1 pb-1 mt-2 alert alert-danger">
+                                                                            {{ $errors->get('link_gchild')[0] }}</div>
+                                                                    @endif
+                                                                    {{-- error --}}
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-1 row" id="grand_details_child[$countChild]">
+
+                                                            </div>
+
+                                                            <a href="javascript:void(0)" class="pointer"
+                                                                onclick="addGrandChildDetails('{{ $child[$countChild] }}')"><span><i
+                                                                        class="fa fa-plus"
+                                                                        aria-hidden="true"></i></span></a>
+                                                        </div>
+                                                    </div>
+                                                    @php
+                                                        $countChild++;
+                                                    @endphp
+                                                @endwhile
                                             </div>
                                         </div>
                                     </div>

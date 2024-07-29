@@ -34,6 +34,7 @@
                                         <th>title</th>
                                         <th>link</th>
                                         <th>lable</th>
+                                        <th>priority</th>
                                         <th>operator</th>
                                         <th>action</th>
                                     </tr>
@@ -45,6 +46,7 @@
                                             <td>{{ $item->title }}</td>
                                             <td>{{ $item->link }}</td>
                                             <td>{{ $item->lable }}</td>
+                                            <td>{{ $item->priority }}</td>
                                             <td>{{ Auth::user($item->operator)->name }}</td>
 
                                             <td>

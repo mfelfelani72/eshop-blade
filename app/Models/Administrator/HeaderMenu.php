@@ -18,6 +18,7 @@ class HeaderMenu extends Model
         'code',
         'link',
         'lable',
+        'priority',
         'operator',
         'extra',
         'status',

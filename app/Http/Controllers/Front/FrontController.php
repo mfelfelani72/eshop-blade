@@ -18,7 +18,7 @@ class FrontController extends Controller
     public function index()
     {
 
-        $headerMenu = HeaderMenu::all();
+        $headerMenu = HeaderMenu::all()->sortBy('priority');
 
         $primarySliders = PrimarySlider::all();
         $primaryBanners = PrimaryBanner::all();

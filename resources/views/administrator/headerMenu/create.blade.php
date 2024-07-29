@@ -56,6 +56,16 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-2 col-form-label col-form-label-lg">Priority</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-lg" name="priority"
+                                            value="{{ old('priority') }}">
+                                        @error('lable')
+                                            <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
 
                                 {{-- header menu --}}
 

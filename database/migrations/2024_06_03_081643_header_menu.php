@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('code');
             $table->string('link');
             $table->string('lable');
+            $table->Integer('priority');
             $table->string('operator');
             $table->string('extra');
             $table->enum('status', ['enable', 'disable', 'deleted']);

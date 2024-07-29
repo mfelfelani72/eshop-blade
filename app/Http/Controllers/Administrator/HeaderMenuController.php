@@ -47,9 +47,11 @@ class HeaderMenuController extends Controller
 
         Validator::make($request->all(), [
             'title' => 'required',
+            'priority' => 'required',
         ], [
 
             'title.required' => __('dashboard.title') . __('dashboard.is-required'),
+            'priority.required' => __('dashboard.priority') . __('dashboard.is-required'),
 
         ])
             ->validate();
@@ -100,6 +102,7 @@ class HeaderMenuController extends Controller
                 'title' => $request->title,
                 'lable' => $lable,
                 'link' => $link,
+                'priority' => $request->priority,
                 'operator' => Auth::user()->id,
                 'extra' => 'empty',
             ]
