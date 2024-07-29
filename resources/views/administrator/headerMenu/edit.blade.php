@@ -148,7 +148,9 @@
                                                             </span>
                                                         </a>
                                                     </li>
-                                                    {{ $countChild = $key }}
+                                                    @php
+                                                        $countChild = $key + 1;
+                                                    @endphp
                                                 @endforeach
                                                 @while ($countChild <= 3)
                                                     @php
@@ -251,7 +253,7 @@
                                                         </div>
                                                     </div>
                                                     @php
-                                                        $countChild = $key;
+                                                        $countChild = $key+1;
                                                     @endphp
                                                 @endforeach
                                                 @php
@@ -265,13 +267,14 @@
                                                 @endphp
                                                 @while ($countChild <= 3)
                                                     @php
+                                                    // dd($countChild);
                                                         $active = '';
                                                         if ($countChild == 0) {
                                                             $active = 'active show';
                                                         }
                                                     @endphp
-                                                    <div class="tab-pane fade {{ $active }}" id="{{ $child[$countChild] }}"
-                                                        role="tabpanel">
+                                                    <div class="tab-pane fade {{ $active }}"
+                                                        id="{{ $child[$countChild] }}" role="tabpanel">
 
 
 
