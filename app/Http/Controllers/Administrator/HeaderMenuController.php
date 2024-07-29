@@ -161,7 +161,7 @@ class HeaderMenuController extends Controller
     public function update(Request $request, string $id)
     {
         // dd($request);
-       
+        // dd($request->grand_child);
         $headerMenu = HeaderMenu::findOrFail($id);
         $file = $request->file('image');
         $img = "";
@@ -219,6 +219,7 @@ class HeaderMenuController extends Controller
         ]);
 
         // delete last childs
+        $lastData = null;
         if ($headerMenu->child) {
 
             foreach ($headerMenu->childs as $key => $item) {
@@ -246,7 +247,7 @@ class HeaderMenuController extends Controller
             foreach ($request->title_child as $title) {
                 if ($title !== null) {
                     $code = "hmch-" . substr(str_shuffle("0123456789"), 0, 4);
-                    if ($headerMenu->child && $lastData[$key]['ch-title'] == $title)
+                    if ($lastData!==null && $lastData[$key]['ch-title'] == $title)
                         $code = $lastData[$key]['ch-code'];
 
                     $resultHeaderMenuChild = HeaderMenuChild::create(
@@ -268,7 +269,7 @@ class HeaderMenuController extends Controller
 
                             $countCh = 0;
                             $code = "hmgch-" . substr(str_shuffle("0123456789"), 0, 4);
-                            if ($lastData[$key][$countCh]['gch-title'] == $item['title'])
+                            if ($lastData !== null && $lastData[$key][$countCh]['gch-title'] == $item['title'])
                                 $code = $lastData[$key][$countCh]['gch-code'];
 
                             if ($item['title'])
