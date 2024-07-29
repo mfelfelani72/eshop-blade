@@ -121,6 +121,7 @@ class HeaderMenuController extends Controller
                             'extra' => 'empty',
                         ]
                     );
+                // dd($request->grand_child);
                 if (
                     $resultHeaderMenuChild && $request->grand_child['child_' . $count][0]['title'] &&
                     $request->grand_child['child_' . $count][0]['link']
@@ -160,6 +161,7 @@ class HeaderMenuController extends Controller
     public function update(Request $request, string $id)
     {
         // dd($request);
+       
         $headerMenu = HeaderMenu::findOrFail($id);
         $file = $request->file('image');
         $img = "";
@@ -257,10 +259,10 @@ class HeaderMenuController extends Controller
                             'extra' => 'empty',
                         ]
                     );
-                    dd($request->grand_child);
+                    // dd($request->grand_child);
                     if (
-                        $resultHeaderMenuChild && $request->grand_child['child_' . $count][$count - 1]['title'] &&
-                        $request->grand_child['child_' . $count][$count - 1]['link']
+                        $resultHeaderMenuChild && $request->grand_child['child_' . $count][0]['title'] &&
+                        $request->grand_child['child_' . $count][0]['link']
                     ) {
                         foreach ($request->grand_child['child_' . $count++] as $item) {
 

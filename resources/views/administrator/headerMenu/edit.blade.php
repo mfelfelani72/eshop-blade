@@ -161,7 +161,7 @@
                                                     @endphp
                                                     <li class="nav-item">
                                                         <a class="nav-link {{ $active }}" data-bs-toggle="tab"
-                                                            href='#child_{{ $countChild + 1 }}'>
+                                                            href='#child-{{ $countChild + 1 }}'>
                                                             <span>
                                                                 child {{ $countChild + 1 }}
                                                             </span>
@@ -258,6 +258,7 @@
                                                 @endforeach
                                                 @php
                                                     $child = ['child_1', 'child_2', 'child_3', 'child_4'];
+                                                    $childTab = ['child-1', 'child-2', 'child-3', 'child-4'];
                                                     $grand_details_child = [
                                                         'grand_details_child_1',
                                                         'grand_details_child_2',
@@ -272,9 +273,10 @@
                                                         if ($countChild == 0) {
                                                             $active = 'active show';
                                                         }
+                                                        $count = 0;
                                                     @endphp
                                                     <div class="tab-pane fade {{ $active }}"
-                                                        id="{{ $child[$countChild] }}" role="tabpanel">
+                                                        id="{{ $childTab[$countChild] }}" role="tabpanel">
 
 
 
@@ -305,7 +307,7 @@
                                                                 <div class="col-sm-3">
                                                                     <input type="text"
                                                                         class="form-control form-control-lg"
-                                                                        name="grand_child[{{ $child[$countChild] }}][{{ $countChild }}][title]">
+                                                                        name="grand_child[{{ $child[$countChild] }}][{{ $count }}][title]">
                                                                     {{-- error --}}
                                                                     @if ($errors->get('title_gchild'))
                                                                         <div class="pt-1 pb-1 mt-2 alert alert-danger">
@@ -319,10 +321,10 @@
                                                                     Child
                                                                     Link</label>
                                                                 <div class="col-sm-5" id="{{ $child[$countChild] }}"
-                                                                    count="{{ $countChild }}">
+                                                                    count="{{ $count }}">
                                                                     <input type="text"
                                                                         class="form-control form-control-lg"
-                                                                        name="grand_child[{{ $child[$countChild] }}][{{ $countChild }}][link]">
+                                                                        name="grand_child[{{ $child[$countChild] }}][{{ $count }}][link]">
                                                                     {{-- error --}}
                                                                     @if ($errors->get('link_gchild'))
                                                                         <div class="pt-1 pb-1 mt-2 alert alert-danger">
@@ -443,8 +445,10 @@
     function addGrandChildDetails(child) {
         console.log(child);
         let resultDiv = document.getElementById('grand_details_' + child);
-        console.log(resultDiv)
         var count = parseInt(document.getElementById(child).getAttribute("count"));
+        // console.log(child);
+        // console.log(document.getElementById(child).getAttribute("count"));
+        // console.log(count);
 
         count = count + 1;
         resultDiv.innerHTML += '<label class="col-sm-2 col-form-label col-form-label-lg">' +
