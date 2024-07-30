@@ -61,7 +61,7 @@
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control form-control-lg" name="priority"
                                             value="{{ old('priority') }}">
-                                        @error('lable')
+                                        @error('priority')
                                             <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -368,7 +368,7 @@
                     </div>
                     {{-- header menu childs --}}
                     <div class="col-12">
-                        <button type="submit" class="float-end btn btn-primary mb-2">Save</button>
+                        <button type="submit" class="float-end btn btn-primary mx-4 my-4">Save</button>
                     </div>
                     </form>
                 </div>

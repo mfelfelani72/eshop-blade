@@ -63,6 +63,7 @@
                     <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('dashboard.menu') }}</a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('header-menu.index') }}">{{ __('dashboard.header menu') }}</a></li>
+                            <li><a href="{{ route('asside-menu.index') }}">{{ __('dashboard.asside menu') }}</a></li>
                             
                         </ul>
                     </li>
