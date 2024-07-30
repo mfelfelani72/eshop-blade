@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Administrator;
 use App\Http\Controllers\Controller;
 use App\Models\Administrator\AssideMenu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AssideMenuController extends Controller
 {
@@ -32,7 +33,63 @@ class AssideMenuController extends Controller
      */
     public function store(Request $request)
     {
-       dd($request);
+        //    dd($request);
+
+        $file = $request->file('image');
+        $img = "";
+
+        if (!empty($file)) {
+            $img = time() . "." . $file->getClientOriginalExtension();
+            $file->move('front/img/asside-menu', $img);
+        }
+
+        Validator::make(['image' => $img], [
+            'image' => 'required',
+        ], [
+            'image.required' => __('dashboard.image') . __('dashboard.is-required'),
+        ])->validate();
+
+        Validator::make($request->all(), [
+            'title' => 'required',
+            'priority' => 'required',
+            'icon' => 'required',
+        ], [
+
+            'title.required' => __('dashboard.title') . __('dashboard.is-required'),
+            'priority.required' => __('dashboard.priority') . __('dashboard.is-required'),
+            'icon.required' => __('dashboard.icon') . __('dashboard.is-required'),
+
+        ])
+        ->validate();
+
+        if ($request->addChild) {
+
+            Validator::make(['image' => $img], [
+                'image' => 'required',
+            ], [
+                'image.required' => __('dashboard.image') . __('dashboard.is-required'),
+            ])->validate();
+
+            Validator::make(
+                [
+                    'title_child' => $request->title_child[0],
+                    'link_child' => $request->link_child[0],
+                ],
+                [
+                    'title_child' => 'required',
+                    'link_child' => 'required',
+                ],
+                [
+
+                    'title_child.required' => __('dashboard.title_child') . __('dashboard.is-required'),
+                    'link_child.required' => __('dashboard.link_child') . __('dashboard.is-required'),
+                ]
+            )
+            ->validate();
+
+
+            // dd("ok");
+        }
     }
 
     /**
