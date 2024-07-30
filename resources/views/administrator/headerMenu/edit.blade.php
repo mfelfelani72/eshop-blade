@@ -253,7 +253,7 @@
                                                         </div>
                                                     </div>
                                                     @php
-                                                        $countChild = $key+1;
+                                                        $countChild = $key + 1;
                                                     @endphp
                                                 @endforeach
                                                 @php
@@ -268,7 +268,7 @@
                                                 @endphp
                                                 @while ($countChild <= 3)
                                                     @php
-                                                    // dd($countChild);
+                                                        // dd($countChild);
                                                         $active = '';
                                                         if ($countChild == 0) {
                                                             $active = 'active show';
@@ -406,9 +406,9 @@
                                         <a href="javascript:void(0)" class="pointer"
                                             onclick="addGrandChildDetails()"><span><i class="fa fa-plus"
                                                     aria-hidden="true"></i></span></a>
-
+                                    @endif
                                 </div>
-                                @endif
+
 
 
                                 {{-- header menu childs --}}
@@ -417,6 +417,7 @@
                                 <div class="col-12">
                                     <button type="submit" class="float-end btn btn-primary mb-2">Save</button>
                                 </div>
+
                             </form>
                         </div>
                     </div>
