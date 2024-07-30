@@ -84,7 +84,7 @@
                                 @if ($item->child)
                                     <li class="has-child">
 
-                                        <a href="#" class="capitalize">{{ $item->title }}
+                                        <a href="#" class="capitalize">{{ __('front.' . $item->code) }}
                                             <div class="icon-small"><i class="ri-arrow-down-s-line"></i></div>
                                         </a>
 
