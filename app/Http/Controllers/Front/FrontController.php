@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Administrator\AssideMenu;
 use App\Models\Administrator\HeaderMenu;
 use App\Models\Administrator\PrimaryBanner;
 use App\Models\Administrator\PrimarySlider;
@@ -19,6 +20,9 @@ class FrontController extends Controller
     {
 
         $headerMenu = HeaderMenu::all()->sortBy('priority');
+        $assideMenu = AssideMenu::all()->sortBy('priority');
+
+        // dd($assideMenu);
 
         $primarySliders = PrimarySlider::all();
         $primaryBanners = PrimaryBanner::all();
@@ -28,7 +32,7 @@ class FrontController extends Controller
 
 
         $address = 'front/front/index';
-        return view('front.front.base-index', compact('address', 'headerMenu', 'primarySliders', 'primaryBanners', 'productTrends', 'productFeatured'));
+        return view('front.front.base-index', compact('address', 'headerMenu', 'primarySliders', 'primaryBanners', 'productTrends', 'productFeatured', 'assideMenu'));
     }
 
     /**
