@@ -110,8 +110,8 @@ class AssideMenuController extends Controller
                     [
                         'asside_menu_id'=> $resultAssideMenu->id,
                         'code' => "amch-" . substr(str_shuffle("0123456789"), 0, 4),
-                        'title' => $request->title,
-                        'link' => $request->link,
+                        'title' => $item['title'],
+                        'link' => $item['link'],
                         'operator' => Auth::user()->id,
                         'extra' => 'empty',
                     ]
@@ -125,19 +125,14 @@ class AssideMenuController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        $assideMenu = AssideMenu::findOrFail($id);
+
+        $address = 'administrator/assideMenu/edit';
+        return view('administrator.dashboard.base-index', compact('address', 'assideMenu'));
     }
 
     /**

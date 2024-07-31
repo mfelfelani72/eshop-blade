@@ -4,6 +4,7 @@ namespace App\Models\Administrator;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AssideMenu extends Model
 {
@@ -22,4 +23,9 @@ class AssideMenu extends Model
         'extra',
         'status',
     ];
+
+    public function childs(): HasMany
+    {
+        return $this->hasMany(AssideMenuChild::class)->where('asside_menu_id', $this->id);
+    }
 }
