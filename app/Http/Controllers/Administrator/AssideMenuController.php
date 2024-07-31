@@ -160,6 +160,13 @@ class AssideMenuController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $assideMenu = AssideMenu::findOrFail($id);
+
+        if (file_exists('front/img/asside-menu/' . $assideMenu->image)) {
+            unlink('front/img/asside-menu/' . $assideMenu->image);
+        }
+
+        $assideMenu->destroy($id);
+        return redirect()->route('asside-menu.index');
     }
 }
