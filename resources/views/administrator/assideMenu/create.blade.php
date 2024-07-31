@@ -67,16 +67,6 @@
                                     </div>
                                 </div>
 
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text">Upload Image</span>
-                                    <div class="form-file">
-                                        <input type="file" class="form-file-input form-control" name="image">
-                                    </div>
-                                </div>
-                                @error('image')
-                                    <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
-                                @enderror
-
                                 {{-- asside menu --}}
 
                                 {{-- asside menu childs --}}
@@ -98,6 +88,17 @@
                                 </div>
 
                                 <div class="{{ $status }}" id="asside-child">
+
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text">Upload Image</span>
+                                        <div class="form-file">
+                                            <input type="file" class="form-file-input form-control" name="image">
+                                        </div>
+                                    </div>
+                                    @error('image')
+                                        <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
+                                    @enderror
+
                                     <h4 class="card-title">Asside Menu Child Details</h4>
                                     <hr>
                                     <div class="col-xl-12">

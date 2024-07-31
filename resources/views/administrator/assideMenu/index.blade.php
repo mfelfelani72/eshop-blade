@@ -30,7 +30,6 @@
                             <table id="example3" class="display" style="min-width: 845px">
                                 <thead>
                                     <tr>
-                                        <th>image</th>
                                         <th>code</th>
                                         <th>title</th>
                                         <th>link</th>
@@ -43,14 +42,7 @@
                                 <tbody>
                                     @foreach ($assideMenus as $item)
                                         <tr>
-                                             <td>
-                                                @if (!empty($item->image))
-                                                    <img class="" width="100" height="100em"
-                                                        src={{ asset('front/img/asside-menu/' . $item->image) }}
-                                                        alt="">
-                                                @endif
-
-                                            </td>
+                                            
                                             <td>{{ $item->code }}</td>
                                             <td>{{ $item->title }}</td>
                                             <td>{{ $item->link }}</td>

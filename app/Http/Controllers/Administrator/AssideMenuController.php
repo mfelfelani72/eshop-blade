@@ -45,13 +45,6 @@ class AssideMenuController extends Controller
             $file->move('front/img/asside-menu', $img);
         }
         
-
-        Validator::make(['image' => $img], [
-            'image' => 'required',
-        ], [
-            'image.required' => __('dashboard.image') . __('dashboard.is-required'),
-        ])->validate();
-
         Validator::make($request->all(), [
             'title' => 'required',
             'priority' => 'required',
