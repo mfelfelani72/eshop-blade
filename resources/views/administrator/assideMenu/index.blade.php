@@ -46,7 +46,7 @@
                                              <td>
                                                 @if (!empty($item->image))
                                                     <img class="" width="100" height="100em"
-                                                        src={{ asset('front/img/assisde-menu/' . $item->iamge) }}
+                                                        src={{ asset('front/img/asside-menu/' . $item->image) }}
                                                         alt="">
                                                 @endif
 

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('link');
             $table->string('icon');
             $table->Integer('priority');
-            $table->Integer('image');
+            $table->string('image');
             $table->string('operator');
             $table->string('extra');
             $table->enum('status', ['enable', 'disable', 'deleted']);
