@@ -285,34 +285,6 @@ class HeaderMenuController extends Controller
                     }
                 }
             }
-
-
-
-            // $resultHeaderMenuChild = HeaderMenuChild::create(
-            //     [
-            //         'code' => "empty",
-            //         'title' => $request->title_child,
-            //         'header_menu_id' => $id,
-            //         'image' => $img,
-            //         'operator' => Auth::user()->id,
-            //         'extra' => 'empty',
-            //     ]
-            // );
-
-
-
-            // if ($resultHeaderMenuChild && $request->grand_child && $request->grand_child[0]['title'] && $request->grand_child[0]['link']) {
-            //     foreach ($request->grand_child as $item) {
-            //         HeaderMenuGrandchild::create([
-            //             'code' => "empty",
-            //             'title' => $item['title'],
-            //             'link' => $item['link'],
-            //             'header_menu_child_id' => $resultHeaderMenuChild->id,
-            //             'operator' => Auth::user()->id,
-            //             'extra' => 'empty',
-            //         ]);
-            //     }
-            // }
         }
 
         return redirect()->route('header-menu.index');

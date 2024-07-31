@@ -110,13 +110,17 @@
                                         <div class="pt-4">
 
                                             <div class="mb-1 row">
+                                                @php
+                                                    $count_child = 0;
+                                                @endphp
                                                 @foreach ($assideMenu->childs as $item)
                                                     <label class="col-sm-2 col-form-label col-form-label-lg">
                                                         Child
                                                         Title</label>
                                                     <div class="col-sm-3">
                                                         <input type="text" class="form-control form-control-lg"
-                                                            name="child[0][title]" value="{{ $item->title }}" >
+                                                            name="child[{{ $count_child }}][title]"
+                                                            value="{{ $item->title }}">
 
                                                     </div>
                                                     <label class="col-sm-2 col-form-label col-form-label-lg">
@@ -124,12 +128,16 @@
                                                         Link</label>
                                                     <div class="col-sm-5">
                                                         <input type="text" class="form-control form-control-lg"
-                                                            name="child[0][link]" value="{{ $item->link }}">
+                                                            name="child[{{ $count_child }}][link]"
+                                                            value="{{ $item->link }}">
                                                     </div>
+                                                    @php
+                                                        $count_child ++;
+                                                    @endphp
                                                 @endforeach
 
                                             </div>
-                                            <div class="mb-1 row" id="child" count=0>
+                                            <div class="mb-1 row" id="child" count={{ $count_child }}>
 
                                             </div>
 

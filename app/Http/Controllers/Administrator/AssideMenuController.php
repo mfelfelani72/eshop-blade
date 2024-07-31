@@ -44,7 +44,7 @@ class AssideMenuController extends Controller
             $img = time() . "." . $file->getClientOriginalExtension();
             $file->move('front/img/asside-menu', $img);
         }
-        
+
         Validator::make($request->all(), [
             'title' => 'required',
             'priority' => 'required',
@@ -108,7 +108,7 @@ class AssideMenuController extends Controller
             foreach ($request->child as $item) {
                 $resultAssideMenuChild = AssideMenuChild::create(
                     [
-                        'asside_menu_id'=> $resultAssideMenu->id,
+                        'asside_menu_id' => $resultAssideMenu->id,
                         'code' => "amch-" . substr(str_shuffle("0123456789"), 0, 4),
                         'title' => $item['title'],
                         'link' => $item['link'],
@@ -117,11 +117,9 @@ class AssideMenuController extends Controller
                     ]
                 );
             }
-            
         }
 
         return redirect()->route('asside-menu.index');
-    
     }
 
     /**
@@ -140,7 +138,114 @@ class AssideMenuController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd($request);
+
+        $assideMenu = AssideMenu::findOrFail($id);
+        $file = $request->file('image');
+        $img = "";
+
+        if (!empty($file))
+            $img = time() . "." . $file->getClientOriginalExtension();
+
+        if ($request->addChild) {
+
+            if (!$assideMenu->childs) {
+
+                Validator::make(['image' => $img], [
+                    'image' => 'required',
+                ], [
+                    'image.required' => __('dashboard.image') . __('dashboard.is-required'),
+                ])->validate();
+            }
+
+
+            Validator::make(
+                [
+                    'title_child' => $request->child[0]['title'],
+                    'link_child' => $request->child[0]['title'],
+                ],
+                [
+                    'title_child' => 'required',
+                    'link_child' => 'required',
+                ],
+                [
+
+                    'title_child.required' => __('dashboard.title_child') . __('dashboard.is-required'),
+                    'link_child.required' => __('dashboard.link_child') . __('dashboard.is-required'),
+                ]
+            )
+                ->validate();
+        }
+
+        if (!empty($file)) {
+            if ($assideMenu->childs && file_exists('front/img/asside-menu/' . $assideMenu->image)) {
+                unlink('front/img/asside-menu/' . $assideMenu->image);
+            }
+
+            $file->move('front/img/asside-menu', $img);
+        } elseif ($assideMenu->childs) {
+            $img = $assideMenu->image;
+        }
+
+        $link = "empty";
+        if ($request->link !== "empty")
+            $link = $request->link;
+
+        $resultAssideMenu = $assideMenu->update([
+            'code' => $assideMenu->code,
+            'title' => $request->title,
+            'link' => $link,
+            'icon' => $request->icon,
+            'priority' => $request->priority,
+            'image' => $img,
+            'operator' => Auth::user()->id,
+            'extra' => 'empty',
+        ]);
+
+        // delete last childs
+        $lastData = null;
+        if ($assideMenu->childs) {
+
+            foreach ($assideMenu->childs as $key => $item) {
+               
+                $lastData[$key]['ch-code'] = $item->code;
+                $lastData[$key]['ch-title'] = $item->title;
+            }
+            // dd($lastData);
+
+            $resultAssideMenuChildDelete = AssideMenuChild::where('asside_menu_id', $assideMenu->id)->delete();
+        }
+
+
+        // delete last childs
+
+        if ($resultAssideMenu && $request->addChild == "on"
+        ) {
+            // dd($request->title_child);
+            
+            $key = 0;
+            foreach ($request->child as $item) {
+                if ($item !== null) {
+                    $code = "hmch-" . substr(str_shuffle("0123456789"), 0, 4);
+                    if ($lastData !== null && $lastData[$key]['ch-title'] == $item['title'])
+                    $code = $lastData[$key]['ch-code'];
+
+                    $resultAssideMenuChild = AssideMenuChild::create(
+                        [
+                            'code' => $code,
+                            'title' => $item['title'],
+                            'link' => $item['link'],
+                            'asside_menu_id' => $id,
+                            'operator' => Auth::user()->id,
+                            'extra' => 'empty',
+                        ]
+                    );
+                   
+                }
+            }
+        }
+
+        return redirect()->route('asside-menu.index');
     }
 
     /**
