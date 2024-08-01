@@ -207,7 +207,7 @@ class AssideMenuController extends Controller
         if ($assideMenu->childs) {
 
             foreach ($assideMenu->childs as $key => $item) {
-               
+
                 $lastData[$key]['ch-code'] = $item->code;
                 $lastData[$key]['ch-title'] = $item->title;
             }
@@ -219,16 +219,17 @@ class AssideMenuController extends Controller
 
         // delete last childs
 
-        if ($resultAssideMenu && $request->addChild == "on"
+        if (
+            $resultAssideMenu && $request->addChild == "on"
         ) {
             // dd($request->title_child);
-            
+
             $key = 0;
             foreach ($request->child as $item) {
                 if ($item !== null) {
                     $code = "hmch-" . substr(str_shuffle("0123456789"), 0, 4);
                     if ($lastData !== null && $lastData[$key]['ch-title'] == $item['title'])
-                    $code = $lastData[$key]['ch-code'];
+                        $code = $lastData[$key]['ch-code'];
 
                     $resultAssideMenuChild = AssideMenuChild::create(
                         [
@@ -240,7 +241,6 @@ class AssideMenuController extends Controller
                             'extra' => 'empty',
                         ]
                     );
-                   
                 }
             }
         }
@@ -255,7 +255,7 @@ class AssideMenuController extends Controller
     {
         $assideMenu = AssideMenu::findOrFail($id);
 
-        if (file_exists('front/img/asside-menu/' . $assideMenu->image)) {
+        if (file_exists('front/img/asside-menu/' . $assideMenu->image !== "")) {
             unlink('front/img/asside-menu/' . $assideMenu->image);
         }
 
