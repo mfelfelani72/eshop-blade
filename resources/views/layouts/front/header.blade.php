@@ -536,11 +536,13 @@
                                         </a>
 
                                         @if ($item->childs)
-                                            <ul
-                                                style="background-image: url({{ asset('front/img/asside-menu/' . $item->image) }})">
+                                            <ul style="background-image: url({{ asset('front/img/asside-menu/' . $item->image) }}); height: 300%;">
                                                 @foreach ($item->childs as $row)
-                                                    <li><a href="{{ $row->link }}">{{ $row->title }}</a>
+                                                
+                                                    <li >
+                                                        <a href="{{ $row->link }}">{{ $row->title }}</a>
                                                     </li>
+                                                   
                                                 @endforeach
                                             </ul>
                                         @endif
