@@ -522,7 +522,7 @@
                                     @php
                                         $child = '';
                                         $link = '';
-                                        if ($item->childs) {
+                                        if ($item->child) {
                                             $child = 'has-child';
                                         } else {
                                             $link = $item->link;
@@ -532,17 +532,18 @@
                                         <a href="{{ $link }}">
                                             <div class="icon-large"><i class="{{ $item->icon }}"></i></div>
                                             {{ $item->title }}
-                                            <div class="icon-small"><i class="ri-arrow-right-s-line"></i></div>
+                                            @if ($item->child)
+                                                <div class="icon-small"><i class="ri-arrow-right-s-line"></i></div>
+                                            @endif
                                         </a>
 
-                                        @if ($item->childs)
-                                            <ul style="background-image: url({{ asset('front/img/asside-menu/' . $item->image) }}); height: 300%;">
+                                        @if ($item->child)
+                                            <ul
+                                                style="background-image: url({{ asset('front/img/asside-menu/' . $item->image) }});">
                                                 @foreach ($item->childs as $row)
-                                                
-                                                    <li >
+                                                    <li>
                                                         <a href="{{ $row->link }}">{{ $row->title }}</a>
                                                     </li>
-                                                   
                                                 @endforeach
                                             </ul>
                                         @endif

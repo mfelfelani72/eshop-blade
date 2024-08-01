@@ -68,7 +68,7 @@
                                 @php
                                     $status = 'disable';
                                     $checked = '';
-                                    if ($assideMenu->childs || $backUrl == 'header-menu.edit') {
+                                    if ($assideMenu->child || $backUrl == 'header-menu.edit') {
                                         $status = '';
                                         $checked = 'checked';
                                     }
@@ -83,7 +83,7 @@
 
                                 <div class="{{ $status }}" id="asside-child">
 
-                                    @if ($assideMenu->childs)
+                                    @if ($assideMenu->child)
                                         <div class="mb-3 row">
                                             <label class="col-sm-2 col-form-label col-form-label-lg">Image</label>
                                             <div class="col-sm-10">
@@ -113,6 +113,26 @@
                                                 @php
                                                     $count_child = 0;
                                                 @endphp
+                                                @if (!$assideMenu->child)
+                                                    <label class="col-sm-2 col-form-label col-form-label-lg">
+                                                        Child
+                                                        Title</label>
+                                                    <div class="col-sm-3">
+                                                        <input type="text" class="form-control form-control-lg"
+                                                            name="child[{{ $count_child }}][title]">
+
+                                                    </div>
+                                                    <label class="col-sm-2 col-form-label col-form-label-lg">
+                                                        Child
+                                                        Link</label>
+                                                    <div class="col-sm-5">
+                                                        <input type="text" class="form-control form-control-lg"
+                                                            name="child[{{ $count_child }}][link]">
+                                                    </div>
+                                                    @php
+                                                        $count_child++;
+                                                    @endphp
+                                                @endif
                                                 @foreach ($assideMenu->childs as $item)
                                                     <label class="col-sm-2 col-form-label col-form-label-lg">
                                                         Child
@@ -132,7 +152,7 @@
                                                             value="{{ $item->link }}">
                                                     </div>
                                                     @php
-                                                        $count_child ++;
+                                                        $count_child++;
                                                     @endphp
                                                 @endforeach
 
