@@ -32,7 +32,7 @@
 @endsection
 
 @section('tag-script')
-    @include('layouts/administrator/tag-script')
+    @include('layouts/front/profile/tag-script')
 @endsection
 
 @section('js')

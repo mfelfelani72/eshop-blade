@@ -11,12 +11,12 @@ class ProfileController extends Controller
      *  Display information from Register User
      */
 
-    public function Dashboard()
+    public function Dashboard(string $id)
     {
 
         // dd("ok");
 
-        $address = 'front/profile/information/index';
-        return view('front/profile.base-index', compact('address'));
+        $address = 'front/profile/information';
+        return view('front/profile.base-index', compact('address','id'));
     }
 }
