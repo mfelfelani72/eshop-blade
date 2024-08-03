@@ -10,6 +10,7 @@ use App\Http\Controllers\Administrator\ProductController;
 use App\Http\Controllers\Administrator\ProductFeaturedController;
 use App\Http\Controllers\Administrator\ProductTrendController;
 use App\Http\Controllers\Front\FrontController;
+use App\Http\Controllers\Front\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontController::class, 'index'])->name('front');
@@ -52,7 +53,14 @@ Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
 
     Route::resource('/admin/dashboard/shop/featured', ProductFeaturedController::class)->parameters(['featured' => 'id']);
 
-    
+
     // settings
 
+
+});
+
+Route::middleware(['App\Http\Middleware\RegisteredUsers'])->group(function () {
+
+    // Route::get('/profile/{id}', [ProfileController::class, 'dashboard'])->name('front');
+    Route::get('/profile/{id}', [ProfileController::class, 'dashboard']);
 });
