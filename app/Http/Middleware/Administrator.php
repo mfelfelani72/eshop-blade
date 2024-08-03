@@ -39,7 +39,7 @@ class Administrator
         // $routeFrom = app('router')->getRoutes()->match(app('request')->create(url()->previous()))->getName();
 
         if (Auth::user()) {
-// dd(Auth::user()->name);
+
             if (Auth::user()->role == "admin" && $routeToAdmin) {
 
                 return $next($request);

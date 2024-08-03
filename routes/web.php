@@ -62,5 +62,5 @@ Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
 Route::middleware(['App\Http\Middleware\RegisteredUsers'])->group(function () {
 
     // Route::get('/profile/{id}', [ProfileController::class, 'dashboard'])->name('front');
-    Route::get('/profile/{id}', [ProfileController::class, 'dashboard']);
+    Route::get('/profile/dashboard', [ProfileController::class, 'dashboard']);
 });

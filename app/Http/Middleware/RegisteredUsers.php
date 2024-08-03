@@ -30,7 +30,7 @@ class RegisteredUsers
         );
 
         if (Auth::user()) {
-            if (Auth::user()->role == "user" && $routeToProfile) {
+            if (Auth::user()->role == "user" || Auth::user()->role == "admin" && $routeToProfile) {
                 return $next($request);
             } else {
                 abort('404', "NOT FOUND");
