@@ -17,8 +17,6 @@ class ProfileController extends Controller
         // dd("ok");
 
         $address = 'front/profile/information/index';
-        // return view($address, compact('address'));
-
-        return view('front/profile.dashboard.base-index', compact('address'));
+        return view('front/profile.base-index', compact('address'));
     }
 }

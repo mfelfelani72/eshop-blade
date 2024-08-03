@@ -1,7 +1,7 @@
 <?php
 return [
 
-    // sidebar
+    // admin -> sidebar
 
     'create' => 'ساختن',
     'shop' => 'فروشگاه',
@@ -24,7 +24,7 @@ return [
     'by Cloner team' => 'توسط تیم کلونر',
     'all rights reserved 2024' => 'تمامی حقوق محفوظ است 2024',
 
-    // sidebar
+    // admin -> sidebar
 
     // header
 
@@ -33,4 +33,8 @@ return [
     // header
 
 
+
+    // user -> sidebar
+    'information' => 'اطلاعات',
+    // user -> sidebar
 ];

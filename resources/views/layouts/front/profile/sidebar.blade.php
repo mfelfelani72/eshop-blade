@@ -2,11 +2,11 @@
     <div class="dlabnav-scroll">
         <ul class="metismenu" id="menu">
             <li>
-                dsds
-                <a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                
+                <a class="" href="javascript:void()" aria-expanded="false">
 
-                    <i class="fa fa-shopping-basket" aria-hidden="true"></i>
-                    <span class="nav-text">{{ __('dashboard.shop') }}</span>
+                   <i class="fa fa-id-card" aria-hidden="true"></i>
+                    <span class="nav-text">{{ __('dashboard.information') }}</span>
                 </a>
                 <ul aria-expanded="false">
 
@@ -31,48 +31,9 @@
                     <li><a class="" href="{{ route('featured.index') }}" aria-expanded="false">{{ __('dashboard.product futured') }}</a>
                     </li>
 
-
-
-
                 </ul>
             </li>
-            <li>
-                <a class="has-arrow " href="javascript:void()" aria-expanded="false">
-                    <i class="fas fa-cogs"></i>
-                    <span class="nav-text">{{ __('dashboard.settings') }}</span>
-                </a>
-                <ul aria-expanded="false">
-                    {{-- Panel Admin --}}
-
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('dashboard.pannel admin') }}</a>
-                        <ul aria-expanded="false">
-                            <li><a href="email-compose.html">{{ __('dashboard.change logo') }}</a></li>
-                        </ul>
-                    </li>
-
-                    {{-- Panel Admin --}}
-
-                    {{-- Public Front --}}
-
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('dashboard.public front') }}</a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ route('primary-slider.index') }}">{{ __('dashboard.slider') }}</a></li>
-                            <li><a href="{{ route('primary-banner.index') }}">{{ __('dashboard.banner') }}</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('dashboard.menu') }}</a>
-                        <ul aria-expanded="false">
-                            <li><a href="{{ route('header-menu.index') }}">{{ __('dashboard.header menu') }}</a></li>
-                            <li><a href="{{ route('asside-menu.index') }}">{{ __('dashboard.asside menu') }}</a></li>
-                            
-                        </ul>
-                    </li>
-
-                    {{-- Public Front --}}
-
-                </ul>
-            </li>
+         
 
 
         </ul>

@@ -1,7 +1,7 @@
 @extends('layouts.administrator.index')
 
 @section('tag-head')
-    @include('layouts/administrator/tag-head')
+    @include('layouts/front/profile/tag-head')
 @endsection
 @section('preloader')
     @include('layouts/administrator/preloader')
