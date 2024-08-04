@@ -27,6 +27,7 @@ return [
 
     // user -> sidebar
     'information' => 'Information',
+    'address' => 'Address',
     // user -> sidebar
 
 ];

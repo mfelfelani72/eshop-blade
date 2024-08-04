@@ -36,5 +36,6 @@ return [
 
     // user -> sidebar
     'information' => 'اطلاعات',
+    'address' => 'آدرس',
     // user -> sidebar
 ];

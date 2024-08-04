@@ -63,5 +63,6 @@ Route::middleware(['App\Http\Middleware\RegisteredUsers'])->group(function () {
 
     // Route::get('/profile/{id}', [ProfileController::class, 'dashboard'])->name('front');
     Route::get('/profile/information', [ProfileController::class, 'information'])->name('user-information');
-    Route::get('/profile/data', [ProfileController::class, 'data'])->name('user-data');
+    Route::get('/profile/address', [ProfileController::class, 'address'])->name('user-address');
+    Route::get('/profile/settings', [ProfileController::class, 'settings'])->name('user-settings');
 });

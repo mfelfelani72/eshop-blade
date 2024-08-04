@@ -11,7 +11,7 @@ class ProfileController extends Controller
      *  Display information from Register User
      */
 
-    public function Information()
+    public function information()
     {
 
         // dd("ok");
@@ -20,12 +20,21 @@ class ProfileController extends Controller
         return view('front/profile.base-index', compact('address'));
     }
 
-    public function data()
+    public function address()
     {
 
         // dd("ok");
 
-        $address = 'front/profile/data';
+        $address = 'front/profile/address';
+        return view('front/profile.base-index', compact('address'));
+    }
+
+    public function settings()
+    {
+
+        // dd("ok");
+
+        $address = 'front/profile/settings';
         return view('front/profile.base-index', compact('address'));
     }
 }

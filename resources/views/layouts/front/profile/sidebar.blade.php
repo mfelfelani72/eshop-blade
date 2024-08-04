@@ -19,23 +19,36 @@
                 <li>
             @endif
 
-            <a class="" href="javascript:void()" aria-expanded="false">
+            <a class="" href="{{ route('user-information') }}" aria-expanded="false">
 
                 <i class="fa fa-id-card" aria-hidden="true"></i>
                 <span class="nav-text">{{ __('dashboard.information') }}</span>
             </a>
 
             </li>
-             @if (array_key_exists('user-data', $list))
+             @if (array_key_exists('user-address', $list))
                 <li class="mm-active">
                 @else
                 <li>
             @endif
 
-                <a class="" href="javascript:void()" aria-expanded="false">
+                <a class="" href="{{ route('user-address') }}" aria-expanded="false">
 
-                    <i class="fa fa-id-card" aria-hidden="true"></i>
-                    <span class="nav-text">{{ __('dashboard.data') }}</span>
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <span class="nav-text">{{ __('dashboard.address') }}</span>
+                </a>
+
+            </li>
+             @if (array_key_exists('user-settings', $list))
+                <li class="mm-active">
+                @else
+                <li>
+            @endif
+
+                <a class="" href="{{ route('user-settings') }}" aria-expanded="false">
+
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <span class="nav-text">{{ __('dashboard.settings') }}</span>
                 </a>
 
             </li>
