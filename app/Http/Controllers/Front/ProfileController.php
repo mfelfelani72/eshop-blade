@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+
+use App\Models\Front\UserProfile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -13,11 +16,10 @@ class ProfileController extends Controller
 
     public function information()
     {
-
-        // dd("ok");
+        $userProfile = UserProfile::findOrFail(Auth::user()->id);
 
         $address = 'front/profile/information';
-        return view('front/profile.base-index', compact('address'));
+        return view('front/profile.base-index', compact('address', 'userProfile'));
     }
 
     public function address()

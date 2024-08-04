@@ -2,8 +2,11 @@
 
 namespace App\Models\Front;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class UserProfile extends Model
 {
@@ -25,4 +28,9 @@ class UserProfile extends Model
         'extra',
         'status',
     ];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }
