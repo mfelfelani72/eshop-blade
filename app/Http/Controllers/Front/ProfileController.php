@@ -25,10 +25,11 @@ class ProfileController extends Controller
     public function address()
     {
 
-        // dd("ok");
+        $userProfile = UserProfile::findOrFail(Auth::user()->id);
+        $userProfileAddress = UserProfile::addresses();
 
         $address = 'front/profile/address';
-        return view('front/profile.base-index', compact('address'));
+        return view('front/profile.base-index', compact('address', 'userProfile', 'userProfileAddress'));
     }
 
     public function settings()
