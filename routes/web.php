@@ -62,5 +62,6 @@ Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
 Route::middleware(['App\Http\Middleware\RegisteredUsers'])->group(function () {
 
     // Route::get('/profile/{id}', [ProfileController::class, 'dashboard'])->name('front');
-    Route::get('/profile/dashboard', [ProfileController::class, 'dashboard'])->name('user-dashboard');
+    Route::get('/profile/information', [ProfileController::class, 'information'])->name('user-information');
+    Route::get('/profile/data', [ProfileController::class, 'data'])->name('user-data');
 });

@@ -39,7 +39,7 @@
                                     @if (Auth::user()->role == 'admin')
                                         <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
                                     @endif
-                                    <li><a href="{{ route('user-dashboard') }}">My Account</a></li>
+                                    <li><a href="{{ route('user-information') }}">My Account</a></li>
                                     <li class="w-110"><a href="#">Order Tracking</a></li>
                                     <li><a href="{{ route('logout') }}">Logout</a></li>
                                 </ul>
