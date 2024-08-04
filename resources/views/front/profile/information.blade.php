@@ -9,7 +9,8 @@
                         </div>
                         <div class="profile-info">
                             <div class="profile-photo">
-                                <img src="images/profile/profile.png" class="img-fluid rounded-circle" alt="">
+                                <img src={{ asset('administrator/images/user.jpg')}} class="img-fluid rounded-circle"
+                                    alt="">
                             </div>
                             <div class="profile-details">
                                 <div class="profile-name px-3 pt-2">
@@ -51,57 +52,56 @@
                             </div>
                         </div>
                         <div class="profile-personal-info">
-                                                <h4 class="text-primary mb-4">Personal Information</h4>
-                                                <div class="row mb-2">
-                                                    <div class="col-sm-3 col-5">
-                                                        <h5 class="f-w-500">Name <span class="pull-end">:</span>
-                                                        </h5>
-                                                    </div>
-                                                    <div class="col-sm-9 col-7"><span>Mitchell C.Shay</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-2">
-                                                    <div class="col-sm-3 col-5">
-                                                        <h5 class="f-w-500">Email <span class="pull-end">:</span>
-                                                        </h5>
-                                                    </div>
-                                                    <div class="col-sm-9 col-7"><span>example@examplel.com</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-2">
-                                                    <div class="col-sm-3 col-5">
-                                                        <h5 class="f-w-500">Availability <span class="pull-end">:</span>
-                                                        </h5>
-                                                    </div>
-                                                    <div class="col-sm-9 col-7"><span>Full Time (Free Lancer)</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-2">
-                                                    <div class="col-sm-3 col-5">
-                                                        <h5 class="f-w-500">Age <span class="pull-end">:</span>
-                                                        </h5>
-                                                    </div>
-                                                    <div class="col-sm-9 col-7"><span>27</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-2">
-                                                    <div class="col-sm-3 col-5">
-                                                        <h5 class="f-w-500">Location <span class="pull-end">:</span>
-                                                        </h5>
-                                                    </div>
-                                                    <div class="col-sm-9 col-7"><span>Rosemont Avenue Melbourne,
-                                                            Florida</span>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-2">
-                                                    <div class="col-sm-3 col-5">
-                                                        <h5 class="f-w-500">Year Experience <span
-                                                                class="pull-end">:</span></h5>
-                                                    </div>
-                                                    <div class="col-sm-9 col-7"><span>07 Year Experiences</span>
-                                                    </div>
-                                                </div>
-                                            </div>
+                            <h4 class="text-primary mb-4">Personal Information</h4>
+                            <div class="row mb-2">
+                                <div class="col-sm-3 col-5">
+                                    <h5 class="f-w-500">Name <span class="pull-end">:</span>
+                                    </h5>
+                                </div>
+                                <div class="col-sm-9 col-7"><span>Mitchell C.Shay</span>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-sm-3 col-5">
+                                    <h5 class="f-w-500">Email <span class="pull-end">:</span>
+                                    </h5>
+                                </div>
+                                <div class="col-sm-9 col-7"><span>example@examplel.com</span>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-sm-3 col-5">
+                                    <h5 class="f-w-500">Availability <span class="pull-end">:</span>
+                                    </h5>
+                                </div>
+                                <div class="col-sm-9 col-7"><span>Full Time (Free Lancer)</span>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-sm-3 col-5">
+                                    <h5 class="f-w-500">Age <span class="pull-end">:</span>
+                                    </h5>
+                                </div>
+                                <div class="col-sm-9 col-7"><span>27</span>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-sm-3 col-5">
+                                    <h5 class="f-w-500">Location <span class="pull-end">:</span>
+                                    </h5>
+                                </div>
+                                <div class="col-sm-9 col-7"><span>Rosemont Avenue Melbourne,
+                                        Florida</span>
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-sm-3 col-5">
+                                    <h5 class="f-w-500">Year Experience <span class="pull-end">:</span></h5>
+                                </div>
+                                <div class="col-sm-9 col-7"><span>07 Year Experiences</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -196,7 +196,8 @@
                                                 </div>
                                                 <div class="row mb-2">
                                                     <div class="col-sm-3 col-5">
-                                                        <h5 class="f-w-500">Availability <span class="pull-end">:</span>
+                                                        <h5 class="f-w-500">Availability <span
+                                                                class="pull-end">:</span>
                                                         </h5>
                                                     </div>
                                                     <div class="col-sm-9 col-7"><span>Full Time (Free Lancer)</span>
