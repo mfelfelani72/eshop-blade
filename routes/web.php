@@ -66,5 +66,7 @@ Route::middleware(['App\Http\Middleware\RegisteredUsers'])->group(function () {
     Route::get('/profile/edit-information', [ProfileController::class, 'editInformation'])->name('user-edit-information');
     Route::put('/profile/store-information', [ProfileController::class, 'storeInformation'])->name('store-edit-information');
     Route::get('/profile/address', [ProfileController::class, 'address'])->name('user-address');
+    Route::get('/profile/edit-address/{id}', [ProfileController::class, 'editAddress'])->name('user-edit-address');
+    Route::put('/profile/store-address/{id}', [ProfileController::class, 'storAaddress'])->name('user-store-address');
     Route::get('/profile/settings', [ProfileController::class, 'settings'])->name('user-settings');
 });

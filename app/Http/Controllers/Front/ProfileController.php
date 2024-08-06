@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 
 use App\Models\Front\UserProfile;
+use App\Models\Front\UserProfileAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -110,8 +111,6 @@ class ProfileController extends Controller
         ]);
 
         return redirect()->route('user-information');
-
-        // return view('front/profile.base-index', compact('address', 'userProfile'));
     }
 
     public function address()
@@ -122,6 +121,23 @@ class ProfileController extends Controller
 
         $address = 'front/profile/address';
         return view('front/profile.base-index', compact('address', 'userProfile', 'userProfileAddress'));
+    }
+
+    public function editAddress(string $id)
+    {
+
+        $userProfile = UserProfile::findOrFail(Auth::user()->id);
+        $userProfileAddress = UserProfileAddress::findOrFail($id);
+
+        $address = 'front/profile/edit-address';
+        return view('front/profile.base-index', compact('address', 'id', 'userProfile', 'userProfileAddress'));
+    }
+
+    public function storeAddress(Request $request)
+    {
+        dd($request);
+
+        return redirect()->route('user-address');
     }
 
     public function settings()

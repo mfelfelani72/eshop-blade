@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             @php
-               echo view('front/profile/header-user-profile', compact('userProfile'))->render();
+                echo view('front/profile/header-user-profile', compact('userProfile'))->render();
             @endphp
             <div class="col-xl-12">
                 <div class="card">
@@ -133,6 +133,10 @@
                                                             <div class="col-sm-8 col-7">
                                                                 <span>{{ $row->location }}</span>
                                                             </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <a href="{{ route('user-edit-address',$row->id) }}"
+                                                                class="float-end btn btn-rounded btn-primary">Edit</a>
                                                         </div>
                                                     </div>
                                                 </div>
