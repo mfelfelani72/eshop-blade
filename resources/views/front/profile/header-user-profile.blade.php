@@ -2,12 +2,14 @@
      <div class="profile card card-body px-3 pt-3 pb-0">
          <div class="profile-head">
              <div class="photo-content">
-                 <div class="cover-photo rounded" style="background: url({{ asset($userProfile->cover) }})">
+                 <div class="cover-photo rounded"
+                     style="background: url({{ asset('/front/img/profile/' . $userProfile->cover) }})">
                  </div>
              </div>
              <div class="profile-info">
                  <div class="profile-photo">
-                     <img src={{ asset($userProfile->image) }} class="img-fluid rounded-circle" alt="">
+                     <img src={{ asset('/front/img/profile/' . $userProfile->image) }} class="img-fluid rounded-circle"
+                         alt="">
                  </div>
                  <div class="profile-details">
                      <div class="profile-name px-3 pt-2">

@@ -72,6 +72,10 @@ class ProfileController extends Controller
         ])->validate();
 
         $userProfile = UserProfile::findOrFail(Auth::user()->id);
+$bio = "";
+// if()
+        $bio = $request->bio;
+        $about = $request->about;
 
         $userProfile->update([
 
@@ -79,6 +83,8 @@ class ProfileController extends Controller
             'last_name' => $request->last_name,
             'email' => $request->email,
             'mobile' => $request->mobile,
+            'bio' => $bio,
+            'about' => $about,
             'image' => $img,
             'cover' => $cover,
 

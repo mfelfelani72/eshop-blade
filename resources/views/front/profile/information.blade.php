@@ -47,6 +47,11 @@
                                 <div class="col-sm-9 col-7"><span>{{ $userProfile->mobile }}</span>
                                 </div>
                             </div>
+
+                            <div class="col-12">
+                                <a href="{{ route('user-edit-information') }}"
+                                    class="float-end btn btn-rounded btn-primary">Edit</a>
+                            </div>
                         </div>
                     </div>
                 </div>

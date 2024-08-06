@@ -16,41 +16,115 @@
                                 @csrf
                                 @method('PUT')
                                 <div class="mb-3 row">
+                                    @php
+                                        $value = '';
+                                        if (old('name') == '') {
+                                            $value = $userProfile->name;
+                                        } else {
+                                            $value = old('name');
+                                        }
+
+                                    @endphp
                                     <label class="col-sm-2 col-form-label col-form-label-lg">Name</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control form-control-lg" name="name"
-                                            value="{{ old('name') }}">
+                                            value="{{ $value }}">
                                         @error('name')
                                             <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
+                                     @php
+                                        $value = '';
+                                        if (old('last_name') == '') {
+                                            $value = $userProfile->last_name;
+                                        } else {
+                                            $value = old('last_name');
+                                        }
+
+                                    @endphp
                                     <label class="col-sm-2 col-form-label col-form-label-lg">Last Name</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control form-control-lg" name="last_name"
-                                            value="{{ old('last_name') }}">
+                                            value="{{ $value }}">
                                         @error('last_name')
                                             <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
+                                     @php
+                                        $value = '';
+                                        if (old('email') == '') {
+                                            $value = $userProfile->email;
+                                        } else {
+                                            $value = old('email');
+                                        }
+
+                                    @endphp
                                     <label class="col-sm-2 col-form-label col-form-label-lg">Email</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control form-control-lg" name="email"
-                                            value="{{ old('email') }}">
+                                            value="{{ $value }}">
                                         @error('email')
                                             <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
+                                    @php
+                                        $value = '';
+                                        if (old('mobile') == '') {
+                                            $value = $userProfile->mobile;
+                                        } else {
+                                            $value = old('mobile');
+                                        }
+
+                                    @endphp
                                     <label class="col-sm-2 col-form-label col-form-label-lg">Mobile</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control form-control-lg" name="mobile"
-                                            value="{{ old('mobile') }}">
+                                            value="{{ $value }}">
                                         @error('mobile')
+                                            <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    @php
+                                        $value = '';
+                                        if (old('bio') == '') {
+                                            $value = $userProfile->bio;
+                                        } else {
+                                            $value = old('bio');
+                                        }
+
+                                    @endphp
+                                    <label class="col-sm-2 col-form-label col-form-label-lg">Bio</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-lg" name="bio"
+                                            value="{{ $value }}">
+                                        @error('bio')
+                                            <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    @php
+                                        $value = '';
+                                        if (old('about') == '') {
+                                            $value = $userProfile->about;
+                                        } else {
+                                            $value = old('about');
+                                        }
+
+                                    @endphp
+                                    <label class="col-sm-2 col-form-label col-form-label-lg">About Your Self</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control form-control-lg" name="about"
+                                            value="{{ $value }}">
+                                        @error('about')
                                             <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
