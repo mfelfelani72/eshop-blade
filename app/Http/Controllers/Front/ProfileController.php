@@ -33,20 +33,32 @@ class ProfileController extends Controller
     }
     public function storeInformation(Request $request)
     {
+        $userProfile = UserProfile::findOrFail(Auth::user()->id);
 
         $file1 = $request->file('image');
         $file2 = $request->file('cover');
         $img = "";
         $cover = "";
 
+
         if (!empty($file1)) {
+            if (file_exists('front/img/profile/' . $userProfile->image)) {
+                unlink('front/img/profile/' . $userProfile->image);
+            }
             $img = time() . "." . $file1->getClientOriginalExtension();
             $file1->move('front/img/profile', $img);
+        } else {
+            $img = $userProfile->image;
         }
 
         if (!empty($file2)) {
-            $cover = time() . "." . $file2->getClientOriginalExtension();
+            if (file_exists('front/img/profile/' . $userProfile->cover)) {
+                unlink('front/img/profile/' . $userProfile->cover);
+            }
+            $cover = time() . "." . $file1->getClientOriginalExtension();
             $file2->move('front/img/profile', $cover);
+        } else {
+            $cover = $userProfile->cover;
         }
 
 
@@ -63,17 +75,24 @@ class ProfileController extends Controller
         ])
             ->validate();
 
-        Validator::make(['img' => $img, 'cover' => $cover], [
-            'img' => 'required',
-            'cover' => 'required',
-        ], [
-            'img.required' => __('dashboard.image') . __('dashboard.is-required'),
-            'cover.required' => __('dashboard.cover') . __('dashboard.is-required'),
-        ])->validate();
+        if (!$userProfile->image)
 
-        $userProfile = UserProfile::findOrFail(Auth::user()->id);
-$bio = "";
-// if()
+            Validator::make(['img' => $img], [
+                'img' => 'required',
+            ], [
+                'img.required' => __('dashboard.image') . __('dashboard.is-required'),
+            ])->validate();
+
+        if (!$userProfile->cover)
+
+            Validator::make(['cover' => $cover], [
+                'cover' => 'required',
+            ], [
+                'cover.required' => __('dashboard.cover') . __('dashboard.is-required'),
+            ])->validate();
+
+        $bio = "";
+        // if()
         $bio = $request->bio;
         $about = $request->about;
 

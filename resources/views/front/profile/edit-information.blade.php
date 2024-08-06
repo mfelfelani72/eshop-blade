@@ -35,7 +35,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                     @php
+                                    @php
                                         $value = '';
                                         if (old('last_name') == '') {
                                             $value = $userProfile->last_name;
@@ -54,7 +54,7 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
-                                     @php
+                                    @php
                                         $value = '';
                                         if (old('email') == '') {
                                             $value = $userProfile->email;
@@ -129,6 +129,13 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="mb-3 row">
+                                    <label class="col-sm-2 col-form-label col-form-label-lg">Image</label>
+                                    <div class="col-sm-10">
+                                        <img class="" width="200"
+                                            src={{ asset('front/img/profile/' . $userProfile->image) }}>
+                                    </div>
+                                </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Upload Image</span>
                                     <div class="form-file">
@@ -138,6 +145,13 @@
                                 @error('img')
                                     <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
                                 @enderror
+                                <div class="mb-3 row">
+                                    <label class="col-sm-2 col-form-label col-form-label-lg">Cover</label>
+                                    <div class="col-sm-10">
+                                        <img class="" width="200"
+                                            src={{ asset('front/img/profile/' . $userProfile->cover) }}>
+                                    </div>
+                                </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Upload Cover</span>
                                     <div class="form-file">
