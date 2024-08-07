@@ -93,9 +93,11 @@ class ProfileController extends Controller
             ])->validate();
 
         $bio = "";
-        // if()
-        $bio = $request->bio;
-        $about = $request->about;
+        $about = "";
+        if ($request->bio)
+            $bio = $request->bio;
+        if ($request->about)
+            $about = $request->about;
 
         $userProfile->update([
 
@@ -133,9 +135,57 @@ class ProfileController extends Controller
         return view('front/profile.base-index', compact('address', 'id', 'userProfile', 'userProfileAddress'));
     }
 
-    public function storeAddress(Request $request)
+    public function storeAddress(Request $request, string $id)
     {
-        dd($request);
+        // dd($request);
+
+        Validator::make($request->all(), [
+            // 'country' => 'required',
+            'province' => 'required',
+            'city' => 'required',
+            'street' => 'required',
+            // 'avenue' => 'required',
+            'home_number' => 'required',
+            'zip_code' => 'required',
+            'floor' => 'required',
+            'unit' => 'required',
+            'location' => 'required',
+        ], [
+            // 'country.required' => __('dashboard.country') . __('dashboard.is-required'),
+            'province.required' => __('dashboard.province') . __('dashboard.is-required'),
+            'city.required' => __('dashboard.city') . __('dashboard.is-required'),
+            'street.required' => __('dashboard.street') . __('dashboard.is-required'),
+            // 'avenue.required' => __('dashboard.avenue') . __('dashboard.is-required'),
+            'home_number.required' => __('dashboard.home_number') . __('dashboard.is-required'),
+            'zip_code.required' => __('dashboard.zip_code') . __('dashboard.is-required'),
+            'floor.required' => __('dashboard.floor') . __('dashboard.is-required'),
+            'unit.required' => __('dashboard.unit') . __('dashboard.is-required'),
+            'location.required' => __('dashboard.location') . __('dashboard.is-required'),
+        ])
+            ->validate();
+
+        $country = "";
+        $avenue = "";
+        if ($request->country)
+            $country = $request->country;
+        if ($request->avenue)
+            $avenue = $request->avenue;
+
+        $userProfileAddress = UserProfileAddress::findOrFail($id);
+
+        $userProfileAddress->uopdate([
+            'country' => $country,
+            'province' => $request->province,
+            'city' => $request->city,
+            'street' => $request->street,
+            'avenue' => $avenue,
+            'home_number' => $request->home_number,
+            'zip_code' => $request->zip_code,
+            'floor' => $request->floor,
+            'unit' => $request->unit,
+            'location' => $request->location,
+        ]);
+
 
         return redirect()->route('user-address');
     }
