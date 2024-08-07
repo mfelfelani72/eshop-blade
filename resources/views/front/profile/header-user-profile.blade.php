@@ -1,15 +1,25 @@
+ @php
+     $basePath = '/front/img/profile/';
+     $image = '/administrator/images/avatar/1.png';
+     $cover = '/front/img/profile/cover.jpg';
+
+     if ($userProfile->image) {
+         $image = $basePath . $userProfile->image;
+     }
+     if ($userProfile->cover) {
+         $cover = $basePath . $userProfile->cover;
+     }
+ @endphp
  <div class="col-lg-12">
      <div class="profile card card-body px-3 pt-3 pb-0">
          <div class="profile-head">
              <div class="photo-content">
-                 <div class="cover-photo rounded"
-                     style="background: url({{ asset('/front/img/profile/' . $userProfile->cover) }})">
+                 <div class="cover-photo rounded" style="background: url({{ asset($cover) }})">
                  </div>
              </div>
              <div class="profile-info">
                  <div class="profile-photo">
-                     <img src={{ asset('/front/img/profile/' . $userProfile->image) }} class="img-fluid rounded-circle"
-                         alt="">
+                     <img src={{ asset($image) }} class="img-fluid rounded-circle" alt="">
                  </div>
                  <div class="profile-details">
                      <div class="profile-name px-3 pt-2">

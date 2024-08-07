@@ -129,29 +129,34 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="mb-3 row">
-                                    <label class="col-sm-2 col-form-label col-form-label-lg">Image</label>
-                                    <div class="col-sm-10">
-                                        <img class="" width="200"
-                                            src={{ asset('front/img/profile/' . $userProfile->image) }}>
+                                @if ($userProfile->image)
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-2 col-form-label col-form-label-lg">Image</label>
+                                        <div class="col-sm-10">
+                                            <img class="" width="200"
+                                                src={{ asset('front/img/profile/' . $userProfile->image) }}>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Upload Image</span>
                                     <div class="form-file">
                                         <input type="file" class="form-file-input form-control" name="image">
                                     </div>
                                 </div>
-                                @error('img')
+                                @error('image')
                                     <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
                                 @enderror
-                                <div class="mb-3 row">
-                                    <label class="col-sm-2 col-form-label col-form-label-lg">Cover</label>
-                                    <div class="col-sm-10">
-                                        <img class="" width="200"
-                                            src={{ asset('front/img/profile/' . $userProfile->cover) }}>
+                                @if ($userProfile->cover)
+                                    <div class="mb-3 row">
+                                        <label class="col-sm-2 col-form-label col-form-label-lg">Cover</label>
+                                        <div class="col-sm-10">
+                                            <img class="" width="200"
+                                                src={{ asset('front/img/profile/' . $userProfile->cover) }}>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
+
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">Upload Cover</span>
                                     <div class="form-file">

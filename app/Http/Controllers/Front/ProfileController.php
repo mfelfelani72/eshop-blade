@@ -18,7 +18,7 @@ class ProfileController extends Controller
 
     public function information()
     {
-        $userProfile = UserProfile::findOrFail(Auth::user()->id);
+        $userProfile = UserProfile::where('user_id', Auth::user()->id)->first();
 
         $address = 'front/profile/information';
         return view('front/profile.base-index', compact('address', 'userProfile'));
@@ -27,14 +27,15 @@ class ProfileController extends Controller
     public function editInformation()
     {
 
-        $userProfile = UserProfile::findOrFail(Auth::user()->id);
+        $userProfile = UserProfile::where('user_id', Auth::user()->id)->first();
+
 
         $address = 'front/profile/edit-information';
         return view('front/profile.base-index', compact('address', 'userProfile'));
     }
     public function storeInformation(Request $request)
     {
-        $userProfile = UserProfile::findOrFail(Auth::user()->id);
+        $userProfile = UserProfile::where('user_id', Auth::user()->id)->first();
 
         $file1 = $request->file('image');
         $file2 = $request->file('cover');
@@ -43,7 +44,7 @@ class ProfileController extends Controller
 
 
         if (!empty($file1)) {
-            if (file_exists('front/img/profile/' . $userProfile->image)) {
+            if ($userProfile->image && file_exists('front/img/profile/' . $userProfile->image)) {
                 unlink('front/img/profile/' . $userProfile->image);
             }
             $img = time() . "." . $file1->getClientOriginalExtension();
@@ -53,10 +54,10 @@ class ProfileController extends Controller
         }
 
         if (!empty($file2)) {
-            if (file_exists('front/img/profile/' . $userProfile->cover)) {
+            if ($userProfile->cover && file_exists('front/img/profile/' . $userProfile->cover)) {
                 unlink('front/img/profile/' . $userProfile->cover);
             }
-            $cover = time() . "." . $file1->getClientOriginalExtension();
+            $cover = time() . "." . $file2->getClientOriginalExtension();
             $file2->move('front/img/profile', $cover);
         } else {
             $cover = $userProfile->cover;
@@ -78,10 +79,10 @@ class ProfileController extends Controller
 
         if (!$userProfile->image)
 
-            Validator::make(['img' => $img], [
-                'img' => 'required',
+            Validator::make(['image' => $img], [
+                'image' => 'required',
             ], [
-                'img.required' => __('dashboard.image') . __('dashboard.is-required'),
+                'image.required' => __('dashboard.image') . __('dashboard.is-required'),
             ])->validate();
 
         if (!$userProfile->cover)
@@ -118,7 +119,7 @@ class ProfileController extends Controller
     public function address()
     {
 
-        $userProfile = UserProfile::findOrFail(Auth::user()->id);
+        $userProfile = UserProfile::where('user_id', Auth::user()->id)->first();
         $userProfileAddress = UserProfile::addresses();
 
         $address = 'front/profile/address';
@@ -128,7 +129,7 @@ class ProfileController extends Controller
     public function editAddress(string $id)
     {
 
-        $userProfile = UserProfile::findOrFail(Auth::user()->id);
+        $userProfile = UserProfile::where('user_id', Auth::user()->id)->first();
         $userProfileAddress = UserProfileAddress::findOrFail($id);
 
         $address = 'front/profile/edit-address';
