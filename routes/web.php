@@ -23,6 +23,12 @@ Route::get('/lang/{locale}', function ($locale) {
     return redirect()->back();
 })->name('lang');
 
+// product pages
+
+Route::get('/shop/product/{id}', [App\Http\Controllers\Front\shop\Productcontroller::class, 'product'])->name('show-product');
+
+// product pages
+
 Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
 
     Auth::routes();
