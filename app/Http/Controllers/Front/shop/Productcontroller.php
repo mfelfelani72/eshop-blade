@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Administrator\AssideMenu;
 use App\Models\Administrator\HeaderMenu;
 use App\Models\Administrator\PrimaryBanner;
-use App\Models\Administrator\ProductTrend;
+use App\Models\Administrator\ProductFeatured;
 use Illuminate\Http\Request;
 
 class Productcontroller extends Controller
@@ -18,12 +18,14 @@ class Productcontroller extends Controller
 
         $headerMenu = HeaderMenu::all()->sortBy('priority');
         $assideMenu = AssideMenu::all()->sortBy('priority');
-        $productTrends = ProductTrend::all();
+        $productFeatured = ProductFeatured::all();
         $primaryBanners = PrimaryBanner::all();
+
+        
         // dd($id);
 
         $address = 'front/shop/product';
-        return view('front/shop.base-index', compact('address', 'headerMenu', 'productTrends', 'primaryBanners'));
+        return view('front/shop.base-index', compact('address', 'headerMenu', 'productFeatured', 'primaryBanners'));
     }
     
 }

@@ -19,7 +19,7 @@
            
             @yield('brands')
 
-            @yield('trending')
+            @yield('features')
 
             @yield('banners')
 

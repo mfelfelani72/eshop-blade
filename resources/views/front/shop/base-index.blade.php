@@ -17,8 +17,8 @@
     @include('layouts/front/brands')
 @endsection
 
-@section('trending')
-    @include('layouts/front/trending')
+@section('features')
+    @include('layouts/front/features')
 @endsection
 
 @section('banners')
