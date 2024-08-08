@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Administrator\AssideMenu;
 use App\Models\Administrator\HeaderMenu;
 use App\Models\Administrator\PrimaryBanner;
+use App\Models\Administrator\Product;
 use App\Models\Administrator\ProductFeatured;
 use Illuminate\Http\Request;
 
@@ -21,11 +22,12 @@ class Productcontroller extends Controller
         $productFeatured = ProductFeatured::all();
         $primaryBanners = PrimaryBanner::all();
 
-        
-        // dd($id);
 
+        // dd($id);
+        $product = Product::findOrFail($id);
+       
         $address = 'front/shop/product';
-        return view('front/shop.base-index', compact('address', 'headerMenu', 'productFeatured', 'primaryBanners'));
+        return view('front/shop.base-index', compact('address', 'headerMenu', 'productFeatured', 'primaryBanners','product'));
     }
     
 }
