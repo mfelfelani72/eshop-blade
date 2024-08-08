@@ -33,7 +33,7 @@
                                 <div class="stars"></div>
                                 <span class="mini-text">(2,548)</span>
                             </div>
-                            <h3 class="mini-links"><a href="#">{{ $item->product->title }}</a></h3>
+                            <h3 class="mini-links"><a href="{{ route('show-product',$item->product_id) }}">{{ $item->product->title }}</a></h3>
                             <div class="price">
                                 <span class="current">${{ $item->product->price_off }}</span>
                                 <span class="normal mini-text">${{ $item->product->price }}</span>

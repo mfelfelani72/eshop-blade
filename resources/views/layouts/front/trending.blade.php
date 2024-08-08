@@ -84,7 +84,7 @@
                             </div>
                             <div class="content">
                                 <h3 class="mini-links"><a
-                                        href="#">{{ $productTrends[$count]->product->title }}</a></h3>
+                                        href="{{ route('show-product',$productTrends[$count]->product_id) }}">{{ $productTrends[$count]->product->title }}</a></h3>
                                 <div class="rating">
                                     <div class="stars"></div>
                                     <span class="mini-text">(2,548)</span>
