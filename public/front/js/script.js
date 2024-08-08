@@ -1,3 +1,13 @@
+const submenu = document.querySelectorAll('.has-child .icon-small');
+submenu.forEach((menu) => menu.addEventListener('click', toggle));
+
+function toggle(e) {
+    e.preventDefault();
+    submenu.forEach((item) => item != this ? item.closest('.has-child').classList.remove('expand') : null);
+    if (this.closest('.has-child').classList != 'expand')
+        this.closest('.has-child').classList.toggle('expand');
+
+}
 function copyMenu() {
 
     var dptCategory = document.querySelector('.dpt-cat');
@@ -25,17 +35,6 @@ menuButton.addEventListener('click', function () {
 closeButton.addEventListener('click', function () {
     addClass.classList.remove('showmenu')
 })
-
-
-const submenu = document.querySelectorAll('.has-child .icon-small');
-submenu.forEach((menu) => menu.addEventListener('click', toggle));
-function toggle(e) {
-    e.preventDefault();
-    submenu.forEach((item) => item != this ? item.closest('.has-child').classList.remove('expand') : null);
-    if (this.closest('.has-child').classList != 'expand')
-        this.closest('.has-child').classList.toggle('expand');
-
-}
 
 const swiper = new Swiper('.swiper', {
 
@@ -132,3 +131,4 @@ document.addEventListener('click', (e) => {
 // document.querySelector('.modalclose').addEventListener('click', function () {
 //     document.querySelector('.site').classList.remove('showmodal')
 // })
+
