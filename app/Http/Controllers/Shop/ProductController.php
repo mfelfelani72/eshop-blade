@@ -10,7 +10,7 @@ use App\Models\Shop\admin\Product;
 use App\Models\Shop\admin\ProductFeatured;
 use Illuminate\Http\Request;
 
-class Productcontroller extends Controller
+class ProductController extends Controller
 {
  
     // display page single product

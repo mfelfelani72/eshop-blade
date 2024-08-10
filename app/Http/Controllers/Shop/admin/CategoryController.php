@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Administrator;
+namespace App\Http\Controllers\Shop\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Administrator\Categories;
+use App\Models\Shop\admin\Categories;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;

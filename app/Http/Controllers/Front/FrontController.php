@@ -7,8 +7,8 @@ use App\Models\Administrator\AssideMenu;
 use App\Models\Administrator\HeaderMenu;
 use App\Models\Administrator\PrimaryBanner;
 use App\Models\Administrator\PrimarySlider;
-use App\Models\Administrator\ProductFeatured;
-use App\Models\Administrator\ProductTrend;
+use App\Models\Shop\admin\ProductFeatured;
+use App\Models\Shop\admin\ProductTrend;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
