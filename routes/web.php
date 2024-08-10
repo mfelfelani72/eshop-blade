@@ -16,6 +16,7 @@ use App\Http\Controllers\Front\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontController::class, 'index'])->name('front');
+Route::get('/home', [FrontController::class, 'index'])->name('home');
 
 Route::get('/lang/{locale}', function ($locale) {
 

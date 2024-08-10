@@ -374,7 +374,7 @@
     <div class="header-main mobile-hide">
         <div class="container">
             <div class="wrapper flexitem">
-                @if (request()->route()->getAction('as') == 'front')
+                @if (request()->route()->getAction('as') == 'front' || request()->route()->getAction('as') == 'home')
                     <div class="left">
                         <div class="dpt-cat">
                             <div class="dpt-head">
