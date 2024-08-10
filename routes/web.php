@@ -13,6 +13,7 @@ use App\Http\Controllers\Shop\admin\ProductTrendController;
 
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Front\ProfileController;
+use App\Http\Controllers\Shop\admin\StockController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontController::class, 'index'])->name('front');
@@ -51,6 +52,8 @@ Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
     Route::resource('/admin/dashboard/settings/primary-banner', PrimaryBannerController::class)->parameters(['primary-banner' => 'id']);
 
     Route::resource('/admin/dashboard/shop/product', ProductController::class)->parameters(['product' => 'id']);
+
+    Route::resource('/admin/dashboard/shop/stock', StockController::class)->parameters(['stock' => 'id']);
 
     Route::put('/admin/dashboard/shop/product/trend/{id}', [ProductController::class, 'trend'])->name('trend');
 

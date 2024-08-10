@@ -2,11 +2,12 @@
 
 namespace App\Models\Shop\admin;
 
+use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Stock extends Model
+class Stock extends BaseModel
 {
     use HasFactory;
 

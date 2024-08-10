@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Shop\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Shop\admin\Stock;
 use Illuminate\Http\Request;
 
 class StockController extends Controller
@@ -12,7 +13,11 @@ class StockController extends Controller
      */
     public function index()
     {
-        //
+        // dd('hier');
+        $stocks = Stock::Active()->get();
+
+        $address = 'shop/admin/stock/index';
+        return view('administrator.dashboard.base-index', compact('address', 'stocks'));
     }
 
     /**
