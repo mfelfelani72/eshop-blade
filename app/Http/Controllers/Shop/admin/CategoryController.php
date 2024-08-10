@@ -17,7 +17,7 @@ class CategoryController extends Controller
     {
         $categories = Categories::Active()->get();
 
-        $address = 'administrator/category/index';
+        $address = 'shop/admin/category/index';
         return view('administrator.dashboard.base-index', compact('address', 'categories'));
     }
 
@@ -27,7 +27,7 @@ class CategoryController extends Controller
     public function create()
     {
 
-        $address = 'administrator/category/create';
+        $address = 'shop/admin/category/create';
         return view('administrator.dashboard.base-index', compact('address'));
     }
 
@@ -70,7 +70,7 @@ class CategoryController extends Controller
     {
         $category = Categories::findOrFail($id);
 
-        $address = 'administrator/category/edit';
+        $address = 'shop/admin/category/edit';
         return view('administrator.dashboard.base-index', compact('address', 'category'));
     }
 

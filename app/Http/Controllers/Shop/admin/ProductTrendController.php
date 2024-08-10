@@ -16,7 +16,7 @@ class ProductTrendController extends Controller
        
         $productsTrends = ProductTrend::all();
 
-        $address = 'administrator/product-trend/index';
+        $address = 'shop/admin/product-trend/index';
         return view('administrator.dashboard.base-index', compact('address', 'productsTrends'));
     }
 

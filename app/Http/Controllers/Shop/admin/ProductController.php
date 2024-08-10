@@ -22,7 +22,7 @@ class ProductController extends Controller
     {
         $products = Product::NotDelete()->get();
 
-        $address = 'administrator/product/index';
+        $address = 'shop/admin/product/index';
         return view('administrator.dashboard.base-index', compact('address', 'products'));
     }
 
@@ -33,7 +33,7 @@ class ProductController extends Controller
     {
         $categories = Categories::Active()->get();
 
-        $address = 'administrator/product/create';
+        $address = 'shop/admin/product/create';
         return view('administrator.dashboard.base-index', compact('address', 'categories'));
     }
 
@@ -135,7 +135,7 @@ class ProductController extends Controller
 
         // for selected categories for product
 
-        $address = 'administrator/product/edit';
+        $address = 'shop/admin/product/edit';
         return view('administrator.dashboard.base-index', compact('address', 'product', 'categories', 'productCategoriesIds'));
     }
 

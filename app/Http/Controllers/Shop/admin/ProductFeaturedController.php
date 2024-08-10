@@ -16,7 +16,7 @@ class ProductFeaturedController extends Controller
 
         $productsFeatureds = ProductFeatured::all();
 
-        $address = 'administrator/product-featured/index';
+        $address = 'shop/admin/product-featured/index';
         return view('administrator.dashboard.base-index', compact('address', 'productsFeatureds'));
     }
 
