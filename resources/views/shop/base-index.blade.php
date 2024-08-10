@@ -1,4 +1,4 @@
-@extends('layouts.front.shop.index')
+@extends('layouts.shop.index')
 
 
 @section('tag-head')

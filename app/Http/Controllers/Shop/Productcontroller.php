@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Front\shop;
+namespace App\Http\Controllers\shop;
 
 use App\Http\Controllers\Controller;
 use App\Models\Administrator\AssideMenu;
 use App\Models\Administrator\HeaderMenu;
 use App\Models\Administrator\PrimaryBanner;
-use App\Models\Administrator\Product;
-use App\Models\Administrator\ProductFeatured;
+use App\Models\Shop\admin\Product;
+use App\Models\Shop\admin\ProductFeatured;
 use Illuminate\Http\Request;
 
 class Productcontroller extends Controller
@@ -26,8 +26,8 @@ class Productcontroller extends Controller
         // dd($id);
         $product = Product::findOrFail($id);
        
-        $address = 'front/shop/product';
-        return view('front/shop.base-index', compact('address', 'headerMenu', 'productFeatured', 'primaryBanners','product'));
+        $address = 'shop/product';
+        return view('shop.base-index', compact('address', 'headerMenu', 'productFeatured', 'primaryBanners','product'));
     }
     
 }

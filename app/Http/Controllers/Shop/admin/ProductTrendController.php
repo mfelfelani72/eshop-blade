@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Administrator;
+namespace App\Http\Controllers\Shop\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Administrator\ProductTrend;
+use App\Models\Shop\admin\ProductTrend;
 use Illuminate\Http\Request;
 
 class ProductTrendController extends Controller

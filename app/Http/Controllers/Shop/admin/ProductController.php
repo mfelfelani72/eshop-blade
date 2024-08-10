@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Administrator;
+namespace App\Http\Controllers\Shop\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Administrator\Categories;
-use App\Models\Administrator\Product;
-use App\Models\Administrator\ProductCategories;
-use App\Models\Administrator\ProductFeatured;
-use App\Models\Administrator\ProductImages;
-use App\Models\Administrator\ProductTrend;
+use App\Models\Shop\admin\Categories;
+use App\Models\Shop\admin\Product;
+use App\Models\Shop\admin\ProductCategories;
+use App\Models\Shop\admin\ProductFeatured;
+use App\Models\Shop\admin\ProductImages;
+use App\Models\Shop\admin\ProductTrend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;

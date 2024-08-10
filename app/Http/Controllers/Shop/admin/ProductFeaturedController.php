@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Administrator;
+namespace App\Http\Controllers\Shop\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Administrator\ProductFeatured;
+use App\Models\Shop\admin\ProductFeatured;
 use Illuminate\Http\Request;
 
 class ProductFeaturedController extends Controller

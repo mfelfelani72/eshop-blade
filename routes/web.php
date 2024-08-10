@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\Administrator\CategoryController;
+use App\Http\Controllers\Shop\admin\CategoryController;
 use App\Http\Controllers\Administrator\DashboardController;
 use App\Http\Controllers\Administrator\HeaderMenuController;
 use App\Http\Controllers\Administrator\AssideMenuController;
 use App\Http\Controllers\Administrator\PrimaryBannerController;
 use App\Http\Controllers\Administrator\PrimarySliderController;
-use App\Http\Controllers\Administrator\ProductController;
-use App\Http\Controllers\Administrator\ProductFeaturedController;
-use App\Http\Controllers\Administrator\ProductTrendController;
+use App\Http\Controllers\Shop\admin\ProductController;
+use App\Http\Controllers\Shop\admin\ProductFeaturedController;
+use App\Http\Controllers\Shop\admin\ProductTrendController;
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Front\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -25,7 +25,7 @@ Route::get('/lang/{locale}', function ($locale) {
 
 // product pages
 
-Route::get('/shop/product/{id}', [App\Http\Controllers\Front\shop\Productcontroller::class, 'product'])->name('show-product');
+Route::get('/shop/product/{id}', [App\Http\Controllers\shop\Productcontroller::class, 'product'])->name('show-product');
 
 // product pages
 
