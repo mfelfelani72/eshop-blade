@@ -9,7 +9,8 @@
                 </a>
                 <ul aria-expanded="false">
 
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('dashboard.products') }}</a>
+                    <li><a class="has-arrow" href="javascript:void()"
+                            aria-expanded="false">{{ __('dashboard.products') }}</a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('product.index') }}">{{ __('dashboard.index') }}</a></li>
                         </ul>
@@ -17,7 +18,8 @@
                             <li><a href="{{ route('product.create') }}">{{ __('dashboard.create') }}</a></li>
                         </ul>
                     </li>
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('dashboard.category') }}</a>
+                    <li><a class="has-arrow" href="javascript:void()"
+                            aria-expanded="false">{{ __('dashboard.category') }}</a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('category.index') }}">{{ __('dashboard.index') }}</a></li>
                         </ul>
@@ -25,11 +27,12 @@
                             <li><a href="{{ route('category.create') }}">{{ __('dashboard.create') }}</a></li>
                         </ul>
                     </li>
-                    <li><a class="" href="{{ route('trend.index') }}" aria-expanded="false">{{ __('dashboard.product trend') }}</a>
+                    <li><a class="" href="{{ route('trend.index') }}"
+                            aria-expanded="false">{{ __('dashboard.product trend') }}</a>
                     </li>
-                    <li><a class="" href="{{ route('featured.index') }}" aria-expanded="false">{{ __('dashboard.product futured') }}</a>
+                    <li><a class="" href="{{ route('featured.index') }}"
+                            aria-expanded="false">{{ __('dashboard.product futured') }}</a>
                     </li>
-
 
 
 
@@ -43,7 +46,8 @@
                 <ul aria-expanded="false">
                     {{-- Panel Admin --}}
 
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('dashboard.pannel admin') }}</a>
+                    <li><a class="has-arrow" href="javascript:void()"
+                            aria-expanded="false">{{ __('dashboard.pannel admin') }}</a>
                         <ul aria-expanded="false">
                             <li><a href="email-compose.html">{{ __('dashboard.change logo') }}</a></li>
                         </ul>
@@ -53,18 +57,20 @@
 
                     {{-- Public Front --}}
 
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('dashboard.public front') }}</a>
+                    <li><a class="has-arrow" href="javascript:void()"
+                            aria-expanded="false">{{ __('dashboard.public front') }}</a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('primary-slider.index') }}">{{ __('dashboard.slider') }}</a></li>
                             <li><a href="{{ route('primary-banner.index') }}">{{ __('dashboard.banner') }}</a></li>
                         </ul>
                     </li>
 
-                    <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">{{ __('dashboard.menu') }}</a>
+                    <li><a class="has-arrow" href="javascript:void()"
+                            aria-expanded="false">{{ __('dashboard.menu') }}</a>
                         <ul aria-expanded="false">
                             <li><a href="{{ route('header-menu.index') }}">{{ __('dashboard.header menu') }}</a></li>
                             <li><a href="{{ route('asside-menu.index') }}">{{ __('dashboard.asside menu') }}</a></li>
-                            
+
                         </ul>
                     </li>
 
@@ -78,7 +84,8 @@
 
         <div class="copyright">
             <p><strong>{{ __('dashboard.Cloner team admin') }}</p>
-            <p class="fs-12">{{ __('dashboard.Made with') }}<span class="heart"></span>{{ __('dashboard.by Cloner team') }}</p>
+            <p class="fs-12">{{ __('dashboard.Made with') }}<span
+                    class="heart"></span>{{ __('dashboard.by Cloner team') }}</p>
             <p></strong> © {{ __('dashboard.all rights reserved 2024') }} </p>
         </div>
     </div>

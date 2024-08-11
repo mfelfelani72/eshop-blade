@@ -53,8 +53,6 @@ Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
 
     Route::resource('/admin/dashboard/shop/product', ProductController::class)->parameters(['product' => 'id']);
 
-    Route::resource('/admin/dashboard/shop/stock', StockController::class)->parameters(['stock' => 'id']);
-
     Route::put('/admin/dashboard/shop/product/trend/{id}', [ProductController::class, 'trend'])->name('trend');
 
     Route::put('/admin/dashboard/shop/product/featured/{id}', [ProductController::class, 'featured'])->name('featured');
@@ -65,7 +63,7 @@ Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
 
     Route::resource('/admin/dashboard/shop/featured', ProductFeaturedController::class)->parameters(['featured' => 'id']);
 
-
+    Route::get('/admin/dashboard/shop/product/increase/{id}', [StockController::class, 'increase'])->name('increase-product');
     // settings
 
 

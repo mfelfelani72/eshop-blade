@@ -53,7 +53,11 @@
 
                                             <td>{{ $item->code }}</td>
                                             <td>{{ $item->title }}</td>
-                                            <td>25</td>
+                                            @if ($item->stock)
+                                                <td>{{ $item->stock->count }}</td>
+                                            @else
+                                                <td>0</td>
+                                            @endif
                                             <td>{{ Auth::user($item->operator)->name }}</td>
                                             <td>{{ $item->status }}</td>
                                             <td>
@@ -72,7 +76,8 @@
                                                         @method('delete')
                                                     </form>
 
-                                                    <a href="#" title="trend" class="btn btn-info shadow btn-xs sharp me-1"
+                                                    <a href="#" title="trend"
+                                                        class="btn btn-info shadow btn-xs sharp me-1"
                                                         onclick="trendItem(event,{{ $item->id }})">
                                                         <i class="fa fa-trophy"></i>
                                                     </a>
@@ -82,7 +87,8 @@
                                                         @method('put')
                                                     </form>
 
-                                                    <a href="#" title="featured" class="btn btn-success shadow btn-xs sharp me-1"
+                                                    <a href="#" title="featured"
+                                                        class="btn btn-success shadow btn-xs sharp me-1"
                                                         onclick="featuredItem(event,{{ $item->id }})">
                                                         <i class="fa fa-clock"></i>
                                                     </a>

@@ -10,6 +10,7 @@ return [
     'products' => 'محصولات',
     'product trend' => 'روند محصول',
     'product futured' => 'محصول آینده',
+    'stock' => 'انبار',
     'settings' => 'تنظیمات',
     'pannel admin' => 'پنل مدیریت',
     'change logo' => 'تغییر لوگو',

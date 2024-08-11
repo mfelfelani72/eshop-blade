@@ -9,6 +9,7 @@ return [
     'products' => 'Products',
     'product trend' => 'Product Trend',
     'product futured' => 'Product Futured',
+    'stock' => 'Stock',
     'settings' => 'Settings',
     'pannel admin' => 'Pannel Admin',
     'change logo' => 'Change Logo',

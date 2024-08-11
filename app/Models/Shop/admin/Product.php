@@ -43,4 +43,9 @@ class Product extends BaseModel
         return $this->hasMany(ProductImages::class)->where('product_id', $this->id);
     }
 
+    public function stock(): HasOne
+    {
+        return $this->hasOne(Stock::class)->where('product_id', $this->id);
+    }
+
 }
