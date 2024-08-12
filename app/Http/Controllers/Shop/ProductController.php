@@ -27,7 +27,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
        
         $address = 'shop/product';
-        return view('shop.base-index', compact('address', 'headerMenu', 'productFeatured', 'primaryBanners','product'));
+        return view('shop.base-index', compact('address', 'headerMenu', 'assideMenu' ,'productFeatured', 'primaryBanners','product'));
     }
     
 }

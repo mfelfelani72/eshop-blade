@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <div id="page" class="site page-home">
+    <div id="page" class="site page-single">
 
        
 
