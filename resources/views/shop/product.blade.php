@@ -18,12 +18,14 @@
                                 </div>
                                 <div class="big-image">
                                     <div class="big-image-wrapper swiper-wrapper">
-                                         @foreach ($product->productImages as $item )
-                                          <div class="image-show swiper-slide">
-                                            <a data-fslightbox href={{ asset('front/img/products/' . $item->img) }}><img
-                                                    src={{ asset('front/img/products/' . $item->img) }} alt=""></a>
-                                        </div>
-                                         @endforeach
+                                        @foreach ($product->productImages as $item)
+                                            <div class="image-show swiper-slide">
+                                                <a data-fslightbox
+                                                    href={{ asset('front/img/products/' . $item->img) }}><img
+                                                        src={{ asset('front/img/products/' . $item->img) }}
+                                                        alt=""></a>
+                                            </div>
+                                        @endforeach
                                     </div>
                                     <div class="swiper-button-next"></div>
                                     <div class="swiper-button-prev"></div>
@@ -31,10 +33,10 @@
 
                                 <div thumbSlider="" class="small-image">
                                     <ul class="small-image-wrapper flexitem swiper-wrapper">
-                                        @foreach ($product->productImages as $item )
+                                        @foreach ($product->productImages as $item)
                                             <li class="thumbnail-show swiper-slide">
-                                            <img src={{ asset('front/img/products/' . $item->img) }} alt="">
-                                        </li>
+                                                <img src={{ asset('front/img/products/' . $item->img) }} alt="">
+                                            </li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -50,8 +52,14 @@
                                         <a href="#" class="add-review mini-text">Add Your Review</a>
                                     </div>
                                     <div class="stock-sku">
-                                        <span class="available">In Stock</span>
-                                        <span class="sku mini-text">{{ $product->code }} $</span>
+                                        @if ($product->stock)
+                                            @if ($product->stock->count > 0)
+                                                <span class="available">In Stock : {{ $product->stock->count }} </span>
+                                            @endif
+                                        @else
+                                            <span class="not-available">Not Available </span>
+                                        @endif
+                                        <span class="sku mini-text">{{ $product->code }}</span>
                                     </div>
                                     <div class="price">
                                         <span class="current">{{ $product->price_off }} $</span>
@@ -141,7 +149,8 @@
                                                     @endphp
                                                     <ul class="pl-0">
                                                         @foreach ($informations as $key => $row)
-                                                            <li><span>{{ $key }}</span><span>{{ $row }}</span></li>
+                                                            <li><span>{{ $key }}</span><span>{{ $row }}</span>
+                                                            </li>
                                                         @endforeach
 
                                                     </ul>

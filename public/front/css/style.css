@@ -450,4 +450,14 @@ form.search :where(span, button) {
     text-transform: capitalize;
 }
 
+.products.one .not-available {
+    font-size: var(--font-small);
+    font-weight: var(--fw5);
+    padding: 0.5em;
+    margin-right: 1em;
+    border-radius: 3px;
+    color: #ff6b6b;
+    background-color: var(--light-bg-color);
+}
+
 /* mohammad styles */
