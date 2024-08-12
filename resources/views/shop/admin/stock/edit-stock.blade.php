@@ -47,7 +47,7 @@
                                 <div class="mb-3 row">
                                     <label class="col-sm-2 col-form-label col-form-label-lg">Type</label>
                                     <div class="col-sm-4">
-                                        <select id="dynamic-option-creation">
+                                        <select id="dynamic-option-creation" name="type">
                                             <option value="increase">Increase</option>
                                             <option value="decrease">Decrease</option>
                                         </select>

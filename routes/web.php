@@ -65,7 +65,7 @@ Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
 
     Route::get('/admin/dashboard/shop/product/edit-stock/{id}', [StockController::class, 'editStock'])->name('edit-product-stock');
 
-    Route::get('/admin/dashboard/shop/product/store-stock/{id}', [StockController::class, 'storeStock'])->name('store-product-stock');
+    Route::post('/admin/dashboard/shop/product/store-stock/{id}', [StockController::class, 'storeStock'])->name('store-product-stock');
     // settings
 
 

@@ -98,6 +98,12 @@
                                                         @method('put')
                                                     </form>
 
+                                                    <a href="{{ route('edit-product-stock', $item->id) }}"
+                                                        title="edit stock"
+                                                        class="btn btn-warning shadow btn-xs sharp me-1">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                    </a>
+
 
                                                 </div>
                                             </td>
