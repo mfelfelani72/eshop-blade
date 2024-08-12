@@ -63,7 +63,9 @@ Route::middleware(['App\Http\Middleware\Administrator'])->group(function () {
 
     Route::resource('/admin/dashboard/shop/featured', ProductFeaturedController::class)->parameters(['featured' => 'id']);
 
-    Route::get('/admin/dashboard/shop/product/increase/{id}', [StockController::class, 'increase'])->name('increase-product');
+    Route::get('/admin/dashboard/shop/product/edit-stock/{id}', [StockController::class, 'editStock'])->name('edit-product-stock');
+
+    Route::get('/admin/dashboard/shop/product/store-stock/{id}', [StockController::class, 'storeStock'])->name('store-product-stock');
     // settings
 
 
