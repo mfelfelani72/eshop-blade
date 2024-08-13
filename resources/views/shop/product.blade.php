@@ -118,7 +118,13 @@
                                             <button class="plus circle">+</button>
                                         </div>
                                         <div class="button-cart">
-                                            <button class="primary-button">Add to cart</button>
+                                            @if ($product->stock)
+                                                <button class="primary-button disable">Add to cart</button>
+                                            @else
+                                                <button class="secondary-button disable">let me know</button>
+                                            @endif
+
+
                                         </div>
                                         <div class="wish-share">
                                             <ul class="flexitem second-links pl-0">
