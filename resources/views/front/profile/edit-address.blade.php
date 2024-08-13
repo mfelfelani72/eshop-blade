@@ -129,18 +129,18 @@
                                 <div class="mb-3 row">
                                     @php
                                         $value = '';
-                                        if (old('zip_number') == '') {
+                                        if (old('zip_code') == '') {
                                             $value = $userProfileAddress->zip_number;
                                         } else {
-                                            $value = old('zip_number');
+                                            $value = old('zip_code');
                                         }
 
                                     @endphp
                                     <label class="col-sm-2 col-form-label col-form-label-lg">Zip Number</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control form-control-lg" name="zip_number"
+                                        <input type="text" class="form-control form-control-lg" name="zip_code"
                                             value="{{ $value }}">
-                                        @error('zip_number')
+                                        @error('zip_code')
                                             <div class="pt-1 pb-1 mt-2 alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>

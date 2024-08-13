@@ -130,15 +130,18 @@ class ProfileController extends Controller
     {
 
         $userProfile = UserProfile::where('user_id', Auth::user()->id)->first();
-        $userProfileAddress = UserProfileAddress::findOrFail($id);
-
+        // dd("sda");
+        $userProfileAddress = new UserProfileAddress();
+        if ($id !== '0')
+            $userProfileAddress = UserProfileAddress::findOrFail($id);
+        // dd("sda");
         $address = 'front/profile/edit-address';
         return view('front/profile.base-index', compact('address', 'id', 'userProfile', 'userProfileAddress'));
     }
 
     public function storeAddress(Request $request, string $id)
     {
-        // dd($request);
+
 
         Validator::make($request->all(), [
             // 'country' => 'required',
@@ -164,7 +167,7 @@ class ProfileController extends Controller
             'location.required' => __('dashboard.location') . __('dashboard.is-required'),
         ])
             ->validate();
-
+        // dd($request);
         $country = "";
         $avenue = "";
         if ($request->country)
@@ -172,20 +175,37 @@ class ProfileController extends Controller
         if ($request->avenue)
             $avenue = $request->avenue;
 
-        $userProfileAddress = UserProfileAddress::findOrFail($id);
 
-        $userProfileAddress->uopdate([
-            'country' => $country,
-            'province' => $request->province,
-            'city' => $request->city,
-            'street' => $request->street,
-            'avenue' => $avenue,
-            'home_number' => $request->home_number,
-            'zip_code' => $request->zip_code,
-            'floor' => $request->floor,
-            'unit' => $request->unit,
-            'location' => $request->location,
-        ]);
+
+        if ($id !== '0') {
+            $userProfileAddress = UserProfileAddress::findOrFail($id);
+            $userProfileAddress->update([
+                'country' => $country,
+                'province' => $request->province,
+                'city' => $request->city,
+                'street' => $request->street,
+                'avenue' => $avenue,
+                'home_number' => $request->home_number,
+                'zip_code' => $request->zip_code,
+                'floor' => $request->floor,
+                'unit' => $request->unit,
+                'location' => $request->location,
+            ]);
+        } else {
+            UserProfileAddress::create([
+                'user_id' => Auth::user()->id,
+                'country' => $country,
+                'province' => $request->province,
+                'city' => $request->city,
+                'street' => $request->street,
+                'avenue' => $avenue,
+                'home_number' => $request->home_number,
+                'zip_code' => $request->zip_code,
+                'floor' => $request->floor,
+                'unit' => $request->unit,
+                'location' => $request->location,
+            ]);
+        }
 
 
         return redirect()->route('user-address');

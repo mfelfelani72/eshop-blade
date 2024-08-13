@@ -27,8 +27,13 @@
                                 <div class="tab-content">
                                     @php
                                         $active = 'active show';
+                                        $emptyAddress = true;
                                     @endphp
+
                                     @foreach ($userProfileAddress as $row)
+                                        @php
+                                            $emptyAddress = false;
+                                        @endphp
                                         <div id="address-{{ $row->id }}" class="tab-pane {{ $active }} fade">
                                             <div class="my-post-content pt-3 mx-1">
                                                 <h4 class="text-primary mb-4">Full Address</h4>
@@ -135,9 +140,14 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-12">
-                                                            <a href="{{ route('user-edit-address',$row->id) }}"
+                                                            <a href="{{ route('user-edit-address', $row->id) }}"
                                                                 class="float-end btn btn-rounded btn-primary">Edit</a>
+
+                                                            <a href="{{ route('user-edit-address', 0) }}"
+                                                                class="float-end btn btn-rounded btn-success mx-2">Add
+                                                                Address</a>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -146,6 +156,16 @@
                                             $active = '';
                                         @endphp
                                     @endforeach
+
+                                    @if ($emptyAddress)
+                                        <div class="m-4 text-center">
+                                            <h4>you don't have any address, please add your address</h4>
+                                            <div class="mt-4 col-12">
+                                                <a href="{{ route('user-edit-address', 0) }}"
+                                                    class="float-center btn btn-rounded btn-success">Add Address</a>
+                                            </div>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
