@@ -1,3 +1,4 @@
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="single-product">
     <div class="container">
         <div class="wrapper">
@@ -114,12 +115,22 @@
                                     <div class="actions">
                                         <div class="qty-control flexitem">
                                             <button class="minus circle">-</button>
-                                            <input type="text" value="1">
+                                            <input type="text" value="1" id="count">
                                             <button class="plus circle">+</button>
                                         </div>
                                         <div class="button-cart">
                                             @if ($product->stock)
-                                                <button class="primary-button disable">Add to cart</button>
+                                                <form action="{{ route('add-to-cart') }}" class="chat"
+                                                    id="ajax-form">
+                                                    @csrf
+
+                                                    <input type="hidden" name="message" value="{{ $product->id }}" />
+                                                    {{-- <button onclick="addToCart(event,{{ $product->id }})"
+                                                        class="primary-button" id="add-to-cart">Add
+                                                        to cart</button> --}}
+                                                    <button class="primary-button btn-submit">Add
+                                                        to cart</button>
+                                                </form>
                                             @else
                                                 <button class="secondary-button disable">let me know</button>
                                             @endif
@@ -358,3 +369,37 @@
         </div>
     </div>
 </div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('input[name="_token"]').val()
+        }
+    });
+
+    $('#ajax-form').submit(function(e) {
+        e.preventDefault();
+
+        var url = $(this).attr("action");
+        var data = $("#ajax-form").serializeArray();
+
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: data,
+            // data: {
+            //     'fullName': "mohammad"
+            // },
+            success: (response) => {
+                // alert('Form submitted successfully');
+
+            },
+            error: function(response) {
+               
+            }
+        });
+
+    });
+</script>

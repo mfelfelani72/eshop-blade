@@ -14,6 +14,7 @@ use App\Http\Controllers\Shop\admin\ProductTrendController;
 use App\Http\Controllers\Front\FrontController;
 use App\Http\Controllers\Front\ProfileController;
 use App\Http\Controllers\Shop\admin\StockController;
+use App\Http\Controllers\Shop\OrderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontController::class, 'index'])->name('front');
@@ -83,4 +84,7 @@ Route::middleware(['App\Http\Middleware\RegisteredUsers'])->group(function () {
     Route::put('/profile/store-address/{id}', [ProfileController::class, 'storeAddress'])->name('user-store-address');
 
     Route::get('/profile/settings', [ProfileController::class, 'settings'])->name('user-settings');
+
+    
+    Route::post('/shop/order/add-to-cart', [OrderController::class, 'addToCart'])->name('add-to-cart');
 });
